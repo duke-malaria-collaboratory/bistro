@@ -101,6 +101,8 @@ If the kit you used to genotype samples is not available in the defaults, you wi
 
 Human population frequencies for each allele at each locus may be supplied. If you would prefer, population allele frequencies can be computed from the human STR profiles (see below for more details). Note that the latter option is not suggested when a small set of human reference profiles is being used. 
 
+The euroformix [website](http://www.euroformix.com/?q=data) provides some publicly available population frequency datasets. Additionally, you can get United States population allele frequencies for many alleles from [NIST](https://strbase.nist.gov/Information/NIST_Population_Data). 
+
 If you would like to input population allele frequencies, the dataset should contain one column for each STR marker and one row for each allele. The alleles should be listed in the first column of the dataset and the column should be named "Allele". The entries for each marker-allele combination are the population allele frequency or NA if that allele does not exist for that marker. Here is an example with the loci from the PowerPlex ESX 17 System (ESX17) kit. 
 
 ```{r}
@@ -174,7 +176,7 @@ bistro(
 Note that, while we use the builtin dataset as an example here, we do not recommend using this method for a human dataset with only 3 people. An example of when it may make sense is if you have a relatively comprehensive set of human reference profiles for your study site. 
 
 
-## Running bistro on a subset of samples
+## Running `bistro()` on a subset of samples
 
 `bistro()` can take a long time to run, especially if you have many samples or a closely related reference population. Therefore, before running it with all of your samples, we highly recommend testing it out on a small subset of samples to make sure everything is working as you expect. To do this, you can use the `bloodmeal_ids` and `human_ids` arguments to tell `bistro()` what ids you want to compare:
 

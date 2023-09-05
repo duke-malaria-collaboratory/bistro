@@ -199,7 +199,7 @@ bistro(
 )
 ```
 
-This can also be useful if you would like to parallelize `bistro()`, for example by using a workflow manager such as Snakemake or NextFlow. We highly recommend doing this if you are planning to run it on many samples. 
+This can also be useful if you would like to parallelize `bistro()`, for example by using a workflow manager such as Snakemake or NextFlow. If you'd like to try it out, [here](https://github.com/duke-malaria-collaboratory/bistro_pipeline) is a template Snakemake pipeline for running bistro. We highly recommend doing this if you are planning to run it on many samples. 
 
 ## Other arguments
 

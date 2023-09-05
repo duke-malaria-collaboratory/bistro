@@ -2,7 +2,8 @@
 #'
 #' @inheritParams bistro
 #'
-#' @return Filtered dataframe, error if all peak heights under threshold
+#' @return Filtered dataframe
+#' @export
 #' @keywords internal
 filter_peaks <- function(bloodmeal_profiles, peak_thresh) {
   if (!is.numeric(bloodmeal_profiles$Height)) {

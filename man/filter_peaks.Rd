@@ -18,7 +18,7 @@ number should be equal to or greater than that number.
 Also used for \code{threshT} argument in \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}}.}
 }
 \value{
-Filtered dataframe, error if all peak heights under threshold
+Filtered dataframe
 }
 \description{
 Filter peak heights that are under threshold

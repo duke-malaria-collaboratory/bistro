@@ -3,6 +3,7 @@
 export(bistro)
 export(calc_allele_freqs)
 export(calc_log10_lrs)
+export(filter_peaks)
 export(identify_matches)
 export(rm_twins)
 import(euroformix)

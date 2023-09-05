@@ -19,5 +19,6 @@ reference:
   contents:
   - calc_allele_freqs
   - rm_twins
+  - filter_peaks
   - calc_log10_lrs
   - identify_matches

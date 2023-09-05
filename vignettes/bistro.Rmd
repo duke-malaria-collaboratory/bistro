@@ -18,6 +18,13 @@ knitr::opts_chunk$set(
 
 bistro is an algorithm, an R package, and a function within said R package. It employs methods from forensics to identify matches between bloodmeals and the people they bit using short tandem repeat (STR) profiles of human blood from freshly fed bloodmeals and from people. It can be used to match multi-source bloodmeals and bloodmeals with incomplete STR profiles. Note that while you can use it for matching any STR profiles for research purposes, we very much _do not_ recommend using it for forensic purposes. For more details about the algorithm, please refer to the bistro manuscript (will add link once it's posted). 
 
+A core part of the algorithm is the [`contLikSearch()`](https://github.com/oyvble/euroformix/blob/master/R/contLikSearch.R) function from the `euroformix` package, which is used to calculate log10 likelihood ratios (log10LRs). The numerator of the log10LR is the likelihood that the person was bitten by the vector and the denominator is the likelihood that someone else was bitten by the vector. Here is more information about euroformix: 
+- Manuscript: [EuroForMix: An open source software based on a continuous model to evaluate STR DNA profiles from a mixture of contributors with artefacts](https://pubmed.ncbi.nlm.nih.gov/26720812/)
+- [GitHub](https://github.com/oyvble/euroformix)
+- [Website that explains GUI](http://www.euroformix.com/)
+
+bistro uses the log10LRs to identify bloodmeal-human matches using a per-bloodmeal dynamic threshold approach. 
+
 ## Installing the `bistro` R package
 
 To install `bistro`, run the following commands:
@@ -143,7 +150,7 @@ The output contains 8 columns:
 - `locus_count`: number of loci STR-typed in the bloodmeal.
 - `match`: whether the bloodmeal STR profile matched to a human in the database (yes or no).
 - `human_id`: human match for the bloodmeal (NA if no match).
-- `log10_lr`: log10 likelihood ratio of the bloodmeal-human match (NA if no match).
+- `log10_lr`: log10 likelihood ratio of the bloodmeal-human match (NA if no match). The numerator of the log10LR is the likelihood that the person was bitten by the bloodmeal and the denominator is the likelihood that someone else was bitten by the bloodmeal. 
 - `notes`: why the bloodmeal does or doesn't have a match (see below for more details).
 - `thresh_low`: log10LR threshold at which the match was made.
 
@@ -200,7 +207,7 @@ Other arguments you can modify when running `bistro()` include:
 
 Used by `bistro`:
 
-- `rm_twins`: whether or not to remove identical STR profiles that are likely twins prior to computing population allele frequencies and identifying matches (default: TRUE) 
+- `rm_twins`: whether or not to remove identical STR profiles that are likely twins prior to identifying matches. Note that matches with these people cannot be resolved  (default: TRUE) 
 - `time_limit`: longest amount of time allowed to calculate the log-likelihood for one bloodmeal-human pair, in minutes (default: 3)
 
 Used by `euroformix::contLikSearch()` when calculating log-likelihoods:

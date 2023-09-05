@@ -54,7 +54,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">calc_allele_freqs</span><span class="op">(</span><span class="va">human_profiles</span>, rm_twins <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">calc_allele_freqs</span><span class="op">(</span><span class="va">human_profiles</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -62,11 +62,6 @@
     <dl><dt>human_profiles</dt>
 <dd><p>Tibble with alleles for all humans in reference
 database including three columns: SampleName, Marker, Allele.</p></dd>
-
-
-<dt>rm_twins</dt>
-<dd><p>A boolean indicating whether or not to remove likely twins (identical STR profiles)
-from the human database prior to identifying matches. Default: TRUE</p></dd>
 
 </dl></div>
     <div class="section level2">

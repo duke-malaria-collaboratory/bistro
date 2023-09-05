@@ -5,9 +5,11 @@
 
 <!-- badges: start -->
 
+[![R-CMD-check](https://github.com/duke-malaria-collaboratory/bistro/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/duke-malaria-collaboratory/bistro/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/duke-malaria-collaboratory/bistro/branch/main/graph/badge.svg)](https://app.codecov.io/gh/duke-malaria-collaboratory/bistro?branch=main)
-[![R-CMD-check](https://github.com/duke-malaria-collaboratory/bistro/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/duke-malaria-collaboratory/bistro/actions/workflows/R-CMD-check.yaml)
+[![License: LGPL
+v3](https://img.shields.io/badge/License-LGPL_v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 <!-- badges: end -->
 
 Functions to allow for the identification of matches between bloodmeals

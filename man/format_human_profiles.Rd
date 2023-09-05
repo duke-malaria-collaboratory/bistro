@@ -7,12 +7,15 @@
 format_human_profiles(human_profiles)
 }
 \arguments{
-\item{human_profiles}{Tibble with alleles for all humans in reference database including three columns: SampleName, Marker, Allele.}
+\item{human_profiles}{Tibble with alleles for all humans in reference
+database including three columns: SampleName, Marker, Allele.}
 }
 \value{
-A list of lists including the alleles for each sample in the format required for input into the euroformix \code{contLikSearch()} function
+A list of lists including the alleles for each sample in the format
+required for input into the euroformix \code{contLikSearch()} function
 }
 \description{
-Format human STR profiles for input into the euroformix \code{contLikSearch()} function.
+Format human STR profiles for input into
+the euroformix \code{contLikSearch()} function.
 }
 \keyword{internal}

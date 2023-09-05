@@ -5,9 +5,10 @@
 \alias{pop_allele_freqs}
 \title{Human population allele frequencies}
 \format{
-\subsection{\code{pop_allele_freqs}}{
+\subsection{\code{pop_allele_freqs} A data frame with 76 rows and 17 columns. The}{
 
-A data frame with 76 rows and 17 columns. The first column is the STR allele and the following columns are the frequency of that allele for different markers.
+first column is the STR allele and the following columns are the frequency
+of that allele for different markers.
 }
 }
 \source{

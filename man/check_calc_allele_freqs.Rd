@@ -7,7 +7,9 @@
 check_calc_allele_freqs(calc_allele_freqs)
 }
 \arguments{
-\item{calc_allele_freqs}{A boolean indicating whether or not to calculate allele frequencies from \code{human_profiles}. If FALSE, a \code{pop_allele_freqs} input is required. Default: FALSE}
+\item{calc_allele_freqs}{A boolean indicating whether or not to calculate
+allele frequencies from \code{human_profiles}. If FALSE, a \code{pop_allele_freqs}
+input is required. Default: FALSE}
 }
 \value{
 Error or nothing

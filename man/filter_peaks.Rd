@@ -4,12 +4,18 @@
 \alias{filter_peaks}
 \title{Filter peak heights that are under threshold}
 \usage{
-filter_peaks(bloodmeal_profiles, threshT)
+filter_peaks(bloodmeal_profiles, peak_threshold)
 }
 \arguments{
-\item{bloodmeal_profiles}{Tibble with alleles for all bloodmeals in reference database including 4 columns: SampleName, Marker, Allele, Height. Height must be numeric or coercible to numeric.}
+\item{bloodmeal_profiles}{Tibble with alleles for all bloodmeals in reference
+database including 4 columns: SampleName, Marker, Allele, Height. Height
+must be numeric or coercible to numeric.}
 
-\item{threshT}{Allele peak height threshold in RFUs. All peaks under this threshold will be filtered out. If prior filtering was performed, this number should be equal to or greater than that number.}
+\item{peak_threshold}{Allele peak height threshold
+in RFUs. All peaks under this
+threshold will be filtered out. If prior filtering was performed, this
+number should be equal to or greater than that number.
+Also used for \code{threshT} argument in \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}}.}
 }
 \value{
 Filtered dataframe, error if all peak heights under threshold

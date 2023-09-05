@@ -4,15 +4,19 @@
 \alias{identify_one_match_set}
 \title{Identify matches between a bloodmeal and human references}
 \usage{
-identify_one_match_set(log10LRs, bloodmeal_id)
+identify_one_match_set(log10_lrs, bloodmeal_id)
 }
 \arguments{
-\item{log10LRs}{output from \code{\link[=calc_log10LRs]{calc_log10LRs()}}}
+\item{log10_lrs}{output from \code{\link[=calc_log10_lrs]{calc_log10_lrs()}}}
 
-\item{bloodmeal_id}{Bloodmeal id from the \code{SampleName} column in \code{bloodmeal_profiles} for which to compute the log10LR}
+\item{bloodmeal_id}{Bloodmeal id from the \code{SampleName} column in
+\code{bloodmeal_profiles} for which to compute the log10_lr}
 }
 \value{
-tibble with matches for bloodmeal-human pairs including bloodmeal_id, bloodmeal_locus_count (number of STR loci used for matching), est_noc (estimated number of contributors), match, human_id (if match), log10LR (log10 likelihood ratio), note
+tibble with matches for bloodmeal-human pairs including bloodmeal_id,
+bloodmeal_locus_count (number of STR loci used for matching), est_noc
+(estimated number of contributors), match, human_id (if match), log10_lr
+(log10 likelihood ratio), note
 }
 \description{
 Identify matches between a bloodmeal and human references

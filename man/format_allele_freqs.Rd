@@ -7,12 +7,18 @@
 format_allele_freqs(pop_allele_freqs)
 }
 \arguments{
-\item{pop_allele_freqs}{Data frame where the first column is the STR allele and the following columns are the frequency of that allele for different markers. Alleles that do not exist for a given marker are coded as NA. If NULL and \code{calc_allele_freqs = TRUE}, then population allele frequencies will be calculated from \code{human_profiles}.}
+\item{pop_allele_freqs}{Data frame where the first column is the STR allele
+and the following columns are the frequency of that allele for different
+markers. Alleles that do not exist for a given marker are coded as NA. If
+NULL and \code{calc_allele_freqs = TRUE}, then population allele frequencies
+will be calculated from \code{human_profiles}.}
 }
 \value{
-A list of allele frequencies for the population in the format required for input into the euroformix \code{contLikSearch()} function
+A list of allele frequencies for the population in the format
+required for input into the euroformix \code{contLikSearch()} function
 }
 \description{
-Format population allele frequencies for input into the euroformix \code{contLikSearch()} function.
+Format population allele frequencies for
+input into the euroformix \code{contLikSearch()} function.
 }
 \keyword{internal}

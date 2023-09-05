@@ -2,6 +2,6 @@
 
 export(bistro)
 export(calc_allele_freqs)
-export(calc_log10LRs)
+export(calc_log10_lrs)
 export(identify_matches)
 import(euroformix)

@@ -7,12 +7,16 @@
 format_bloodmeal_profiles(bloodmeal_profiles)
 }
 \arguments{
-\item{bloodmeal_profiles}{Tibble with alleles for all bloodmeals in reference database including 4 columns: SampleName, Marker, Allele, Height. Height must be numeric or coercible to numeric.}
+\item{bloodmeal_profiles}{Tibble with alleles for all bloodmeals in reference
+database including 4 columns: SampleName, Marker, Allele, Height. Height
+must be numeric or coercible to numeric.}
 }
 \value{
-A list of lists including the alleles for each sample in the format required for input into the euroformix \code{contLikSearch()} function.
+A list of lists including the alleles for each sample in the format
+required for input into the euroformix \code{contLikSearch()} function.
 }
 \description{
-Format bloodmeal STR profiles for input into the euroformix \code{contLikSearch()} function.
+Format bloodmeal STR profiles for input into the euroformix
+\code{contLikSearch()} function.
 }
 \keyword{internal}

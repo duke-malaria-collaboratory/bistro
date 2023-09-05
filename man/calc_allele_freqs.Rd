@@ -4,14 +4,11 @@
 \alias{calc_allele_freqs}
 \title{Calculate allele frequencies}
 \usage{
-calc_allele_freqs(human_profiles, rm_twins = TRUE)
+calc_allele_freqs(human_profiles)
 }
 \arguments{
 \item{human_profiles}{Tibble with alleles for all humans in reference
 database including three columns: SampleName, Marker, Allele.}
-
-\item{rm_twins}{A boolean indicating whether or not to remove likely twins (identical STR profiles)
-from the human database prior to identifying matches. Default: TRUE}
 }
 \value{
 A tibble where the first column is the STR allele and the following

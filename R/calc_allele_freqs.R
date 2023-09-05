@@ -10,17 +10,12 @@
 #'
 #' @export
 #' @keywords internal
-calc_allele_freqs <- function(human_profiles, rm_twins = TRUE) {
+calc_allele_freqs <- function(human_profiles) {
   # check if expected columns are present
   check_colnames(human_profiles, c("SampleName", "Marker", "Allele"))
 
   # remove duplicates if necessary
   human_profiles <- rm_dups(human_profiles)
-
-  # remove twins if desired
-  if (rm_twins) {
-    human_profiles <- rm_twins(human_profiles)
-  }
 
   # Calculate human population allele frequencies
   allele_freqs <- human_profiles |>

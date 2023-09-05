@@ -18,5 +18,6 @@ reference:
     Sub-functions used by `bistro()`
   contents:
   - calc_allele_freqs
+  - rm_twins
   - calc_log10_lrs
   - identify_matches

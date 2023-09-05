@@ -56,6 +56,7 @@ rm_dups <- function(df) {
 #' @inheritParams bistro
 #'
 #' @return Data frame with twins removed
+#' @export
 #' @keywords internal
 rm_twins <- function(human_profiles) {
   not_twins <- human_profiles |>

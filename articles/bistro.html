@@ -90,6 +90,16 @@ STR profiles for research purposes, we very much <em>do not</em>
 recommend using it for forensic purposes. For more details about the
 algorithm, please refer to the bistro manuscript (will add link once
 it’s posted).</p>
+<p>A core part of the algorithm is the <a href="https://github.com/oyvble/euroformix/blob/master/R/contLikSearch.R" class="external-link"><code>contLikSearch()</code></a>
+function from the <code>euroformix</code> package, which is used to
+calculate log10 likelihood ratios (log10LRs). The numerator of the
+log10LR is the likelihood that the person was bitten by the vector and
+the denominator is the likelihood that someone else was bitten by the
+vector. Here is more information about euroformix: - Manuscript: <a href="https://pubmed.ncbi.nlm.nih.gov/26720812/" class="external-link">EuroForMix: An open
+source software based on a continuous model to evaluate STR DNA profiles
+from a mixture of contributors with artefacts</a> - <a href="https://github.com/oyvble/euroformix" class="external-link">GitHub</a> - <a href="http://www.euroformix.com/" class="external-link">Website that explains GUI</a></p>
+<p>bistro uses the log10LRs to identify bloodmeal-human matches using a
+per-bloodmeal dynamic threshold approach.</p>
 </div>
 <div class="section level2">
 <h2 id="installing-the-bistro-r-package">Installing the <code>bistro</code> R package<a class="anchor" aria-label="anchor" href="#installing-the-bistro-r-package"></a>
@@ -328,7 +338,9 @@ human in the database (yes or no).</li>
 match).</li>
 <li>
 <code>log10_lr</code>: log10 likelihood ratio of the bloodmeal-human
-match (NA if no match).</li>
+match (NA if no match). The numerator of the log10LR is the likelihood
+that the person was bitten by the bloodmeal and the denominator is the
+likelihood that someone else was bitten by the bloodmeal.</li>
 <li>
 <code>notes</code>: why the bloodmeal does or doesn’t have a match
 (see below for more details).</li>
@@ -417,8 +429,8 @@ include:</p>
 <ul>
 <li>
 <code>rm_twins</code>: whether or not to remove identical STR
-profiles that are likely twins prior to computing population allele
-frequencies and identifying matches (default: TRUE)</li>
+profiles that are likely twins prior to identifying matches. Note that
+matches with these people cannot be resolved (default: TRUE)</li>
 <li>
 <code>time_limit</code>: longest amount of time allowed to calculate
 the log-likelihood for one bloodmeal-human pair, in minutes (default:

@@ -83,27 +83,28 @@
 <p>bistro is an algorithm, an R package, and a function within said R
 package. It employs methods from forensics to identify matches between
 bloodmeals and the people they bit using short tandem repeat (STR)
-profiles of human blood from freshly fed bloodmeals and from people.
-Note that you can use it for matching any STR profiles for research
-purposes, but we very much <em>do not</em> recommend using it for
-forensic purposes. For more details about the algorithm, please refer to
-the bistro manuscript (note: will add link once we have it).</p>
+profiles of human blood from freshly fed bloodmeals and from people. It
+can be used to match multi-source bloodmeals and bloodmeals with
+incomplete STR profiles. Note that while you can use it for matching any
+STR profiles for research purposes, we very much <em>do not</em>
+recommend using it for forensic purposes. For more details about the
+algorithm, please refer to the bistro manuscript (will add link once
+it’s posted).</p>
 </div>
 <div class="section level2">
-<h2 id="installing-the-bistro-r-package">Installing the bistro R package<a class="anchor" aria-label="anchor" href="#installing-the-bistro-r-package"></a>
+<h2 id="installing-the-bistro-r-package">Installing the <code>bistro</code> R package<a class="anchor" aria-label="anchor" href="#installing-the-bistro-r-package"></a>
 </h2>
-<p>First, you have to install <code>bistro</code>:</p>
+<p>To install <code>bistro</code>, run the following commands:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span> <span class="co"># install devtools if needed</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"duke-malaria-collaboratory/bistro"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="getting-started-with-bistro">Getting started with bistro<a class="anchor" aria-label="anchor" href="#getting-started-with-bistro"></a>
+<h2 id="getting-started-with-bistro">Getting started with <code>bistro</code><a class="anchor" aria-label="anchor" href="#getting-started-with-bistro"></a>
 </h2>
 <p>The most important function in <code>bistro</code> is
 <code><a href="../reference/bistro.html">bistro()</a></code>. This document will take you through all of the
-required and optional <code><a href="../reference/bistro.html">bistro()</a></code> inputs, as well as the
-output.</p>
+required and optional inputs, as well as the output.</p>
 <p>In summary, you must provide:</p>
 <ul>
 <li>Bloodmeal STR profiles</li>
@@ -112,26 +113,26 @@ output.</p>
 <li>An allele peak height threshold (in relative fluorescence units,
 RFUs) for the bloodmeal STR profiles</li>
 </ul>
-<p>And the function outputs matches for each bloodmeal-human pair.</p>
+<p>The function outputs matches for each bloodmeal-human pair.</p>
 <p>To follow along with the vignette, first load
 <code>bistro</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://duke-malaria-collaboratory.github.io/bistro/">bistro</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; Loading required package: euroformix</span></span></code></pre></div>
-<p>Note that when we load <code>bistro</code>, we also load
-<code>euroformix</code> because <code>bistro</code> depends on the
-<code>euroformix</code> package.</p>
+<p>Note that when we load <code>bistro</code>, we also load <a href="https://github.com/oyvble/euroformix/" class="external-link"><code>euroformix</code></a>
+because <code>bistro</code> depends on the <code>euroformix</code>
+package.</p>
 </div>
 <div class="section level2">
 <h2 id="required-inputs">Required inputs<a class="anchor" aria-label="anchor" href="#required-inputs"></a>
 </h2>
+<p>Before we run <code><a href="../reference/bistro.html">bistro()</a></code> using example data, let’s learn
+more about the required inputs.</p>
 <p>Two required, and one optional but often recommended, datasets are
 required to run <code><a href="../reference/bistro.html">bistro()</a></code>: bloodmeal and human STR profiles
 are required, and human population allele frequencies are optional. The
-other two required inputs to bistro are the STR genotyping kit name and
-the bloodmeal STR allele peak height threshold.</p>
-<p>Before we run <code><a href="../reference/bistro.html">bistro()</a></code>, let’s learn more about the
-required inputs.</p>
+other two required inputs are the STR genotyping kit name and the
+bloodmeal STR allele peak height threshold.</p>
 <div class="section level3">
 <h3 id="bloodmeal-str-profiles-bloodmeal_profiles">Bloodmeal STR profiles (<code>bloodmeal_profiles</code>)<a class="anchor" aria-label="anchor" href="#bloodmeal-str-profiles-bloodmeal_profiles"></a>
 </h3>
@@ -172,7 +173,7 @@ example:</p>
 <span><span class="co">#&gt; 4 00-JP0001-14_20142342311_NO-3241 D10S1248     13</span></span>
 <span><span class="co">#&gt; 5 00-JP0001-14_20142342311_NO-3241  D12S391     17</span></span>
 <span><span class="co">#&gt; 6 00-JP0001-14_20142342311_NO-3241  D12S391     18</span></span></code></pre></div>
-<p>In this example dataset, we have 3 different bloodmeals:</p>
+<p>In this example dataset, we have 3 different human profiles:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">human_profiles</span><span class="op">$</span><span class="va">SampleName</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "00-JP0001-14_20142342311_NO-3241" "P1"                              </span></span>
@@ -204,9 +205,9 @@ documentation or or on their website.</p>
 </h3>
 <p><code><a href="../reference/bistro.html">bistro()</a></code> also requires a bloodmeal allele peak threshold
 (in RFUs) to be provided. All peaks with heights below this threshold
-will be removed prior to matching. If prior filtering was performed on
-the bloodmeal profiles based on peak height, then this number should be
-equal to or greater than the threshold used.</p>
+will be removed before matching. If prior filtering was performed on the
+bloodmeal profiles based on peak height, then this number should be
+equal to or greater than that threshold.</p>
 </div>
 <div class="section level3">
 <h3 id="human-population-allele-frequencies-pop_allele_freqs">Human population allele frequencies
@@ -215,8 +216,8 @@ equal to or greater than the threshold used.</p>
 <p>Human population frequencies for each allele at each locus may be
 supplied. If you would prefer, population allele frequencies can be
 computed from the human STR profiles (see below for more details). Note
-that the latter option is not suggested when a small human reference
-database is being used.</p>
+that the latter option is not suggested when a small set of human
+reference profiles is being used.</p>
 <p>If you would like to input population allele frequencies, the dataset
 should contain one column for each STR marker and one row for each
 allele. The alleles should be listed in the first column of the dataset
@@ -255,12 +256,12 @@ test it out using the example data included in the package:</p>
 <span>  kit <span class="op">=</span> <span class="st">"ESX17"</span>,</span>
 <span>  peak_threshold <span class="op">=</span> <span class="fl">200</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in check_setdiff_markers(toupper(names(pop_allele_freqs)[!names(pop_allele_freqs) == : 1/17 markers in kit but not in pop_allele_freqs: AMEL</span></span>
+<span><span class="co">#&gt; 1/17 markers in kit but not in pop_allele_freqs: AMEL</span></span>
 <span><span class="co">#&gt; Formatting bloodmeal profiles</span></span>
 <span><span class="co">#&gt; Removing 6 peaks under the threshold of 200 RFU.</span></span>
 <span><span class="co">#&gt; For 1/4 bloodmeal ids, all peaks are below the threshold</span></span>
 <span><span class="co">#&gt; Formatting human profiles</span></span>
-<span><span class="co">#&gt; Calculating log10_lrs</span></span>
+<span><span class="co">#&gt; Calculating log10LRs</span></span>
 <span><span class="co">#&gt; # bloodmeal ids: 4</span></span>
 <span><span class="co">#&gt; # human ids: 3</span></span>
 <span><span class="co">#&gt; Bloodmeal id 1/4</span></span>
@@ -280,72 +281,74 @@ test it out using the example data included in the package:</p>
 <span><span class="co">#&gt; Human id 2/3</span></span>
 <span><span class="co">#&gt; Human id 3/3</span></span>
 <span><span class="co">#&gt; Identifying matches</span></span></code></pre></div>
-<p>You’ll notice a bunch of things print out to the screen. First, a
-warning that one of the markers (AMEL) is in the kit but not in
-<code>pop_allele_freqs</code>. Then, a message saying that 6 peaks under
-the 200 RFU threshold were removed, and that after filtering one of the
-bloodmeals did not have any peaks remaining above the threshold. Next,
-there is a message notifying you that log10_lrs (log10 likelihood
-ratios) are being calculated for each bloodmeal-human pair (for 4
-bloodmeals and 3 humans). This can take a while, so the progress is also
-printed out. Finally, the function notifies you that it is identifying
-matches.</p>
+<p>You’ll notice a bunch of messages print out to the screen:</p>
+<ul>
+<li>One of the markers (AMEL) is in the kit but not in
+<code>pop_allele_freqs</code>.</li>
+<li>6 peaks under the 200 RFU threshold were removed, and after
+filtering one of the bloodmeals did not have any peaks remaining above
+the threshold.</li>
+<li>Notification that log10LRs (log10 likelihood ratios) are being
+calculated for each bloodmeal-human pair (for 4 bloodmeals and 3
+humans). This can take a while, so the progress is also printed
+out.</li>
+<li>Notification that matches are being identified.</li>
+</ul>
 <p>Let’s take a look at the output:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bistro_output</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 8</span></span></span>
-<span><span class="co">#&gt;   bloodmeal_id est_noc bloodmeal_locus_count match human_id log10_lr note       </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> evid1              2                    17 yes   P1           21.8 passed all…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> evid1              2                    17 yes   P2           10.3 passed all…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> evid2              2                     1 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   no shared …</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> evid3              1                     8 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   all log10_…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> evid4              0                     0 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   no peaks a…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: thresh_low &lt;dbl&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt;   bloodmeal_id locus_count est_noc match human_id log10_lr notes      thresh_low</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> evid1                 17       2 yes   P1           21.8 passed al…        9.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> evid1                 17       2 yes   P2           10.3 passed al…        9.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> evid2                  1       2 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   no shared…       <span style="color: #BB0000;">NA</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> evid3                  8       1 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   all log10…       <span style="color: #BB0000;">NA</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> evid4                  0       0 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   no peaks …       <span style="color: #BB0000;">NA</span></span></span></code></pre></div>
 <p>The output contains 8 columns:</p>
 <ul>
 <li>
-<code>bloodmeal_id</code>: bloodmeal sample</li>
+<code>bloodmeal_id</code>: bloodmeal sample name.</li>
 <li>
 <code>est_noc</code>: estimated number of contributors (NOCs) to the
 bloodmeal. When this equals one, it’s predicted to be a single-source
 bloodmeal; when it is greater than one, it’s predicted to be a
 multi-source bloodmeal. Note that sources here mean humans only.</li>
 <li>
-<code>bloodmeal_locus_count</code>: number of loci STR-typed in the
-bloodmeal</li>
+<code>locus_count</code>: number of loci STR-typed in the
+bloodmeal.</li>
 <li>
 <code>match</code>: whether the bloodmeal STR profile matched to a
-human in the database (yes or no)</li>
+human in the database (yes or no).</li>
 <li>
 <code>human_id</code>: human match for the bloodmeal (NA if no
-match)</li>
+match).</li>
 <li>
 <code>log10_lr</code>: log10 likelihood ratio of the bloodmeal-human
-match (NA if no match)</li>
+match (NA if no match).</li>
 <li>
-<code>note</code>: why the bloodmeal does or doesn’t have a
-match</li>
+<code>notes</code>: why the bloodmeal does or doesn’t have a match
+(see below for more details).</li>
 <li>
-<code>thresh_low</code>: log10_lr threshold at which the match was
-made</li>
+<code>thresh_low</code>: log10LR threshold at which the match was
+made.</li>
 </ul>
 <p>An important thing to notice is that, even though we have only 4
-bloodmeals, there are 5 rows in the dataset. This is because, while each
-bloodmeal will appear at least once in the dataset, multiple rows are
-present for bloodmeals that match to multiple people (one row per
-match). For example, here, evid1 matches to 2 different people (P1 and
-P2) Please keep this in mind when performing data analysis.</p>
-<p>The note column provides more information on why there was or was not
-a match:</p>
+bloodmeals, there are 5 rows in the output dataset. This is because,
+while each bloodmeal will appear at least once in the dataset, multiple
+rows are present for bloodmeals that match to multiple people (one row
+per match). For example, here, evid1 matches to 2 different people (P1
+and P2) Please keep this in mind when performing data analysis.</p>
+<p>The notes column provides more information on why there was or was
+not a match:</p>
 <ul>
 <li>passed all filters: there was a match.</li>
-<li>&gt; min NOC matches: there were more matches than expected that
+<li>&gt; min NOC matches: there were more matches than expected and they
 could not be resolved. This can happen when there are closely related
-people in the human database.</li>
-<li>no shared alleles: no people in the human database had alleles that
-overlapped with the alleles in the bloodmeal.</li>
-<li>all log10_lrs &lt; 1.5: none of the log10_lrs were high enough to be
+people in the human reference dataset.</li>
+<li>no shared alleles: no people in the human reference dataset had
+alleles that overlapped with the alleles in the bloodmeal.</li>
+<li>all log10LRs &lt; 1.5: none of the log10LRs were high enough to be
 considered a match.</li>
 <li>euroformix error: the <code><a href="https://rdrr.io/pkg/euroformix/man/contLikSearch.html" class="external-link">euroformix::contLikSearch()</a></code>
 function did not run successfully. This often happens with very
@@ -361,10 +364,8 @@ give it more time, you can modify the <code>time_limit</code> argument
 <div class="section level2">
 <h2 id="using-computed-population-allele-frequencies">Using computed population allele frequencies<a class="anchor" aria-label="anchor" href="#using-computed-population-allele-frequencies"></a>
 </h2>
-<p>Let’s say you want to have the population allele frequences computed
-from the human reference database. (Note that we just show this as an
-example because we would not recommend doing this for a database with
-only 3 people like we have here.) To do so, you must set
+<p>If you want to have the population allele frequencies computed from
+the inputted human reference profiles, you must set
 <code>calc_allele_freqs = TRUE</code>:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/bistro.html">bistro</a></span><span class="op">(</span></span>
@@ -374,17 +375,21 @@ only 3 people like we have here.) To do so, you must set
 <span>  kit <span class="op">=</span> <span class="st">"ESX17"</span>,</span>
 <span>  peak_threshold <span class="op">=</span> <span class="fl">200</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+<p>Note that, while we use the builtin dataset as an example here, we do
+not recommend using this method for a human dataset with only 3 people.
+An example of when it may make sense is if you have a relatively
+comprehensive set of human reference profiles for your study site.</p>
 </div>
 <div class="section level2">
 <h2 id="running-bistro-on-a-subset-of-samples">Running bistro on a subset of samples<a class="anchor" aria-label="anchor" href="#running-bistro-on-a-subset-of-samples"></a>
 </h2>
 <p><code><a href="../reference/bistro.html">bistro()</a></code> can take a long time to run, especially if you
 have many samples or a closely related reference population. Therefore,
-before running <code><a href="../reference/bistro.html">bistro()</a></code> with all of your samples, we highly
-recommend testing it out on a small subset of samples to make sure
-everything is working as you expect. To do this, you can use the
-<code>bloodmeal_ids</code> and <code>human_ids</code> arguments to tell
-<code><a href="../reference/bistro.html">bistro()</a></code> what ids you want to compare:</p>
+before running it with all of your samples, we highly recommend testing
+it out on a small subset of samples to make sure everything is working
+as you expect. To do this, you can use the <code>bloodmeal_ids</code>
+and <code>human_ids</code> arguments to tell <code><a href="../reference/bistro.html">bistro()</a></code> what
+ids you want to compare:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/bistro.html">bistro</a></span><span class="op">(</span></span>
 <span>  bloodmeal_profiles <span class="op">=</span> <span class="va">bloodmeal_profiles</span>,</span>
@@ -394,64 +399,45 @@ everything is working as you expect. To do this, you can use the
 <span>  peak_threshold <span class="op">=</span> <span class="fl">200</span>,</span>
 <span>  bloodmeal_ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"evid1"</span>, <span class="st">"evid2"</span><span class="op">)</span>,</span>
 <span>  human_ids <span class="op">=</span> <span class="st">"P1"</span></span>
-<span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in check_setdiff_markers(toupper(names(pop_allele_freqs)[!names(pop_allele_freqs) == : 1/17 markers in kit but not in pop_allele_freqs: AMEL</span></span>
-<span><span class="co">#&gt; Formatting bloodmeal profiles</span></span>
-<span><span class="co">#&gt; Removing 5 peaks under the threshold of 200 RFU.</span></span>
-<span><span class="co">#&gt; Formatting human profiles</span></span>
-<span><span class="co">#&gt; Calculating log10_lrs</span></span>
-<span><span class="co">#&gt; # bloodmeal ids: 2</span></span>
-<span><span class="co">#&gt; # human ids: 1</span></span>
-<span><span class="co">#&gt; Bloodmeal id 1/2</span></span>
-<span><span class="co">#&gt; Human id 1/1</span></span>
-<span><span class="co">#&gt; Bloodmeal id 2/2</span></span>
-<span><span class="co">#&gt; Human id 1/1</span></span>
-<span><span class="co">#&gt; Identifying matches</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 8</span></span></span>
-<span><span class="co">#&gt;   bloodmeal_id est_noc bloodmeal_locus_count match human_id log10_lr note       </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> evid1              2                    17 yes   P1           21.8 passed all…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> evid2              2                     1 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   euroformix…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: thresh_low &lt;dbl&gt;</span></span></span></code></pre></div>
-<p>This can also be useful if you would like to parallelize bistro, for
-example by using a workflow manager such as Snakemake or NextFlow. We
-highly recommend doing this if you are planning to run
-<code><a href="../reference/bistro.html">bistro()</a></code> on many samples.</p>
+<span><span class="op">)</span></span></code></pre></div>
+<p>This can also be useful if you would like to parallelize
+<code><a href="../reference/bistro.html">bistro()</a></code>, for example by using a workflow manager such as
+Snakemake or NextFlow. We highly recommend doing this if you are
+planning to run it on many samples.</p>
 </div>
 <div class="section level2">
 <h2 id="other-arguments">Other arguments<a class="anchor" aria-label="anchor" href="#other-arguments"></a>
 </h2>
 <p>Other arguments you can modify when running <code><a href="../reference/bistro.html">bistro()</a></code>
 include:</p>
+<p>Used by <code>bistro</code>:</p>
 <ul>
 <li>
 <code>rm_twins</code>: whether or not to remove identical STR
-profiles, likely twins, prior to computing population allele frequencies
-and identifying matches (default: TRUE)</li>
-<li>
-<code>model_degrad</code>: whether or not to model peak degradation
-when calculating log-likelihoods using
-<code><a href="https://rdrr.io/pkg/euroformix/man/contLikSearch.html" class="external-link">euroformix::contLikSearch()</a></code> (default: TRUE)</li>
-<li>
-<code>model_bw_stutt</code> and <code>model_fw_stutt</code>: whether
-or not to model peak backward and forward stutter when calculating
-log-likelihoods using <code><a href="https://rdrr.io/pkg/euroformix/man/contLikSearch.html" class="external-link">euroformix::contLikSearch()</a></code> (default:
-FALSE)</li>
-<li>
-<code>difftol</code>: difference tolerance in log-likelihood across
-2 iterations when using <code><a href="https://rdrr.io/pkg/euroformix/man/contLikSearch.html" class="external-link">euroformix::contLikSearch()</a></code>
-(default: 1)</li>
-<li>
-<code>threads</code>: nubmer of threads to use when computing
-log-likelihoods when using <code><a href="https://rdrr.io/pkg/euroformix/man/contLikSearch.html" class="external-link">euroformix::contLikSearch()</a></code>
-(default: 4)</li>
-<li>
-<code>seed</code>: seed for <code><a href="https://rdrr.io/pkg/euroformix/man/contLikSearch.html" class="external-link">euroformix::contLikSearch()</a></code>
-(default: 1)</li>
+profiles that are likely twins prior to computing population allele
+frequencies and identifying matches (default: TRUE)</li>
 <li>
 <code>time_limit</code>: longest amount of time allowed to calculate
 the log-likelihood for one bloodmeal-human pair, in minutes (default:
 3)</li>
+</ul>
+<p>Used by <code><a href="https://rdrr.io/pkg/euroformix/man/contLikSearch.html" class="external-link">euroformix::contLikSearch()</a></code> when calculating
+log-likelihoods:</p>
+<ul>
+<li>
+<code>model_degrad</code>: whether or not to model peak degradation
+(default: TRUE)</li>
+<li>
+<code>model_bw_stutt</code> and <code>model_fw_stutt</code>: whether
+or not to model peak backward and forward stutter (default: FALSE)</li>
+<li>
+<code>difftol</code>: difference tolerance in log-likelihood across
+2 iterations (default: 1)</li>
+<li>
+<code>threads</code>: number of threads to use when computing
+log-likelihoods (default: 4)</li>
+<li>
+<code>seed</code>: seed for reproducible results (default: 1)</li>
 </ul>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

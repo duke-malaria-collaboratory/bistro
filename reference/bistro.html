@@ -195,12 +195,12 @@ argument. Default: 1</p></dd>
 <p>Tibble with matches for bloodmeal-human pairs including the columns
 listed below. Note that if multiple matches are found for a bloodmeal,
 these are included as separate rows.</p><ul><li><p><code>bloodmeal_id</code>: bloodmeal id</p></li>
-<li><p><code>bloodmeal_locus_count</code>: number of loci successfully typed in the bloodmeal</p></li>
+<li><p><code>locus_count</code>: number of loci successfully typed in the bloodmeal</p></li>
 <li><p><code>est_noc</code>: estimated number of contributors to the bloodmeal</p></li>
 <li><p><code>match</code>: whether a match was identified for a given bloodmeal (yes or no)</p></li>
 <li><p><code>human_id</code>: If match, human id (NA otherwise)</p></li>
 <li><p><code>log10_lr</code>: If match, log10 likelihood ratio (NA otherwise)</p></li>
-<li><p><code>note</code>: Why the bloodmeal does or doesn't have a match</p></li>
+<li><p><code>notes</code>: Why the bloodmeal does or doesn't have a match</p></li>
 </ul></div>
 
     <div class="section level2">
@@ -209,12 +209,12 @@ these are included as separate rows.</p><ul><li><p><code>bloodmeal_id</code>: bl
 <span class="r-in"><span>  pop_allele_freqs <span class="op">=</span> <span class="va">pop_allele_freqs</span>,</span></span>
 <span class="r-in"><span>  kit <span class="op">=</span> <span class="st">"ESX17"</span>, peak_threshold <span class="op">=</span> <span class="fl">200</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>1/17 markers in kit but not in pop_allele_freqs: AMEL</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 1/17 markers in kit but not in pop_allele_freqs: AMEL</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Formatting bloodmeal profiles</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Removing 6 peaks under the threshold of 200 RFU.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> For 1/4 bloodmeal ids, all peaks are below the threshold</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Formatting human profiles</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Calculating log10_lrs</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Calculating log10LRs</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> # bloodmeal ids: 4</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> # human ids: 3</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Bloodmeal id 1/4</span>
@@ -235,14 +235,13 @@ these are included as separate rows.</p><ul><li><p><code>bloodmeal_id</code>: bl
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Human id 3/3</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Identifying matches</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 8</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   bloodmeal_id est_noc bloodmeal_locus_count match human_id log10_lr note       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> evid1              2                    17 yes   P1           21.8 passed all…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> evid1              2                    17 yes   P2           10.3 passed all…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> evid2              2                     1 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   no shared …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> evid3              1                     8 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   all log10_…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> evid4              0                     0 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   no peaks a…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: thresh_low &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   bloodmeal_id locus_count est_noc match human_id log10_lr notes      thresh_low</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> evid1                 17       2 yes   P1           21.8 passed al…        9.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> evid1                 17       2 yes   P2           10.3 passed al…        9.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> evid2                  1       2 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   no shared…       <span style="color: #BB0000;">NA</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> evid3                  8       1 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   all log10…       <span style="color: #BB0000;">NA</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> evid4                  0       0 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   no peaks …       <span style="color: #BB0000;">NA</span>  </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

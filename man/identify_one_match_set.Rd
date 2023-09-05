@@ -14,9 +14,9 @@ identify_one_match_set(log10_lrs, bloodmeal_id)
 }
 \value{
 tibble with matches for bloodmeal-human pairs including bloodmeal_id,
-bloodmeal_locus_count (number of STR loci used for matching), est_noc
+locus_count (number of STR loci used for matching), est_noc
 (estimated number of contributors), match, human_id (if match), log10_lr
-(log10 likelihood ratio), note
+(log10 likelihood ratio), notes
 }
 \description{
 Identify matches between a bloodmeal and human references

@@ -3,9 +3,9 @@
 #' @param log10_lrs output from [calc_log10_lrs()]
 #'
 #' @return tibble with matches for bloodmeal-human pairs including bloodmeal_id,
-#'   bloodmeal_locus_count (number of STR loci used for matching), est_noc
+#'   locus_count (number of STR loci used for matching), est_noc
 #'   (estimated number of contributors), match, human_id (if match), log10_lr
-#'   (log10 likelihood ratio), note
+#'   (log10 likelihood ratio), notes
 #' @inheritParams calc_one_log10_lr
 #' @keywords internal
 identify_one_match_set <- function(log10_lrs, bloodmeal_id) {
@@ -14,26 +14,26 @@ identify_one_match_set <- function(log10_lrs, bloodmeal_id) {
     dplyr::filter(bloodmeal_id == bm_id)
 
   est_noc <- unique(log10_lrs$est_noc)
-  bloodmeal_locus_count <- unique(log10_lrs$bloodmeal_locus_count)
-  notes <- stringr::str_c(unique(log10_lrs$note), collapse = ";")
+  locus_count <- unique(log10_lrs$locus_count)
+  notes <- stringr::str_c(unique(log10_lrs$notes), collapse = ";")
 
   matches <- tibble::tibble(
     bloodmeal_id = bloodmeal_id,
+    locus_count = locus_count,
     est_noc = est_noc,
-    bloodmeal_locus_count = bloodmeal_locus_count,
     match = "no",
     human_id = NA,
     log10_lr = NA,
-    note = notes,
+    notes = notes,
     thresh_low = NA
   )
 
   if (all(is.na(log10_lrs$log10_lr))) {
     matches_thresh <- matches
   } else if (max(log10_lrs$log10_lr[!is.infinite(log10_lrs$log10_lr)]) < 1.5 &&
-               is.na(notes)) {
+    is.na(notes)) {
     matches_thresh <- matches |>
-      dplyr::mutate(note = "all log10_lr < 1.5")
+      dplyr::mutate(notes = "all log10LRs < 1.5")
   } else {
     # matches can only have log10_lrs > 1
     log10_lrs <- log10_lrs |>
@@ -48,24 +48,24 @@ identify_one_match_set <- function(log10_lrs, bloodmeal_id) {
       matches_thresh <- log10_lrs |>
         dplyr::filter(log10_lr >= thresh) |>
         dplyr::mutate(
-          note = ifelse(
+          notes = ifelse(
             dplyr::n() > est_noc,
             "> min NOC matches",
             "passed all filters"
           ),
-          match = ifelse(note == "passed all filters", "yes", "no"),
-          human_id = ifelse(note == "> min NOC matches", NA, human_id),
-          log10_lr = ifelse(note == "> min NOC matches", NA, log10_lr),
+          match = ifelse(notes == "passed all filters", "yes", "no"),
+          human_id = ifelse(notes == "> min NOC matches", NA, human_id),
+          log10_lr = ifelse(notes == "> min NOC matches", NA, log10_lr),
           thresh_low = thresh
         ) |>
         dplyr::select(
           bloodmeal_id,
+          locus_count,
           est_noc,
-          bloodmeal_locus_count,
           match,
           human_id,
           log10_lr,
-          note,
+          notes,
           thresh_low
         ) |>
         dplyr::distinct() # do we need this?
@@ -80,9 +80,9 @@ identify_one_match_set <- function(log10_lrs, bloodmeal_id) {
         dplyr::pull(human_id)
 
       if ((identical(mht, mlt) &&
-             nrow(matches_thresh) == est_noc) ||
-            matches_thresh$note[1] == "> min NOC matches" ||
-            thresh == 0.5) {
+        nrow(matches_thresh) == est_noc) ||
+        matches_thresh$notes[1] == "> min NOC matches" ||
+        thresh == 0.5) {
         break
       }
 
@@ -90,11 +90,11 @@ identify_one_match_set <- function(log10_lrs, bloodmeal_id) {
     }
 
     if (nrow(matches_thresh) < est_noc ||
-          matches_thresh$note[1] == "> min NOC matches" ||
-          matches_thresh$thresh_low[1] == 1) {
+      matches_thresh$notes[1] == "> min NOC matches" ||
+      matches_thresh$thresh_low[1] == 1) {
       # are 1st and last both required above?
       temp <- matches |>
-        dplyr::filter(note != "> min NOC matches") |>
+        dplyr::filter(notes != "> min NOC matches") |>
         dplyr::group_by(thresh_low) |>
         dplyr::mutate(
           n_samps = dplyr::n_distinct(human_id),
@@ -105,7 +105,7 @@ identify_one_match_set <- function(log10_lrs, bloodmeal_id) {
         dplyr::distinct() |>
         dplyr::arrange(thresh_low) |>
         dplyr::mutate(next_same = human_id == dplyr::lead(human_id) &
-                        note == dplyr::lead(note)) |>
+          notes == dplyr::lead(notes)) |>
         dplyr::filter(next_same) |>
         dplyr::filter(n_samps == suppressWarnings(max(n_samps))) |>
         dplyr::slice_max(thresh_low) |>

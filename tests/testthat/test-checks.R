@@ -65,7 +65,7 @@ test_that("check_calc_allele_freqs works", {
 
 test_that("check_if_allele_freqs works", {
   expect_no_warning(check_if_allele_freqs(pop_allele_freqs, TRUE))
-  expect_warning(
+  expect_message(
     check_if_allele_freqs(pop_allele_freqs, FALSE, euroformix::getKit("ESX17")),
     "1/17 markers in kit but not in pop_allele_freqs: AMEL"
   )
@@ -110,8 +110,8 @@ test_that("check_peak_threshold works", {
 })
 
 test_that("check_setdiff_markers works", {
-  expect_warning(
-    expect_warning(
+  expect_message(
+    expect_message(
       check_setdiff_markers(1:3, c(1, 4), "m1", "m2"),
       "2/3 markers in m1 but not in m2: 2,3"
     ),

@@ -33,4 +33,6 @@ detools::install_github("duke-malaria-collaboratory/bistro")
 
 ## Usage
 
-Check out `vignette('bistro')` for more information.
+Check out the
+[vignette](https://duke-malaria-collaboratory.github.io/bistro/articles/bistro.html)
+for more information.

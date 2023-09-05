@@ -31,15 +31,21 @@ check_bistro_inputs <-
 
     kit_df <- check_kit(kit)
 
+    bm_prof_markers <- toupper(unique(bloodmeal_profiles$Marker))
+    hu_prof_markers <- toupper(unique(human_profiles$Marker))
+    kit_markers <- toupper(unique(kit_df$Marker))
+
     check_setdiff_markers(
-      toupper(unique(human_profiles$Marker)),
-      toupper(unique(kit_df$Marker)),
+      bm_prof_markers,
+      kit_markers,
       "bloodmeal_profiles",
       "kit"
     )
     check_setdiff_markers(
-      toupper(unique(human_profiles$Marker)),
-      toupper(unique(kit_df$Marker)), "human_profiles", "kit"
+      hu_prof_markers,
+      kit_markers,
+      "human_profiles",
+      "kit"
     )
 
     check_calc_allele_freqs(calc_allele_freqs)
@@ -143,11 +149,16 @@ check_if_allele_freqs <-
         "If `calc_allele_freqs = FALSE`, ",
         "then `pop_allele_freqs` is required."
       )
-    } else if (!is.null(pop_allele_freqs) && calc_allele_freqs == FALSE) {
+    } else if (!is.null(pop_allele_freqs) &&
+      calc_allele_freqs == FALSE) {
       check_colnames(pop_allele_freqs, c("Allele"))
+
+      pop_freq_markers <-
+        toupper(names(pop_allele_freqs)[!names(pop_allele_freqs) == "Allele"])
+      kit_markers <- toupper(unique(kit_df$Marker))
       check_setdiff_markers(
-        toupper(names(pop_allele_freqs)[!names(pop_allele_freqs) == "Allele"]),
-        toupper(unique(kit_df$Marker)),
+        pop_freq_markers,
+        kit_markers,
         "pop_allele_freqs",
         "kit"
       )
@@ -169,11 +180,14 @@ check_setdiff_markers <-
            markers1_name,
            markers2_name) {
     in_markers1_only <- setdiff(toupper(markers1), toupper(markers2))
+    in_markers1_only <- in_markers1_only[!is.na(in_markers1_only)]
     n_in_markers1_only <- length(in_markers1_only)
-    in_markers2_only <- setdiff(toupper(markers2), toupper(markers1))
+    in_markers2_only <-
+      setdiff(toupper(markers2), toupper(markers1))
+    in_markers2_only <- in_markers2_only[!is.na(in_markers2_only)]
     n_in_markers2_only <- length(in_markers2_only)
     if (n_in_markers1_only > 0) {
-      warning(
+      message(
         n_in_markers1_only,
         "/",
         length(markers1),
@@ -182,12 +196,11 @@ check_setdiff_markers <-
         " but not in ",
         markers2_name,
         ": ",
-        paste0(in_markers1_only, collapse = ","),
-        "\n"
+        paste0(in_markers1_only, collapse = ",")
       )
     }
     if (n_in_markers2_only > 0) {
-      warning(
+      message(
         n_in_markers2_only,
         "/",
         length(markers2),
@@ -196,8 +209,7 @@ check_setdiff_markers <-
         " but not in ",
         markers1_name,
         ": ",
-        paste0(in_markers2_only, collapse = ","),
-        "\n"
+        paste0(in_markers2_only, collapse = ",")
       )
     }
   }

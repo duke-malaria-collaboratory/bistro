@@ -64,12 +64,12 @@
 #'   these are included as separate rows.
 #'
 #' * `bloodmeal_id`: bloodmeal id
-#' * `bloodmeal_locus_count`: number of loci successfully typed in the bloodmeal
+#' * `locus_count`: number of loci successfully typed in the bloodmeal
 #' * `est_noc`: estimated number of contributors to the bloodmeal
 #' * `match`: whether a match was identified for a given bloodmeal (yes or no)
 #' * `human_id`: If match, human id (NA otherwise)
 #' * `log10_lr`: If match, log10 likelihood ratio (NA otherwise)
-#' * `note`: Why the bloodmeal does or doesn't have a match
+#' * `notes`: Why the bloodmeal does or doesn't have a match
 #'
 #'
 #' @export
@@ -155,7 +155,7 @@ bistro <-
       dplyr::filter(SampleName %in% human_ids) |>
       rm_dups()
 
-    message("Calculating log10_lrs")
+    message("Calculating log10LRs")
 
     log10_lrs <-
       calc_log10_lrs(

@@ -98,12 +98,12 @@ listed below. Note that if multiple matches are found for a bloodmeal,
 these are included as separate rows.
 \itemize{
 \item \code{bloodmeal_id}: bloodmeal id
-\item \code{bloodmeal_locus_count}: number of loci successfully typed in the bloodmeal
+\item \code{locus_count}: number of loci successfully typed in the bloodmeal
 \item \code{est_noc}: estimated number of contributors to the bloodmeal
 \item \code{match}: whether a match was identified for a given bloodmeal (yes or no)
 \item \code{human_id}: If match, human id (NA otherwise)
 \item \code{log10_lr}: If match, log10 likelihood ratio (NA otherwise)
-\item \code{note}: Why the bloodmeal does or doesn't have a match
+\item \code{notes}: Why the bloodmeal does or doesn't have a match
 }
 }
 \description{

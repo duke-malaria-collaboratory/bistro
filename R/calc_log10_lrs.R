@@ -6,9 +6,9 @@
 #'   which to compute the log10_lr
 #'
 #' @return tibble with log10_lr for bloodmeal-human pair including bloodmeal_id,
-#'   human_id, bloodmeal_locus_count (number of STR loci used for matching),
+#'   human_id, locus_count (number of STR loci used for matching),
 #'   est_noc (estimated number of contributors), efm_noc (number of contributors
-#'   used in euroformix), log10_lr (log10 likelihood ratio), note
+#'   used in euroformix), log10_lr (log10 likelihood ratio), notes
 #' @inheritParams bistro
 #'
 #' @keywords internal
@@ -33,10 +33,10 @@ calc_one_log10_lr <-
     human_profile <- human_profiles |>
       dplyr::filter(SampleName == human_id)
 
-    bloodmeal_locus_count <-
+    locus_count <-
       dplyr::n_distinct(bloodmeal_profile$Marker, na.rm = TRUE)
     est_noc <-
-      ifelse(bloodmeal_locus_count == 0, 0, ceiling(max(table(
+      ifelse(locus_count == 0, 0, ceiling(max(table(
         bloodmeal_profile$Marker
       ) / 2)))
     efm_noc <- min(est_noc, 3)
@@ -44,15 +44,15 @@ calc_one_log10_lr <-
     output_df <- tibble::tibble(
       bloodmeal_id = bloodmeal_id,
       human_id = human_id,
-      bloodmeal_locus_count = bloodmeal_locus_count,
+      locus_count = locus_count,
       est_noc = est_noc,
       efm_noc = efm_noc,
       log10_lr = NA,
-      note = NA
+      notes = NA
     )
 
     if (nrow(bloodmeal_profile) == 0) {
-      output_df$note <- "no peaks above threshold"
+      output_df$notes <- "no peaks above threshold"
     } else if (nrow(
       dplyr::inner_join(
         bloodmeal_profile |> dplyr::select(-SampleName),
@@ -60,7 +60,7 @@ calc_one_log10_lr <-
         by = dplyr::join_by(Marker, Allele)
       )
     ) == 0) {
-      output_df$note <- "no shared alleles"
+      output_df$notes <- "no shared alleles"
     } else {
       bloodmeal_profile_list <-
         format_bloodmeal_profiles(bloodmeal_profile)
@@ -105,9 +105,9 @@ calc_one_log10_lr <-
       if (is.numeric(efm_out)) {
         output_df$log10_lr <- efm_out
       } else if (class(efm_out)[1] == "simpleError") {
-        output_df$note <- "euroformix error"
+        output_df$notes <- "euroformix error"
       } else if (class(efm_out)[1] == "TimeoutException") {
-        output_df$note <- "timed out"
+        output_df$notes <- "timed out"
       }
     }
 

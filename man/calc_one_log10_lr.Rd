@@ -81,9 +81,9 @@ argument. Default: 1}
 }
 \value{
 tibble with log10_lr for bloodmeal-human pair including bloodmeal_id,
-human_id, bloodmeal_locus_count (number of STR loci used for matching),
+human_id, locus_count (number of STR loci used for matching),
 est_noc (estimated number of contributors), efm_noc (number of contributors
-used in euroformix), log10_lr (log10 likelihood ratio), note
+used in euroformix), log10_lr (log10 likelihood ratio), notes
 }
 \description{
 Calculate log10_lr for one bloodmeal-human pair

@@ -4,11 +4,10 @@
       identify_one_match_set(lrs, "evid1")
     Output
       # A tibble: 2 x 8
-        bloodmeal_id est_noc bloodmeal_locus_count match human_id log10_lr note       
-        <chr>          <dbl>                 <int> <chr> <chr>       <dbl> <chr>      
-      1 evid1              2                    17 yes   P1           21.8 passed all~
-      2 evid1              2                    17 yes   P2           10.3 passed all~
-      # i 1 more variable: thresh_low <dbl>
+        bloodmeal_id locus_count est_noc match human_id log10_lr notes      thresh_low
+        <chr>              <int>   <dbl> <chr> <chr>       <dbl> <chr>           <dbl>
+      1 evid1                 17       2 yes   P1           21.8 passed al~        9.5
+      2 evid1                 17       2 yes   P2           10.3 passed al~        9.5
 
 ---
 
@@ -16,10 +15,9 @@
       identify_one_match_set(lrs, "evid2")
     Output
       # A tibble: 1 x 8
-        bloodmeal_id est_noc bloodmeal_locus_count match human_id log10_lr note       
-        <chr>          <dbl>                 <int> <chr> <lgl>    <lgl>    <chr>      
-      1 evid2              2                     1 no    NA       NA       no shared ~
-      # i 1 more variable: thresh_low <lgl>
+        bloodmeal_id locus_count est_noc match human_id log10_lr notes      thresh_low
+        <chr>              <int>   <dbl> <chr> <lgl>    <lgl>    <chr>      <lgl>     
+      1 evid2                  1       2 no    NA       NA       no shared~ NA        
 
 ---
 
@@ -27,10 +25,9 @@
       identify_one_match_set(dplyr::filter(lrs, human_id == "P1"), "evid1")
     Output
       # A tibble: 1 x 8
-        bloodmeal_id est_noc bloodmeal_locus_count match human_id log10_lr note       
-        <chr>          <dbl>                 <int> <chr> <chr>       <dbl> <chr>      
-      1 evid1              2                    17 yes   P1           21.8 passed all~
-      # i 1 more variable: thresh_low <dbl>
+        bloodmeal_id locus_count est_noc match human_id log10_lr notes      thresh_low
+        <chr>              <int>   <dbl> <chr> <chr>       <dbl> <chr>           <dbl>
+      1 evid1                 17       2 yes   P1           21.8 passed al~         21
 
 ---
 
@@ -39,10 +36,9 @@
       log10_lr = c(1.55, 1.1, 1.2)), "evid1")
     Output
       # A tibble: 1 x 8
-        bloodmeal_id est_noc bloodmeal_locus_count match human_id log10_lr note       
-        <chr>          <dbl>                 <int> <chr> <lgl>    <lgl>    <chr>      
-      1 evid1              2                    17 no    NA       NA       > min NOC ~
-      # i 1 more variable: thresh_low <dbl>
+        bloodmeal_id locus_count est_noc match human_id log10_lr notes      thresh_low
+        <chr>              <int>   <dbl> <chr> <lgl>    <lgl>    <chr>           <dbl>
+      1 evid1                 17       2 no    NA       NA       > min NOC~          1
 
 ---
 
@@ -50,11 +46,10 @@
       identify_matches(lrs)
     Output
       # A tibble: 4 x 8
-        bloodmeal_id est_noc bloodmeal_locus_count match human_id log10_lr note       
-        <chr>          <dbl>                 <int> <chr> <chr>       <dbl> <chr>      
-      1 evid1              2                    17 yes   P1           21.8 passed all~
-      2 evid1              2                    17 yes   P2           10.3 passed all~
-      3 evid2              2                     1 no    <NA>         NA   no shared ~
-      4 evid3              1                     8 no    <NA>         NA   all log10_~
-      # i 1 more variable: thresh_low <dbl>
+        bloodmeal_id locus_count est_noc match human_id log10_lr notes      thresh_low
+        <chr>              <int>   <dbl> <chr> <chr>       <dbl> <chr>           <dbl>
+      1 evid1                 17       2 yes   P1           21.8 passed al~        9.5
+      2 evid1                 17       2 yes   P2           10.3 passed al~        9.5
+      3 evid2                  1       2 no    <NA>         NA   no shared~       NA  
+      4 evid3                  8       1 no    <NA>         NA   all log10~       NA  
 

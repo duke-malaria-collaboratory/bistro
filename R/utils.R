@@ -15,7 +15,7 @@ utils::globalVariables(
     "all_alleles",
     "n",
     "log10_lr",
-    "note",
+    "notes",
     "human_id",
     "thresh_low",
     "next_same",
@@ -26,7 +26,7 @@ utils::globalVariables(
 # import euroformix (required to get kit)
 #' @import euroformix
 
-# no note for codetools
+# no notes for codetools
 ignore_unused_imports <- function() {
   codetools::checkUsage
 }

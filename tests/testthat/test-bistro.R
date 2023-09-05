@@ -44,7 +44,7 @@ test_that("bistro works", {
     "If `calc_allele_freqs = FALSE`, then `pop_allele_freqs` is required."
   )
 
-  expect_message(expect_warning(
+  expect_message(expect_message(expect_message(
     expect_error(
       bistro(
         bloodmeal_profiles %>% dplyr::filter(Height < 200),
@@ -55,5 +55,5 @@ test_that("bistro works", {
       ),
       "All bloodmeal peak heights below threshold."
     )
-  ))
+  )))
 })

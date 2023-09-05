@@ -6,9 +6,9 @@
         peak_threshold = 200)
     Output
       # A tibble: 1 x 7
-        bloodmeal_id human_id     bloodmeal_locus_count est_noc efm_noc log10_lr note 
+        bloodmeal_id human_id               locus_count est_noc efm_noc log10_lr notes
         <chr>        <chr>                        <int>   <dbl>   <dbl>    <dbl> <lgl>
-      1 evid1        00-JP0001-1~                    17       2       2    -9.62 NA   
+      1 evid1        00-JP0001-14_20142342~          17       2       2    -9.62 NA   
 
 ---
 
@@ -18,9 +18,9 @@
         peak_threshold = 200)
     Output
       # A tibble: 1 x 7
-        bloodmeal_id human_id     bloodmeal_locus_count est_noc efm_noc log10_lr note 
+        bloodmeal_id human_id               locus_count est_noc efm_noc log10_lr notes
         <chr>        <chr>                        <int>   <dbl>   <dbl> <lgl>    <chr>
-      1 evid2        00-JP0001-1~                     1       2       2 NA       no s~
+      1 evid2        00-JP0001-14_20142342~           1       2       2 NA       no s~
 
 ---
 
@@ -30,9 +30,9 @@
         peak_threshold = 200)
     Output
       # A tibble: 1 x 7
-        bloodmeal_id human_id     bloodmeal_locus_count est_noc efm_noc log10_lr note 
+        bloodmeal_id human_id               locus_count est_noc efm_noc log10_lr notes
         <chr>        <chr>                        <int>   <dbl>   <dbl> <lgl>    <chr>
-      1 evid4        00-JP0001-1~                     0       0       0 NA       no p~
+      1 evid4        00-JP0001-14_20142342~           0       0       0 NA       no p~
 
 ---
 
@@ -41,9 +41,9 @@
         pop_allele_freqs = pop_allele_freqs, kit = "ESX17", peak_threshold = 200)
     Output
       # A tibble: 1 x 7
-        bloodmeal_id human_id bloodmeal_locus_count est_noc efm_noc log10_lr note     
-        <chr>        <chr>                    <int>   <dbl>   <dbl> <lgl>    <chr>    
-      1 evid2        P1                           1       2       2 NA       euroform~
+        bloodmeal_id human_id locus_count est_noc efm_noc log10_lr notes           
+        <chr>        <chr>          <int>   <dbl>   <dbl> <lgl>    <chr>           
+      1 evid2        P1                 1       2       2 NA       euroformix error
 
 ---
 
@@ -53,9 +53,9 @@
         peak_threshold = 200, time_limit = 1e-08)
     Output
       # A tibble: 1 x 7
-        bloodmeal_id human_id     bloodmeal_locus_count est_noc efm_noc log10_lr note 
+        bloodmeal_id human_id               locus_count est_noc efm_noc log10_lr notes
         <chr>        <chr>                        <int>   <dbl>   <dbl> <lgl>    <chr>
-      1 evid1        00-JP0001-1~                    17       2       2 NA       time~
+      1 evid1        00-JP0001-14_20142342~          17       2       2 NA       time~
 
 ---
 
@@ -71,8 +71,8 @@
       Human id 1/1
     Output
       # A tibble: 2 x 7
-        bloodmeal_id human_id bloodmeal_locus_count est_noc efm_noc log10_lr note     
-        <chr>        <chr>                    <int>   <dbl>   <dbl>    <dbl> <chr>    
-      1 evid2        P1                           1       2       2    NA    euroform~
-      2 evid3        P1                           8       1       1    -4.69 <NA>     
+        bloodmeal_id human_id locus_count est_noc efm_noc log10_lr notes           
+        <chr>        <chr>          <int>   <dbl>   <dbl>    <dbl> <chr>           
+      1 evid2        P1                 1       2       2    NA    euroformix error
+      2 evid3        P1                 8       1       1    -4.69 <NA>            
 

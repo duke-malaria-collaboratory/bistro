@@ -16,20 +16,20 @@ knitr::opts_chunk$set(
 
 ## The bistro algorithm 
 
-bistro is an algorithm, an R package, and a function within said R package. It employs methods from forensics to identify matches between bloodmeals and the people they bit using short tandem repeat (STR) profiles of human blood from freshly fed bloodmeals and from people. Note that you can use it for matching any STR profiles for research purposes, but we very much _do not_ recommend using it for forensic purposes. For more details about the algorithm, please refer to the bistro manuscript (note: will add link once we have it). 
+bistro is an algorithm, an R package, and a function within said R package. It employs methods from forensics to identify matches between bloodmeals and the people they bit using short tandem repeat (STR) profiles of human blood from freshly fed bloodmeals and from people. It can be used to match multi-source bloodmeals and bloodmeals with incomplete STR profiles. Note that while you can use it for matching any STR profiles for research purposes, we very much _do not_ recommend using it for forensic purposes. For more details about the algorithm, please refer to the bistro manuscript (will add link once it's posted). 
 
-## Installing the bistro R package
+## Installing the `bistro` R package
 
-First, you have to install  `bistro`:
+To install `bistro`, run the following commands:
 
 ```{r, eval = FALSE}
 install.packages("devtools") # install devtools if needed
 devtools::install_github("duke-malaria-collaboratory/bistro")
 ```
 
-## Getting started with bistro
+## Getting started with `bistro`
 
-The most important function in `bistro` is `bistro()`. This document will take you through all of the required and optional `bistro()` inputs, as well as the output.
+The most important function in `bistro` is `bistro()`. This document will take you through all of the required and optional inputs, as well as the output.
 
 In summary, you must provide:
 
@@ -38,7 +38,7 @@ In summary, you must provide:
 - The STR genotyping kit name
 - An allele peak height threshold (in relative fluorescence units, RFUs) for the bloodmeal STR profiles
 
-And the function outputs matches for each bloodmeal-human pair. 
+The function outputs matches for each bloodmeal-human pair. 
 
 To follow along with the vignette, first load `bistro`:
 
@@ -46,13 +46,13 @@ To follow along with the vignette, first load `bistro`:
 library(bistro)
 ```
 
-Note that when we load `bistro`, we also load `euroformix` because `bistro` depends on the `euroformix` package. 
+Note that when we load `bistro`, we also load [`euroformix`](https://github.com/oyvble/euroformix/) because `bistro` depends on the `euroformix` package. 
 
 ## Required inputs
 
-Two required, and one optional but often recommended, datasets are required to run `bistro()`: bloodmeal and human STR profiles are required, and human population allele frequencies are optional. The other two required inputs to bistro are the STR genotyping kit name and the bloodmeal STR allele peak height threshold. 
+Before we run `bistro()` using example data, let's learn more about the required inputs.
 
-Before we run `bistro()`, let's learn more about the required inputs.
+Two required, and one optional but often recommended, datasets are required to run `bistro()`: bloodmeal and human STR profiles are required, and human population allele frequencies are optional. The other two required inputs are the STR genotyping kit name and the bloodmeal STR allele peak height threshold. 
 
 ### Bloodmeal STR profiles (`bloodmeal_profiles`) 
 
@@ -77,7 +77,7 @@ The human STR profiles dataset takes a similar format to the bloodmeal STR profi
 head(human_profiles)
 ```
 
-In this example dataset, we have 3 different bloodmeals:
+In this example dataset, we have 3 different human profiles:
 
 ```{r}
 unique(human_profiles$SampleName)
@@ -95,11 +95,11 @@ If the kit you used to genotype samples is not available in the defaults, you wi
 
 ### Bloodmeal allele peak threshold (`peak_threshold`) 
 
-`bistro()` also requires a bloodmeal allele peak threshold (in RFUs) to be provided. All peaks with heights below this threshold will be removed prior to matching. If prior filtering was performed on the bloodmeal profiles based on peak height, then this number should be equal to or greater than the threshold used.
+`bistro()` also requires a bloodmeal allele peak threshold (in RFUs) to be provided. All peaks with heights below this threshold will be removed before matching. If prior filtering was performed on the bloodmeal profiles based on peak height, then this number should be equal to or greater than that threshold. 
 
 ### Human population allele frequencies (`pop_allele_freqs`)
 
-Human population frequencies for each allele at each locus may be supplied. If you would prefer, population allele frequencies can be computed from the human STR profiles (see below for more details). Note that the latter option is not suggested when a small human reference database is being used. 
+Human population frequencies for each allele at each locus may be supplied. If you would prefer, population allele frequencies can be computed from the human STR profiles (see below for more details). Note that the latter option is not suggested when a small set of human reference profiles is being used. 
 
 If you would like to input population allele frequencies, the dataset should contain one column for each STR marker and one row for each allele. The alleles should be listed in the first column of the dataset and the column should be named "Allele". The entries for each marker-allele combination are the population allele frequency or NA if that allele does not exist for that marker. Here is an example with the loci from the PowerPlex ESX 17 System (ESX17) kit. 
 
@@ -121,11 +121,12 @@ bistro_output <- bistro(
 )
 ```
 
-You'll notice a bunch of things print out to the screen. 
-First, a warning that one of the markers (AMEL) is in the kit but not in `pop_allele_freqs`. 
-Then, a message saying that 6 peaks under the 200 RFU threshold were removed, and that after filtering one of the bloodmeals did not have any peaks remaining above the threshold. 
-Next, there is a message notifying you that log10_lrs (log10 likelihood ratios) are being calculated for each bloodmeal-human pair (for 4 bloodmeals and 3 humans). This can take a while, so the progress is also printed out. 
-Finally, the function notifies you that it is identifying matches. 
+You'll notice a bunch of messages print out to the screen:
+
+- One of the markers (AMEL) is in the kit but not in `pop_allele_freqs`. 
+- 6 peaks under the 200 RFU threshold were removed, and after filtering one of the bloodmeals did not have any peaks remaining above the threshold. 
+- Notification that log10LRs (log10 likelihood ratios) are being calculated for each bloodmeal-human pair (for 4 bloodmeals and 3 humans). This can take a while, so the progress is also printed out. 
+- Notification that matches are being identified. 
 
 Let's take a look at the output:
 
@@ -135,30 +136,30 @@ bistro_output
 
 The output contains 8 columns: 
 
-- `bloodmeal_id`: bloodmeal sample
+- `bloodmeal_id`: bloodmeal sample name.
 - `est_noc`: estimated number of contributors (NOCs) to the bloodmeal. When this equals one, it's predicted to be a single-source bloodmeal; when it is greater than one, it's predicted to be a multi-source bloodmeal. Note that sources here mean humans only. 
-- `bloodmeal_locus_count`: number of loci STR-typed in the bloodmeal
-- `match`: whether the bloodmeal STR profile matched to a human in the database (yes or no)
-- `human_id`: human match for the bloodmeal (NA if no match)
-- `log10_lr`: log10 likelihood ratio of the bloodmeal-human match (NA if no match)
-- `note`: why the bloodmeal does or doesn't have a match
-- `thresh_low`: log10_lr threshold at which the match was made
+- `locus_count`: number of loci STR-typed in the bloodmeal.
+- `match`: whether the bloodmeal STR profile matched to a human in the database (yes or no).
+- `human_id`: human match for the bloodmeal (NA if no match).
+- `log10_lr`: log10 likelihood ratio of the bloodmeal-human match (NA if no match).
+- `notes`: why the bloodmeal does or doesn't have a match (see below for more details).
+- `thresh_low`: log10LR threshold at which the match was made.
 
-An important thing to notice is that, even though we have only 4 bloodmeals, there are 5 rows in the dataset. This is because, while each bloodmeal will appear at least once in the dataset, multiple rows are present for bloodmeals that match to multiple people (one row per match). For example, here, evid1 matches to 2 different people (P1 and P2) Please keep this in mind when performing data analysis. 
+An important thing to notice is that, even though we have only 4 bloodmeals, there are 5 rows in the output dataset. This is because, while each bloodmeal will appear at least once in the dataset, multiple rows are present for bloodmeals that match to multiple people (one row per match). For example, here, evid1 matches to 2 different people (P1 and P2) Please keep this in mind when performing data analysis. 
 
-The note column provides more information on why there was or was not a match:
+The notes column provides more information on why there was or was not a match:
 
 - passed all filters: there was a match.
-- \> min NOC matches: there were more matches than expected that could not be resolved. This can happen when there are closely related people in the human database. 
-- no shared alleles: no people in the human database had alleles that overlapped with the alleles in the bloodmeal.
-- all log10_lrs < 1.5: none of the log10_lrs were high enough to be considered a match. 
+- \> min NOC matches: there were more matches than expected and they could not be resolved. This can happen when there are closely related people in the human reference dataset. 
+- no shared alleles: no people in the human reference dataset had alleles that overlapped with the alleles in the bloodmeal.
+- all log10LRs < 1.5: none of the log10LRs were high enough to be considered a match. 
 - euroformix error: the `euroformix::contLikSearch()` function did not run successfully. This often happens with very incomplete bloodmeal profiles (i.e. where only a few markers were succesffuly STR-typed).
 - no peaks above threshold: all bloodmeal STR peaks were below the peak height threshold. 
 - timed out: log-likelihood took too long to calculate. If you want to give it more time, you can modify the `time_limit` argument (see below). 
 
 ## Using computed population allele frequencies
 
-Let's say you want to have the population allele frequences computed from the human reference database. (Note that we just show this as an example because we would not recommend doing this for a database with only 3 people like we have here.) To do so, you must set `calc_allele_freqs = TRUE`: 
+If you want to have the population allele frequencies computed from the inputted human reference profiles, you must set `calc_allele_freqs = TRUE`: 
 
 ```{r, eval = FALSE}
 bistro(
@@ -170,12 +171,14 @@ bistro(
 )
 ```
 
+Note that, while we use the builtin dataset as an example here, we do not recommend using this method for a human dataset with only 3 people. An example of when it may make sense is if you have a relatively comprehensive set of human reference profiles for your study site. 
+
 
 ## Running bistro on a subset of samples
 
-`bistro()` can take a long time to run, especially if you have many samples or a closely related reference population. Therefore, before running `bistro()` with all of your samples, we highly recommend testing it out on a small subset of samples to make sure everything is working as you expect. To do this, you can use the `bloodmeal_ids` and `human_ids` arguments to tell `bistro()` what ids you want to compare:
+`bistro()` can take a long time to run, especially if you have many samples or a closely related reference population. Therefore, before running it with all of your samples, we highly recommend testing it out on a small subset of samples to make sure everything is working as you expect. To do this, you can use the `bloodmeal_ids` and `human_ids` arguments to tell `bistro()` what ids you want to compare:
 
-```{r}
+```{r, eval = FALSE}
 bistro(
   bloodmeal_profiles = bloodmeal_profiles,
   human_profiles = human_profiles,
@@ -187,22 +190,22 @@ bistro(
 )
 ```
 
-This can also be useful if you would like to parallelize bistro, for example by using a workflow manager such as Snakemake or NextFlow. We highly recommend doing this if you are planning to run `bistro()` on many samples. 
+This can also be useful if you would like to parallelize `bistro()`, for example by using a workflow manager such as Snakemake or NextFlow. We highly recommend doing this if you are planning to run it on many samples. 
 
 ## Other arguments
 
 Other arguments you can modify when running `bistro()` include:
 
-- `rm_twins`: whether or not to remove identical STR profiles, likely twins, prior to computing population allele frequencies and identifying matches (default: TRUE) 
-- `model_degrad`: whether or not to model peak degradation when calculating log-likelihoods using `euroformix::contLikSearch()` (default: TRUE)
-- `model_bw_stutt` and `model_fw_stutt`: whether or not to model peak backward and forward stutter when calculating log-likelihoods using `euroformix::contLikSearch()` (default: FALSE)
-- `difftol`: difference tolerance in log-likelihood across 2 iterations when using `euroformix::contLikSearch()` (default: 1)
-- `threads`: nubmer of threads to use when computing log-likelihoods when using `euroformix::contLikSearch()` (default: 4)
-- `seed`: seed for `euroformix::contLikSearch()` (default: 1)
+Used by `bistro`:
+
+- `rm_twins`: whether or not to remove identical STR profiles that are likely twins prior to computing population allele frequencies and identifying matches (default: TRUE) 
 - `time_limit`: longest amount of time allowed to calculate the log-likelihood for one bloodmeal-human pair, in minutes (default: 3)
 
+Used by `euroformix::contLikSearch()` when calculating log-likelihoods:
 
-
-
-
+- `model_degrad`: whether or not to model peak degradation (default: TRUE)
+- `model_bw_stutt` and `model_fw_stutt`: whether or not to model peak backward and forward stutter (default: FALSE)
+- `difftol`: difference tolerance in log-likelihood across 2 iterations  (default: 1)
+- `threads`: number of threads to use when computing log-likelihoods (default: 4)
+- `seed`: seed for reproducible results (default: 1)
 

@@ -35,8 +35,8 @@
 #' @param human_ids Vector of human ids from the SampleName column in
 #'   `human_profiles` for which to compute log10_lrs. If NULL, all ids in the
 #'   input dataframe will be used. Default: NULL
-#' @param rm_twins A boolean indicating whether or not to remove likely twins
-#'   from the human database (identical STR profiles). Default: TRUE
+#' @param rm_twins A boolean indicating whether or not to remove likely twins (identical STR profiles)
+#'   from the human database prior to identifying matches. Default: TRUE
 #' @param model_degrad A boolean indicating whether or not to model peak
 #'   degradation.
 #'   Used for `modelDegrad` argument in [euroformix::contLikSearch()].
@@ -115,12 +115,12 @@ bistro <-
       time_limit
     )
 
-    if (rm_twins) {
-      human_profiles <- rm_twins(human_profiles)
-    }
-
     if (calc_allele_freqs) {
       pop_allele_freqs <- calc_allele_freqs(human_profiles)
+    }
+
+    if (rm_twins) {
+      human_profiles <- rm_twins(human_profiles)
     }
 
     message("Formatting bloodmeal profiles")

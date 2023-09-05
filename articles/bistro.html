@@ -94,7 +94,7 @@ the bistro manuscript (note: will add link once we have it).</p>
 </h2>
 <p>First, you have to install <code>bistro</code>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages('devtools') # install devtools if needed</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span> <span class="co"># install devtools if needed</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"duke-malaria-collaboratory/bistro"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -200,7 +200,7 @@ required parameters can usually be found in the kit manufacturer’s
 documentation or or on their website.</p>
 </div>
 <div class="section level3">
-<h3 id="bloodmeal-allele-peak-threshold-thresht">Bloodmeal allele peak threshold (<code>threshT</code>)<a class="anchor" aria-label="anchor" href="#bloodmeal-allele-peak-threshold-thresht"></a>
+<h3 id="bloodmeal-allele-peak-threshold-peak_threshold">Bloodmeal allele peak threshold (<code>peak_threshold</code>)<a class="anchor" aria-label="anchor" href="#bloodmeal-allele-peak-threshold-peak_threshold"></a>
 </h3>
 <p><code><a href="../reference/bistro.html">bistro()</a></code> also requires a bloodmeal allele peak threshold
 (in RFUs) to be provided. All peaks with heights below this threshold
@@ -248,17 +248,19 @@ loci from the PowerPlex ESX 17 System (ESX17) kit.</p>
 <p>Now you have enough background to run <code><a href="../reference/bistro.html">bistro()</a></code>, so let’s
 test it out using the example data included in the package:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">bistro_output</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bistro.html">bistro</a></span><span class="op">(</span>bloodmeal_profiles <span class="op">=</span> <span class="va">bloodmeal_profiles</span>,</span>
-<span>       human_profiles <span class="op">=</span> <span class="va">human_profiles</span>, </span>
-<span>       pop_allele_freqs <span class="op">=</span> <span class="va">pop_allele_freqs</span>,</span>
-<span>       kit <span class="op">=</span> <span class="st">"ESX17"</span>,</span>
-<span>       threshT <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">bistro_output</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bistro.html">bistro</a></span><span class="op">(</span></span>
+<span>  bloodmeal_profiles <span class="op">=</span> <span class="va">bloodmeal_profiles</span>,</span>
+<span>  human_profiles <span class="op">=</span> <span class="va">human_profiles</span>,</span>
+<span>  pop_allele_freqs <span class="op">=</span> <span class="va">pop_allele_freqs</span>,</span>
+<span>  kit <span class="op">=</span> <span class="st">"ESX17"</span>,</span>
+<span>  peak_threshold <span class="op">=</span> <span class="fl">200</span></span>
+<span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in check_setdiff_markers(toupper(names(pop_allele_freqs)[!names(pop_allele_freqs) == : 1/17 markers in kit but not in pop_allele_freqs: AMEL</span></span>
 <span><span class="co">#&gt; Formatting bloodmeal profiles</span></span>
 <span><span class="co">#&gt; Removing 6 peaks under the threshold of 200 RFU.</span></span>
 <span><span class="co">#&gt; For 1/4 bloodmeal ids, all peaks are below the threshold</span></span>
 <span><span class="co">#&gt; Formatting human profiles</span></span>
-<span><span class="co">#&gt; Calculating log10LRs</span></span>
+<span><span class="co">#&gt; Calculating log10_lrs</span></span>
 <span><span class="co">#&gt; # bloodmeal ids: 4</span></span>
 <span><span class="co">#&gt; # human ids: 3</span></span>
 <span><span class="co">#&gt; Bloodmeal id 1/4</span></span>
@@ -283,21 +285,22 @@ warning that one of the markers (AMEL) is in the kit but not in
 <code>pop_allele_freqs</code>. Then, a message saying that 6 peaks under
 the 200 RFU threshold were removed, and that after filtering one of the
 bloodmeals did not have any peaks remaining above the threshold. Next,
-there is a message notifying you that log10LRs (log10 likelihood ratios)
-are being calculated for each bloodmeal-human pair (for 4 bloodmeals and
-3 humans). This can take a while, so the progress is also printed out.
-Finally, the function notifies you that it is identifying matches.</p>
+there is a message notifying you that log10_lrs (log10 likelihood
+ratios) are being calculated for each bloodmeal-human pair (for 4
+bloodmeals and 3 humans). This can take a while, so the progress is also
+printed out. Finally, the function notifies you that it is identifying
+matches.</p>
 <p>Let’s take a look at the output:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bistro_output</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 8</span></span></span>
-<span><span class="co">#&gt;   bloodmeal_id est_noc bloodmeal_locus_count match human_id log10LR note        </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> evid1              2                    17 yes   P1          21.8 passed all …</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> evid1              2                    17 yes   P2          10.3 passed all …</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> evid2              2                     1 no    <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>   no shared a…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> evid3              1                     8 no    <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>   all log10LR…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> evid4              0                     0 no    <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>   no peaks ab…</span></span>
+<span><span class="co">#&gt;   bloodmeal_id est_noc bloodmeal_locus_count match human_id log10_lr note       </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> evid1              2                    17 yes   P1           21.8 passed all…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> evid1              2                    17 yes   P2           10.3 passed all…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> evid2              2                     1 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   no shared …</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> evid3              1                     8 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   all log10_…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> evid4              0                     0 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   no peaks a…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: thresh_low &lt;dbl&gt;</span></span></span></code></pre></div>
 <p>The output contains 8 columns:</p>
 <ul>
@@ -318,13 +321,13 @@ human in the database (yes or no)</li>
 <code>human_id</code>: human match for the bloodmeal (NA if no
 match)</li>
 <li>
-<code>log10LR</code>: log10 likelihood ratio of the bloodmeal-human
+<code>log10_lr</code>: log10 likelihood ratio of the bloodmeal-human
 match (NA if no match)</li>
 <li>
 <code>note</code>: why the bloodmeal does or doesn’t have a
 match</li>
 <li>
-<code>thresh_low</code>: log10LR threshold at which the match was
+<code>thresh_low</code>: log10_lr threshold at which the match was
 made</li>
 </ul>
 <p>An important thing to notice is that, even though we have only 4
@@ -342,7 +345,7 @@ could not be resolved. This can happen when there are closely related
 people in the human database.</li>
 <li>no shared alleles: no people in the human database had alleles that
 overlapped with the alleles in the bloodmeal.</li>
-<li>all log10LRs &lt; 1.5: none of the log10LRs were high enough to be
+<li>all log10_lrs &lt; 1.5: none of the log10_lrs were high enough to be
 considered a match.</li>
 <li>euroformix error: the <code><a href="https://rdrr.io/pkg/euroformix/man/contLikSearch.html" class="external-link">euroformix::contLikSearch()</a></code>
 function did not run successfully. This often happens with very
@@ -364,11 +367,13 @@ example because we would not recommend doing this for a database with
 only 3 people like we have here.) To do so, you must set
 <code>calc_allele_freqs = TRUE</code>:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/bistro.html">bistro</a></span><span class="op">(</span>bloodmeal_profiles <span class="op">=</span> <span class="va">bloodmeal_profiles</span>,</span>
-<span>       human_profiles <span class="op">=</span> <span class="va">human_profiles</span>, </span>
-<span>       calc_allele_freqs <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>       kit <span class="op">=</span> <span class="st">"ESX17"</span>,</span>
-<span>       threshT <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/bistro.html">bistro</a></span><span class="op">(</span></span>
+<span>  bloodmeal_profiles <span class="op">=</span> <span class="va">bloodmeal_profiles</span>,</span>
+<span>  human_profiles <span class="op">=</span> <span class="va">human_profiles</span>,</span>
+<span>  calc_allele_freqs <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  kit <span class="op">=</span> <span class="st">"ESX17"</span>,</span>
+<span>  peak_threshold <span class="op">=</span> <span class="fl">200</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="running-bistro-on-a-subset-of-samples">Running bistro on a subset of samples<a class="anchor" aria-label="anchor" href="#running-bistro-on-a-subset-of-samples"></a>
@@ -381,18 +386,20 @@ everything is working as you expect. To do this, you can use the
 <code>bloodmeal_ids</code> and <code>human_ids</code> arguments to tell
 <code><a href="../reference/bistro.html">bistro()</a></code> what ids you want to compare:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/bistro.html">bistro</a></span><span class="op">(</span>bloodmeal_profiles <span class="op">=</span> <span class="va">bloodmeal_profiles</span>,</span>
-<span>       human_profiles <span class="op">=</span> <span class="va">human_profiles</span>, </span>
-<span>       pop_allele_freqs <span class="op">=</span> <span class="va">pop_allele_freqs</span>,</span>
-<span>       kit <span class="op">=</span> <span class="st">"ESX17"</span>,</span>
-<span>       threshT <span class="op">=</span> <span class="fl">200</span>,</span>
-<span>       bloodmeal_ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'evid1'</span>, <span class="st">'evid2'</span><span class="op">)</span>,</span>
-<span>       human_ids <span class="op">=</span> <span class="st">'P1'</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/bistro.html">bistro</a></span><span class="op">(</span></span>
+<span>  bloodmeal_profiles <span class="op">=</span> <span class="va">bloodmeal_profiles</span>,</span>
+<span>  human_profiles <span class="op">=</span> <span class="va">human_profiles</span>,</span>
+<span>  pop_allele_freqs <span class="op">=</span> <span class="va">pop_allele_freqs</span>,</span>
+<span>  kit <span class="op">=</span> <span class="st">"ESX17"</span>,</span>
+<span>  peak_threshold <span class="op">=</span> <span class="fl">200</span>,</span>
+<span>  bloodmeal_ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"evid1"</span>, <span class="st">"evid2"</span><span class="op">)</span>,</span>
+<span>  human_ids <span class="op">=</span> <span class="st">"P1"</span></span>
+<span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in check_setdiff_markers(toupper(names(pop_allele_freqs)[!names(pop_allele_freqs) == : 1/17 markers in kit but not in pop_allele_freqs: AMEL</span></span>
 <span><span class="co">#&gt; Formatting bloodmeal profiles</span></span>
 <span><span class="co">#&gt; Removing 5 peaks under the threshold of 200 RFU.</span></span>
 <span><span class="co">#&gt; Formatting human profiles</span></span>
-<span><span class="co">#&gt; Calculating log10LRs</span></span>
+<span><span class="co">#&gt; Calculating log10_lrs</span></span>
 <span><span class="co">#&gt; # bloodmeal ids: 2</span></span>
 <span><span class="co">#&gt; # human ids: 1</span></span>
 <span><span class="co">#&gt; Bloodmeal id 1/2</span></span>
@@ -401,10 +408,10 @@ everything is working as you expect. To do this, you can use the
 <span><span class="co">#&gt; Human id 1/1</span></span>
 <span><span class="co">#&gt; Identifying matches</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 8</span></span></span>
-<span><span class="co">#&gt;   bloodmeal_id est_noc bloodmeal_locus_count match human_id log10LR note        </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> evid1              2                    17 yes   P1          21.8 passed all …</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> evid2              2                     1 no    <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>   euroformix …</span></span>
+<span><span class="co">#&gt;   bloodmeal_id est_noc bloodmeal_locus_count match human_id log10_lr note       </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> evid1              2                    17 yes   P1           21.8 passed all…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> evid2              2                     1 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   euroformix…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: thresh_low &lt;dbl&gt;</span></span></span></code></pre></div>
 <p>This can also be useful if you would like to parallelize bistro, for
 example by using a workflow manager such as Snakemake or NextFlow. We
@@ -422,12 +429,12 @@ include:</p>
 profiles, likely twins, prior to computing population allele frequencies
 and identifying matches (default: TRUE)</li>
 <li>
-<code>modelDegrad</code>: whether or not to model peak degradation
+<code>model_degrad</code>: whether or not to model peak degradation
 when calculating log-likelihoods using
 <code><a href="https://rdrr.io/pkg/euroformix/man/contLikSearch.html" class="external-link">euroformix::contLikSearch()</a></code> (default: TRUE)</li>
 <li>
-<code>modelBWstutt</code> and <code>modelFWstutt</code>: whether or
-not to model peak backward and forward stutter when calculating
+<code>model_bw_stutt</code> and <code>model_fw_stutt</code>: whether
+or not to model peak backward and forward stutter when calculating
 log-likelihoods using <code><a href="https://rdrr.io/pkg/euroformix/man/contLikSearch.html" class="external-link">euroformix::contLikSearch()</a></code> (default:
 FALSE)</li>
 <li>

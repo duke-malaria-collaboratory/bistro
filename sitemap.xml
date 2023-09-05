@@ -34,10 +34,10 @@
     <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/calc_allele_freqs.html</loc>
   </url>
   <url>
-    <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/calc_log10LRs.html</loc>
+    <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/calc_log10_lrs.html</loc>
   </url>
   <url>
-    <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/calc_one_log10LR.html</loc>
+    <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/calc_one_log10_lr.html</loc>
   </url>
   <url>
     <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/check_bistro_inputs.html</loc>
@@ -64,10 +64,10 @@
     <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/check_kit.html</loc>
   </url>
   <url>
-    <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/check_setdiff_markers.html</loc>
+    <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/check_peak_threshold.html</loc>
   </url>
   <url>
-    <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/check_threshT.html</loc>
+    <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/check_setdiff_markers.html</loc>
   </url>
   <url>
     <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/filter_peaks.html</loc>

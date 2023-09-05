@@ -54,24 +54,28 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">identify_one_match_set</span><span class="op">(</span><span class="va">log10LRs</span>, <span class="va">bloodmeal_id</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">identify_one_match_set</span><span class="op">(</span><span class="va">log10_lrs</span>, <span class="va">bloodmeal_id</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>log10LRs</dt>
-<dd><p>output from <code><a href="calc_log10LRs.html">calc_log10LRs()</a></code></p></dd>
+    <dl><dt>log10_lrs</dt>
+<dd><p>output from <code><a href="calc_log10_lrs.html">calc_log10_lrs()</a></code></p></dd>
 
 
 <dt>bloodmeal_id</dt>
-<dd><p>Bloodmeal id from the <code>SampleName</code> column in <code>bloodmeal_profiles</code> for which to compute the log10LR</p></dd>
+<dd><p>Bloodmeal id from the <code>SampleName</code> column in
+<code>bloodmeal_profiles</code> for which to compute the log10_lr</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>tibble with matches for bloodmeal-human pairs including bloodmeal_id, bloodmeal_locus_count (number of STR loci used for matching), est_noc (estimated number of contributors), match, human_id (if match), log10LR (log10 likelihood ratio), note</p>
+<p>tibble with matches for bloodmeal-human pairs including bloodmeal_id,
+bloodmeal_locus_count (number of STR loci used for matching), est_noc
+(estimated number of contributors), match, human_id (if match), log10_lr
+(log10 likelihood ratio), note</p>
     </div>
 
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

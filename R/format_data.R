@@ -5,6 +5,7 @@
 #' @inheritParams bistro
 #'
 #' @return A list of allele frequencies for the population in the format required for input into the euroformix `contLikSearch()` function
+#' @keywords internal
 format_allele_freqs <- function(pop_allele_freqs){
 
   allele_names <- pop_allele_freqs$Allele
@@ -27,6 +28,7 @@ format_allele_freqs <- function(pop_allele_freqs){
 #' @inheritParams bistro
 #'
 #' @return A list of lists including the alleles for each sample in the format required for input into the euroformix `contLikSearch()` function
+#' @keywords internal
 format_human_profiles <- function(human_profiles){
 
   hu_formatted <- human_profiles |>
@@ -50,6 +52,7 @@ format_human_profiles <- function(human_profiles){
 #' @inheritParams bistro
 #'
 #' @return A list of lists including the alleles for each sample in the format required for input into the euroformix `contLikSearch()` function.
+#' @keywords internal
 format_bloodmeal_profiles <- function(bloodmeal_profiles){
 
   bm_formatted <- bloodmeal_profiles |>

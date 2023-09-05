@@ -1,4 +1,22 @@
-url: ~
+url: https://duke-malaria-collaboratory.github.io/bistro/
 template:
   bootstrap: 5
 
+reference:
+- title: Main function
+  contents:
+  - bistro
+
+- title: Built-in datasets
+  contents:
+  - bloodmeal_profiles
+  - human_profiles
+  - pop_allele_freqs
+
+- title: Other functions
+  desc: >
+    Sub-functions used by `bistro()`
+  contents:
+  - calc_allele_freqs
+  - calc_log10LRs
+  - identify_matches

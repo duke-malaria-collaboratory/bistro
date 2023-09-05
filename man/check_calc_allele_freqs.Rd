@@ -15,3 +15,4 @@ Error or nothing
 \description{
 Check calc_allele_freqs
 }
+\keyword{internal}

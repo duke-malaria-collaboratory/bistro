@@ -31,5 +31,5 @@ LazyData: true
 Remotes: 
     oyvble/euroformix
 VignetteBuilder: knitr
-URL: https://github.com/duke-malaria-collaboratory/bistro
+URL: https://duke-malaria-collaboratory.github.io/bistro/, https://github.com/duke-malaria-collaboratory/bistro
 BugReports: https://github.com/duke-malaria-collaboratory/bistro/issues

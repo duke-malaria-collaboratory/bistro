@@ -7,7 +7,7 @@
 check_kit(kit)
 }
 \arguments{
-\item{kit}{STR kit name from euroformix. To see a list of all kits embedded in euroformix use \code{\link[euroformix:getKit]{euroformix::getKit()}}. If your kit is not included, see vignette("customized-kit") for details on how to include your own kit.}
+\item{kit}{STR kit name from euroformix. To see a list of all kits embedded in euroformix use \code{\link[euroformix:getKit]{euroformix::getKit()}}. If your kit is not included, see vignette("bistro") for details on how to include your own kit.}
 }
 \value{
 Error if kit doesn't exist, dataframe of kit otherwise
@@ -15,3 +15,4 @@ Error if kit doesn't exist, dataframe of kit otherwise
 \description{
 Check kit
 }
+\keyword{internal}

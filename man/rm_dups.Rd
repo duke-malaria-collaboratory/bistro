@@ -15,3 +15,4 @@ Un-duplicated dataframe
 \description{
 Remove duplicate rows with warning
 }
+\keyword{internal}

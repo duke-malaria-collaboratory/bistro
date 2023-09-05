@@ -4,6 +4,10 @@
 # bistro: bloodmeal identification by STR overlap
 
 <!-- badges: start -->
+
+[![Codecov test
+coverage](https://codecov.io/gh/duke-malaria-collaboratory/bistro/branch/main/graph/badge.svg)](https://app.codecov.io/gh/duke-malaria-collaboratory/bistro?branch=main)
+[![R-CMD-check](https://github.com/duke-malaria-collaboratory/bistro/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/duke-malaria-collaboratory/bistro/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 Functions to allow for the identification of matches between bloodmeals
@@ -27,4 +31,4 @@ detools::install_github("duke-malaria-collaboratory/bistro")
 
 ## Usage
 
-Check out the `vignette('bistro')` for more information.
+Check out `vignette('bistro')` for more information.

@@ -17,3 +17,4 @@ Filtered dataframe, error if all peak heights under threshold
 \description{
 Filter peak heights that are under threshold
 }
+\keyword{internal}

@@ -5,6 +5,8 @@
 #'
 #' @return tibble with log10LR for bloodmeal-human pair including bloodmeal_id, human_id, bloodmeal_locus_count (number of STR loci used for matching), est_noc (estimated number of contributors), efm_noc (number of contributors used in euroformix), log10LR (log10 likelihood ratio), note
 #' @inheritParams bistro
+#'
+#' @keywords internal
 calc_one_log10LR <- function(bloodmeal_profiles, bloodmeal_id, human_profiles, human_id, pop_allele_freqs, kit, threshT, modelDegrad = TRUE, modelBWstutt = FALSE, modelFWstutt = FALSE, difftol = 1, threads = 4, seed = 1, time_limit = 3){
 
   bloodmeal_profile <- bloodmeal_profiles |>

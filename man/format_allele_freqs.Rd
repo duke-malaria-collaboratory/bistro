@@ -15,3 +15,4 @@ A list of allele frequencies for the population in the format required for input
 \description{
 Format population allele frequencies for input into the euroformix \code{contLikSearch()} function.
 }
+\keyword{internal}

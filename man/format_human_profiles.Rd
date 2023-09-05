@@ -15,3 +15,4 @@ A list of lists including the alleles for each sample in the format required for
 \description{
 Format human STR profiles for input into the euroformix \code{contLikSearch()} function.
 }
+\keyword{internal}

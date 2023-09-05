@@ -28,7 +28,7 @@ bistro(
 
 \item{human_profiles}{Tibble with alleles for all humans in reference database including three columns: SampleName, Marker, Allele.}
 
-\item{kit}{STR kit name from euroformix. To see a list of all kits embedded in euroformix use \code{\link[euroformix:getKit]{euroformix::getKit()}}. If your kit is not included, see vignette("customized-kit") for details on how to include your own kit.}
+\item{kit}{STR kit name from euroformix. To see a list of all kits embedded in euroformix use \code{\link[euroformix:getKit]{euroformix::getKit()}}. If your kit is not included, see vignette("bistro") for details on how to include your own kit.}
 
 \item{threshT}{Allele peak height threshold in RFUs. All peaks under this threshold will be filtered out. If prior filtering was performed, this number should be equal to or greater than that number.}
 
@@ -69,7 +69,7 @@ Tibble with matches for bloodmeal-human pairs including the columns listed below
 }
 }
 \description{
-Identifies matches between bloodmeal STR profiles and a database of human STR profiles. The \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}} function is used to calculate log10 likelihood ratios (log10LRs) that are then used to identify human contributors to each bloodmeal.
+Identifies matches between bloodmeal STR profiles and a database of human STR profiles. The \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}} function is used to calculate log10 likelihood ratios (log10LRs) that are then used to identify human contributors to each bloodmeal. For more details than are present here, see \code{vignette('bistro')}.
 }
 \examples{
 bistro(bloodmeal_profiles, human_profiles,

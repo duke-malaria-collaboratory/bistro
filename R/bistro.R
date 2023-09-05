@@ -1,10 +1,10 @@
 #' Identify human contributors to a bloodmeal using STR profiles
 #'
-#' @description Identifies matches between bloodmeal STR profiles and a database of human STR profiles. The [euroformix::contLikSearch()] function is used to calculate log10 likelihood ratios (log10LRs) that are then used to identify human contributors to each bloodmeal.
+#' @description Identifies matches between bloodmeal STR profiles and a database of human STR profiles. The [euroformix::contLikSearch()] function is used to calculate log10 likelihood ratios (log10LRs) that are then used to identify human contributors to each bloodmeal. For more details than are present here, see `vignette('bistro')`.
 #'
 #' @param bloodmeal_profiles Tibble with alleles for all bloodmeals in reference database including 4 columns: SampleName, Marker, Allele, Height. Height must be numeric or coercible to numeric.
 #' @param human_profiles Tibble with alleles for all humans in reference database including three columns: SampleName, Marker, Allele.
-#' @param kit STR kit name from euroformix. To see a list of all kits embedded in euroformix use [euroformix::getKit()]. If your kit is not included, see vignette("customized-kit") for details on how to include your own kit.
+#' @param kit STR kit name from euroformix. To see a list of all kits embedded in euroformix use [euroformix::getKit()]. If your kit is not included, see vignette("bistro") for details on how to include your own kit.
 #' @param threshT Allele peak height threshold in RFUs. All peaks under this threshold will be filtered out. If prior filtering was performed, this number should be equal to or greater than that number.
 #' @param pop_allele_freqs Data frame where the first column is the STR allele and the following columns are the frequency of that allele for different markers. Alleles that do not exist for a given marker are coded as NA. If NULL and `calc_allele_freqs = TRUE`, then population allele frequencies will be calculated from `human_profiles`.
 #' @param calc_allele_freqs A boolean indicating whether or not to calculate allele frequencies from `human_profiles`. If FALSE, a `pop_allele_freqs` input is required. Default: FALSE
@@ -20,6 +20,7 @@
 #' @param time_limit Time limit in minutes to run the [euroformix::contLikSearch()] function on 1 bloodmeal-human pair. Default: 3
 #'
 #' @return Tibble with matches for bloodmeal-human pairs including the columns listed below. Note that if multiple matches are found for a bloodmeal, these are included as separate rows.
+#'
 #' * `bloodmeal_id`: bloodmeal id
 #' * `bloodmeal_locus_count`: number of loci successfully typed in the bloodmeal
 #' * `est_noc`: estimated number of contributors to the bloodmeal

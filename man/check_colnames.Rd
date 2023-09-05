@@ -17,3 +17,4 @@ Nothing or error
 \description{
 Check column names
 }
+\keyword{internal}

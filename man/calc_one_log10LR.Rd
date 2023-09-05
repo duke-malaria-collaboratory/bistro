@@ -32,7 +32,7 @@ calc_one_log10LR(
 
 \item{pop_allele_freqs}{Data frame where the first column is the STR allele and the following columns are the frequency of that allele for different markers. Alleles that do not exist for a given marker are coded as NA. If NULL and \code{calc_allele_freqs = TRUE}, then population allele frequencies will be calculated from \code{human_profiles}.}
 
-\item{kit}{STR kit name from euroformix. To see a list of all kits embedded in euroformix use \code{\link[euroformix:getKit]{euroformix::getKit()}}. If your kit is not included, see vignette("customized-kit") for details on how to include your own kit.}
+\item{kit}{STR kit name from euroformix. To see a list of all kits embedded in euroformix use \code{\link[euroformix:getKit]{euroformix::getKit()}}. If your kit is not included, see vignette("bistro") for details on how to include your own kit.}
 
 \item{threshT}{Allele peak height threshold in RFUs. All peaks under this threshold will be filtered out. If prior filtering was performed, this number should be equal to or greater than that number.}
 
@@ -56,3 +56,4 @@ tibble with log10LR for bloodmeal-human pair including bloodmeal_id, human_id, b
 \description{
 Calculate log10LR for one bloodmeal-human pair
 }
+\keyword{internal}

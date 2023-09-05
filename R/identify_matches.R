@@ -4,6 +4,7 @@
 #'
 #' @return tibble with matches for bloodmeal-human pairs including bloodmeal_id, bloodmeal_locus_count (number of STR loci used for matching), est_noc (estimated number of contributors), match, human_id (if match), log10LR (log10 likelihood ratio), note
 #' @inheritParams calc_one_log10LR
+#' @keywords internal
 identify_one_match_set <- function(log10LRs, bloodmeal_id){
 
   bm_id <- bloodmeal_id

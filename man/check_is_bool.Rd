@@ -17,3 +17,4 @@ Error or nothing
 \description{
 Check is boolean
 }
+\keyword{internal}

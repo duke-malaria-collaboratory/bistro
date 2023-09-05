@@ -19,3 +19,4 @@ Error or nothing
 \description{
 Check calc_if_allele_freqs
 }
+\keyword{internal}

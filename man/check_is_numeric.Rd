@@ -19,3 +19,4 @@ Error or nothing
 \description{
 Check is numeric
 }
+\keyword{internal}

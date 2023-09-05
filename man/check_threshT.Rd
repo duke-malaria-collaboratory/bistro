@@ -15,3 +15,4 @@ Error or nothing
 \description{
 Check threshT
 }
+\keyword{internal}

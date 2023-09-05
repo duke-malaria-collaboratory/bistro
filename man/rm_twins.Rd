@@ -15,3 +15,4 @@ Data frame with twins removed
 \description{
 Remove identical STR profiles
 }
+\keyword{internal}

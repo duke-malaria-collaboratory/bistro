@@ -21,3 +21,4 @@ Error or nothing
 \description{
 Check what markers are present
 }
+\keyword{internal}

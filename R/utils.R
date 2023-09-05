@@ -8,6 +8,7 @@ utils::globalVariables(c("Marker", "Allele", "allele_count", "locus_n", "freq", 
 # import euroformix (required to get kit)
 #' @import euroformix
 
+# no note for codetools
 ignore_unused_imports <- function() {
   codetools::checkUsage
 }
@@ -17,6 +18,7 @@ ignore_unused_imports <- function() {
 #' @param df Dataframe from which to remove duplicate rows
 #'
 #' @return Un-duplicated dataframe
+#' @keywords internal
 rm_dups <- function(df){
   n_orig <- nrow(df)
   if(n_orig != dplyr::n_distinct(df)){
@@ -32,6 +34,7 @@ rm_dups <- function(df){
 #' @inheritParams bistro
 #'
 #' @return Data frame with twins removed
+#' @keywords internal
 rm_twins <- function(human_profiles){
   not_twins <- human_profiles |>
     dplyr::arrange(Marker, Allele) |>
@@ -61,6 +64,7 @@ rm_twins <- function(human_profiles){
 #' @param vec_name name of vector
 #'
 #' @return list of IDs that are present
+#' @keywords internal
 subset_ids <- function(ids, vec, vec_name){
   id_absent <- setdiff(ids, vec)
   if(length(id_absent) > 0){

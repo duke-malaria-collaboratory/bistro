@@ -10,7 +10,7 @@ test_that("bistro works", {
       hu_p1,
       pop_allele_freqs = pop_allele_freqs,
       kit = "ESX17",
-      peak_threshold = 200
+      peak_thresh = 200
     )
   )
 
@@ -20,7 +20,7 @@ test_that("bistro works", {
       hu_p1,
       pop_allele_freqs = pop_allele_freqs,
       kit = "ESX17",
-      peak_threshold = 200,
+      peak_thresh = 200,
       bloodmeal_ids = "evid1",
       human_ids = "P1"
     )
@@ -31,7 +31,7 @@ test_that("bistro works", {
     hu_p1,
     calc_allele_freqs = TRUE,
     kit = "ESX17",
-    peak_threshold = 200
+    peak_thresh = 200
   ))
 
   expect_error(
@@ -39,7 +39,7 @@ test_that("bistro works", {
       bloodmeal_profiles,
       human_profiles,
       kit = "ESX17",
-      peak_threshold = 200
+      peak_thresh = 200
     ),
     "If `calc_allele_freqs = FALSE`, then `pop_allele_freqs` is required."
   )
@@ -51,7 +51,7 @@ test_that("bistro works", {
         human_profiles,
         pop_allele_freqs = pop_allele_freqs,
         kit = "ESX17",
-        peak_threshold = 200
+        peak_thresh = 200
       ),
       "All bloodmeal peak heights below threshold."
     )

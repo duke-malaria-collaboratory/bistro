@@ -95,16 +95,16 @@ test_that("check_colnames works", {
   )
 })
 
-test_that("check_peak_threshold works", {
-  expect_no_error(check_peak_threshold(1))
+test_that("check_peak_thresh works", {
+  expect_no_error(check_peak_thresh(1))
 
   expect_error(
-    check_peak_threshold(-1),
+    check_peak_thresh(-1),
     "thresT must be \u2265 0, but is -1"
   )
 
   expect_error(
-    check_peak_threshold("test"),
+    check_peak_thresh("test"),
     "thresT must be numeric, but is character"
   )
 })

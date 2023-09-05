@@ -100,7 +100,7 @@ getKit()
 
 If the kit you used to genotype samples is not available in the defaults, you will have to modify `kit.txt` within the `euroformix` package with the appropriate kit parameters. The required parameters can usually be found in the kit manufacturer's documentation or or on their website. 
 
-### Bloodmeal allele peak threshold (`peak_threshold`) 
+### Bloodmeal allele peak threshold (`peak_thresh`) 
 
 `bistro()` also requires a bloodmeal allele peak threshold (in RFUs) to be provided. All peaks with heights below this threshold will be removed before matching. If prior filtering was performed on the bloodmeal profiles based on peak height, then this number should be equal to or greater than that threshold. 
 
@@ -126,7 +126,7 @@ bistro_output <- bistro(
   human_profiles = human_profiles,
   pop_allele_freqs = pop_allele_freqs,
   kit = "ESX17",
-  peak_threshold = 200
+  peak_thresh = 200
 )
 ```
 
@@ -176,7 +176,7 @@ bistro(
   human_profiles = human_profiles,
   calc_allele_freqs = TRUE,
   kit = "ESX17",
-  peak_threshold = 200
+  peak_thresh = 200
 )
 ```
 
@@ -193,7 +193,7 @@ bistro(
   human_profiles = human_profiles,
   pop_allele_freqs = pop_allele_freqs,
   kit = "ESX17",
-  peak_threshold = 200,
+  peak_thresh = 200,
   bloodmeal_ids = c("evid1", "evid2"),
   human_ids = "P1"
 )

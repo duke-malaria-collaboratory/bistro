@@ -14,7 +14,7 @@
 #' @param kit STR kit name from euroformix. To see a list of all kits embedded
 #'   in euroformix use [euroformix::getKit()]. If your kit is not included, see
 #'   vignette("bistro") for details on how to include your own kit.
-#' @param peak_threshold Allele peak height threshold
+#' @param peak_thresh Allele peak height threshold
 #' in RFUs. All peaks under this
 #'   threshold will be filtered out. If prior filtering was performed, this
 #'   number should be equal to or greater than that number.
@@ -77,13 +77,13 @@
 #' @examples
 #' bistro(bloodmeal_profiles, human_profiles,
 #'   pop_allele_freqs = pop_allele_freqs,
-#'   kit = "ESX17", peak_threshold = 200
+#'   kit = "ESX17", peak_thresh = 200
 #' )
 bistro <-
   function(bloodmeal_profiles,
            human_profiles,
            kit,
-           peak_threshold,
+           peak_thresh,
            pop_allele_freqs = NULL,
            calc_allele_freqs = FALSE,
            bloodmeal_ids = NULL,
@@ -100,7 +100,7 @@ bistro <-
       bloodmeal_profiles,
       human_profiles,
       kit,
-      peak_threshold,
+      peak_thresh,
       pop_allele_freqs,
       calc_allele_freqs,
       bloodmeal_ids,
@@ -135,13 +135,13 @@ bistro <-
     bloodmeal_profiles <- bloodmeal_profiles |>
       dplyr::filter(SampleName %in% bloodmeal_ids)
 
-    if (sum(bloodmeal_profiles$Height >= peak_threshold, na.rm = TRUE) == 0) {
+    if (sum(bloodmeal_profiles$Height >= peak_thresh, na.rm = TRUE) == 0) {
       stop("All bloodmeal peak heights below threshold.")
     }
 
     bloodmeal_profiles <- bloodmeal_profiles |>
       rm_dups() |>
-      filter_peaks(peak_threshold)
+      filter_peaks(peak_thresh)
 
     message("Formatting human profiles")
 
@@ -163,7 +163,7 @@ bistro <-
         human_profiles,
         pop_allele_freqs,
         kit,
-        peak_threshold,
+        peak_thresh,
         bloodmeal_ids,
         human_ids,
         model_degrad,

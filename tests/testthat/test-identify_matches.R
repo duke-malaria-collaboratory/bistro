@@ -11,7 +11,7 @@ test_that("identify_matches works", {
         human_profiles,
         pop_allele_freqs = pop_allele_freqs,
         kit = "ESX17",
-        peak_threshold = 200
+        peak_thresh = 200
       )
     )
 

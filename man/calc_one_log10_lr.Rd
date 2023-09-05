@@ -11,7 +11,7 @@ calc_one_log10_lr(
   human_id,
   pop_allele_freqs,
   kit,
-  peak_threshold,
+  peak_thresh,
   model_degrad = TRUE,
   model_bw_stutt = FALSE,
   model_fw_stutt = FALSE,
@@ -45,7 +45,7 @@ will be calculated from \code{human_profiles}.}
 in euroformix use \code{\link[euroformix:getKit]{euroformix::getKit()}}. If your kit is not included, see
 vignette("bistro") for details on how to include your own kit.}
 
-\item{peak_threshold}{Allele peak height threshold
+\item{peak_thresh}{Allele peak height threshold
 in RFUs. All peaks under this
 threshold will be filtered out. If prior filtering was performed, this
 number should be equal to or greater than that number.

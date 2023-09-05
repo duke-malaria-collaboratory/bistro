@@ -2,7 +2,7 @@
 
     Code
       bistro(bm_evid1, hu_p1, pop_allele_freqs = pop_allele_freqs, kit = "ESX17",
-        peak_threshold = 200)
+        peak_thresh = 200)
     Message <simpleMessage>
       1/17 markers in kit but not in pop_allele_freqs: AMEL
       Formatting bloodmeal profiles
@@ -24,7 +24,7 @@
 
     Code
       bistro(bm_evid1, hu_p1, pop_allele_freqs = pop_allele_freqs, kit = "ESX17",
-        peak_threshold = 200, bloodmeal_ids = "evid1", human_ids = "P1")
+        peak_thresh = 200, bloodmeal_ids = "evid1", human_ids = "P1")
     Message <simpleMessage>
       1/17 markers in kit but not in pop_allele_freqs: AMEL
       Formatting bloodmeal profiles
@@ -45,8 +45,7 @@
 ---
 
     Code
-      bistro(bm_evid1, hu_p1, calc_allele_freqs = TRUE, kit = "ESX17",
-        peak_threshold = 200)
+      bistro(bm_evid1, hu_p1, calc_allele_freqs = TRUE, kit = "ESX17", peak_thresh = 200)
     Message <simpleMessage>
       Formatting bloodmeal profiles
       Removing 4 peaks under the threshold of 200 RFU.

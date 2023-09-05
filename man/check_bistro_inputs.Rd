@@ -8,7 +8,7 @@ check_bistro_inputs(
   bloodmeal_profiles,
   human_profiles,
   kit,
-  peak_threshold,
+  peak_thresh,
   pop_allele_freqs = NULL,
   calc_allele_freqs = FALSE,
   bloodmeal_ids = NULL,
@@ -35,7 +35,7 @@ database including three columns: SampleName, Marker, Allele.}
 in euroformix use \code{\link[euroformix:getKit]{euroformix::getKit()}}. If your kit is not included, see
 vignette("bistro") for details on how to include your own kit.}
 
-\item{peak_threshold}{Allele peak height threshold
+\item{peak_thresh}{Allele peak height threshold
 in RFUs. All peaks under this
 threshold will be filtered out. If prior filtering was performed, this
 number should be equal to or greater than that number.
@@ -61,8 +61,8 @@ input dataframe will be used. Default: NULL}
 \code{human_profiles} for which to compute log10_lrs. If NULL, all ids in the
 input dataframe will be used. Default: NULL}
 
-\item{rm_twins}{A boolean indicating whether or not to remove likely twins
-from the human database (identical STR profiles). Default: TRUE}
+\item{rm_twins}{A boolean indicating whether or not to remove likely twins (identical STR profiles)
+from the human database prior to identifying matches. Default: TRUE}
 
 \item{model_degrad}{A boolean indicating whether or not to model peak
 degradation.

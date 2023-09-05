@@ -9,7 +9,7 @@ calc_log10_lrs(
   human_profiles,
   pop_allele_freqs,
   kit,
-  peak_threshold,
+  peak_thresh,
   bloodmeal_ids = NULL,
   human_ids = NULL,
   model_degrad = TRUE,
@@ -39,7 +39,7 @@ will be calculated from \code{human_profiles}.}
 in euroformix use \code{\link[euroformix:getKit]{euroformix::getKit()}}. If your kit is not included, see
 vignette("bistro") for details on how to include your own kit.}
 
-\item{peak_threshold}{Allele peak height threshold
+\item{peak_thresh}{Allele peak height threshold
 in RFUs. All peaks under this
 threshold will be filtered out. If prior filtering was performed, this
 number should be equal to or greater than that number.

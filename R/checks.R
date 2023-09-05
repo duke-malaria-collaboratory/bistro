@@ -8,7 +8,7 @@ check_bistro_inputs <-
   function(bloodmeal_profiles,
            human_profiles,
            kit,
-           peak_threshold,
+           peak_thresh,
            pop_allele_freqs = NULL,
            calc_allele_freqs = FALSE,
            bloodmeal_ids = NULL,
@@ -51,7 +51,7 @@ check_bistro_inputs <-
     check_calc_allele_freqs(calc_allele_freqs)
     check_if_allele_freqs(pop_allele_freqs, calc_allele_freqs, kit_df)
 
-    check_peak_threshold(peak_threshold)
+    check_peak_thresh(peak_thresh)
     check_is_bool(rm_twins, "rm_twins")
     check_is_bool(model_degrad, "model_degrad")
     check_is_bool(model_bw_stutt, "model_bw_stutt")
@@ -247,17 +247,17 @@ check_colnames <- function(df, expected_colnames) {
   }
 }
 
-#' Check peak_threshold
+#' Check peak_thresh
 #'
 #' @inheritParams bistro
 #'
 #' @return Error or nothing
 #' @keywords internal
-check_peak_threshold <- function(peak_threshold) {
-  if (!is.numeric(peak_threshold)) {
-    stop("thresT must be numeric, but is ", class(peak_threshold))
+check_peak_thresh <- function(peak_thresh) {
+  if (!is.numeric(peak_thresh)) {
+    stop("thresT must be numeric, but is ", class(peak_thresh))
   }
-  if (peak_threshold < 0) {
-    stop("thresT must be \u2265 0, but is ", peak_threshold)
+  if (peak_thresh < 0) {
+    stop("thresT must be \u2265 0, but is ", peak_thresh)
   }
 }

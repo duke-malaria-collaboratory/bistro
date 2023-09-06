@@ -135,9 +135,7 @@ bistro <-
     bloodmeal_profiles <- bloodmeal_profiles |>
       dplyr::filter(SampleName %in% bloodmeal_ids)
 
-    if (sum(bloodmeal_profiles$Height >= peak_thresh, na.rm = TRUE) == 0) {
-      stop("All bloodmeal peak heights below threshold.")
-    }
+    check_heights(bloodmeal_profiles$Height, peak_thresh)
 
     bloodmeal_profiles <- bloodmeal_profiles |>
       rm_dups() |>

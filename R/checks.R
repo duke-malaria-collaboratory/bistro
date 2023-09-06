@@ -261,3 +261,16 @@ check_peak_thresh <- function(peak_thresh) {
     stop("thresT must be \u2265 0, but is ", peak_thresh)
   }
 }
+
+#' Check peak_thresh
+#'
+#' @param heights vector of peak heights
+#' @inheritParams bistro
+#'
+#' @return Error or nothing
+#' @keywords internal
+check_heights <- function(heights, peak_thresh){
+  if (sum(heights >= peak_thresh, na.rm = TRUE) == 0) {
+    stop("All bloodmeal peak heights below threshold of ", peak_thresh, '.')
+  }
+}

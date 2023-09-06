@@ -53,7 +53,7 @@ test_that("bistro works", {
         kit = "ESX17",
         peak_thresh = 200
       ),
-      "All bloodmeal peak heights below threshold."
+      "All bloodmeal peak heights below threshold of 200."
     )
   )))
 })

@@ -27,17 +27,17 @@ bistro uses the log10LRs to identify bloodmeal-human matches using a per-bloodme
 
 ## Installing the `bistro` R package
 
-To install `bistro`, first make sure you have the following installed:
-
-- Windows: [Rtools](https://cran.r-project.org/bin/windows/Rtools/)
-- Mac: Xcode from the Mac App store
-
-Then, run the following commands:
+To install `bistro`, run the following commands:
 
 ```{r, eval = FALSE}
 install.packages("remotes") # install remotes if needed
 remotes::install_github("duke-malaria-collaboratory/bistro")
 ```
+
+If you run into errors, try the following:
+
+- Windows: install [Rtools](https://cran.r-project.org/bin/windows/Rtools/)
+- Mac: install Xcode from the Mac App store
 
 ## Getting started with `bistro`
 

@@ -14,11 +14,10 @@
 #' @param kit STR kit name from euroformix. To see a list of all kits embedded
 #'   in euroformix use [euroformix::getKit()]. If your kit is not included, see
 #'   vignette("bistro") for details on how to include your own kit.
-#' @param peak_thresh Allele peak height threshold
-#' in RFUs. All peaks under this
+#' @param peak_thresh Allele peak height threshold in RFUs. All peaks under this
 #'   threshold will be filtered out. If prior filtering was performed, this
-#'   number should be equal to or greater than that number.
-#'   Also used for `threshT` argument in [euroformix::contLikSearch()].
+#'   number should be equal to or greater than that number. Also used for
+#'   `threshT` argument in [euroformix::contLikSearch()].
 #' @param pop_allele_freqs Data frame where the first column is the STR allele
 #'   and the following columns are the frequency of that allele for different
 #'   markers. Alleles that do not exist for a given marker are coded as NA. If
@@ -27,28 +26,24 @@
 #' @param calc_allele_freqs A boolean indicating whether or not to calculate
 #'   allele frequencies from `human_profiles`. If FALSE, a `pop_allele_freqs`
 #'   input is required. Default: FALSE
-#' @param bloodmeal_ids Vector of bloodmeal ids from the
-#'  SampleName column in
-#'   `bloodmeal_profiles` for which to compute log10_lrs.
-#'    If NULL, all ids in the
-#'   input dataframe will be used. Default: NULL
+#' @param bloodmeal_ids Vector of bloodmeal ids from the SampleName column in
+#'   `bloodmeal_profiles` for which to compute log10_lrs. If NULL, all ids in
+#'   the input dataframe will be used. Default: NULL
 #' @param human_ids Vector of human ids from the SampleName column in
 #'   `human_profiles` for which to compute log10_lrs. If NULL, all ids in the
 #'   input dataframe will be used. Default: NULL
-#' @param rm_twins A boolean indicating whether or not to remove likely twins (identical STR profiles)
-#'   from the human database prior to identifying matches. Default: TRUE
+#' @param rm_twins A boolean indicating whether or not to remove likely twins
+#'   (identical STR profiles) from the human database prior to identifying
+#'   matches. Default: TRUE
 #' @param model_degrad A boolean indicating whether or not to model peak
-#'   degradation.
-#'   Used for `modelDegrad` argument in [euroformix::contLikSearch()].
-#'  Default: TRUE
+#'   degradation. Used for `modelDegrad` argument in
+#'   [euroformix::contLikSearch()]. Default: TRUE
 #' @param model_bw_stutt A boolean indicating whether or not to model peak
-#'   backward stutter.
-#'   Used for `modelBWstutt` argument in [euroformix::contLikSearch()].
-#'   Default: FALSE
-#' @param model_fw_stutt A boolean indicating whether or
-#'  not to model peak forward stutter.
-#'   Used for `modelFWstutt` argument in [euroformix::contLikSearch()].
-#'  Default: FALSE
+#'   backward stutter. Used for `modelBWstutt` argument in
+#'   [euroformix::contLikSearch()]. Default: FALSE
+#' @param model_fw_stutt A boolean indicating whether or not to model peak
+#'   forward stutter. Used for `modelFWstutt` argument in
+#'   [euroformix::contLikSearch()]. Default: FALSE
 #' @param difftol Tolerance for difference in log likelihoods across 2
 #'   iterations. [euroformix::contLikSearch()] argument. Default: 1
 #' @param threads Number of threads to use when calculating log10_lrs.

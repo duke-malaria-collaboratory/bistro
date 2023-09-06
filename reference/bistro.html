@@ -106,11 +106,10 @@ vignette("bistro") for details on how to include your own kit.</p></dd>
 
 
 <dt>peak_thresh</dt>
-<dd><p>Allele peak height threshold
-in RFUs. All peaks under this
+<dd><p>Allele peak height threshold in RFUs. All peaks under this
 threshold will be filtered out. If prior filtering was performed, this
-number should be equal to or greater than that number.
-Also used for <code>threshT</code> argument in <code><a href="https://rdrr.io/pkg/euroformix/man/contLikSearch.html" class="external-link">euroformix::contLikSearch()</a></code>.</p></dd>
+number should be equal to or greater than that number. Also used for
+<code>threshT</code> argument in <code><a href="https://rdrr.io/pkg/euroformix/man/contLikSearch.html" class="external-link">euroformix::contLikSearch()</a></code>.</p></dd>
 
 
 <dt>pop_allele_freqs</dt>
@@ -128,11 +127,9 @@ input is required. Default: FALSE</p></dd>
 
 
 <dt>bloodmeal_ids</dt>
-<dd><p>Vector of bloodmeal ids from the
-SampleName column in
-<code>bloodmeal_profiles</code> for which to compute log10_lrs.
-If NULL, all ids in the
-input dataframe will be used. Default: NULL</p></dd>
+<dd><p>Vector of bloodmeal ids from the SampleName column in
+<code>bloodmeal_profiles</code> for which to compute log10_lrs. If NULL, all ids in
+the input dataframe will be used. Default: NULL</p></dd>
 
 
 <dt>human_ids</dt>
@@ -142,29 +139,27 @@ input dataframe will be used. Default: NULL</p></dd>
 
 
 <dt>rm_twins</dt>
-<dd><p>A boolean indicating whether or not to remove likely twins (identical STR profiles)
-from the human database prior to identifying matches. Default: TRUE</p></dd>
+<dd><p>A boolean indicating whether or not to remove likely twins
+(identical STR profiles) from the human database prior to identifying
+matches. Default: TRUE</p></dd>
 
 
 <dt>model_degrad</dt>
 <dd><p>A boolean indicating whether or not to model peak
-degradation.
-Used for <code>modelDegrad</code> argument in <code><a href="https://rdrr.io/pkg/euroformix/man/contLikSearch.html" class="external-link">euroformix::contLikSearch()</a></code>.
-Default: TRUE</p></dd>
+degradation. Used for <code>modelDegrad</code> argument in
+<code><a href="https://rdrr.io/pkg/euroformix/man/contLikSearch.html" class="external-link">euroformix::contLikSearch()</a></code>. Default: TRUE</p></dd>
 
 
 <dt>model_bw_stutt</dt>
 <dd><p>A boolean indicating whether or not to model peak
-backward stutter.
-Used for <code>modelBWstutt</code> argument in <code><a href="https://rdrr.io/pkg/euroformix/man/contLikSearch.html" class="external-link">euroformix::contLikSearch()</a></code>.
-Default: FALSE</p></dd>
+backward stutter. Used for <code>modelBWstutt</code> argument in
+<code><a href="https://rdrr.io/pkg/euroformix/man/contLikSearch.html" class="external-link">euroformix::contLikSearch()</a></code>. Default: FALSE</p></dd>
 
 
 <dt>model_fw_stutt</dt>
-<dd><p>A boolean indicating whether or
-not to model peak forward stutter.
-Used for <code>modelFWstutt</code> argument in <code><a href="https://rdrr.io/pkg/euroformix/man/contLikSearch.html" class="external-link">euroformix::contLikSearch()</a></code>.
-Default: FALSE</p></dd>
+<dd><p>A boolean indicating whether or not to model peak
+forward stutter. Used for <code>modelFWstutt</code> argument in
+<code><a href="https://rdrr.io/pkg/euroformix/man/contLikSearch.html" class="external-link">euroformix::contLikSearch()</a></code>. Default: FALSE</p></dd>
 
 
 <dt>difftol</dt>

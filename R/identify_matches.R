@@ -28,7 +28,7 @@ identify_one_match_set <- function(log10_lrs, bloodmeal_id) {
     thresh_low = NA
   )
 
-  if (all(is.na(log10_lrs$log10_lr))) {
+  if (all(is.na(log10_lrs$log10_lr) | is.infinite(log10_lrs$log10_lr))) {
     matches_thresh <- matches
   } else if (max(log10_lrs$log10_lr[!is.infinite(log10_lrs$log10_lr)]) < 1.5 &&
     is.na(notes)) {

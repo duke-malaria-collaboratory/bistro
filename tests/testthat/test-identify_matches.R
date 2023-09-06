@@ -32,4 +32,8 @@ test_that("identify_matches works", {
   )
 
   expect_snapshot(identify_matches(lrs))
+
+  expect_no_error(lrs |>
+    dplyr::mutate(log10_lr = Inf) |>
+    identify_matches())
 })

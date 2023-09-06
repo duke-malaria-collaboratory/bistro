@@ -45,26 +45,22 @@ will be calculated from \code{human_profiles}.}
 in euroformix use \code{\link[euroformix:getKit]{euroformix::getKit()}}. If your kit is not included, see
 vignette("bistro") for details on how to include your own kit.}
 
-\item{peak_thresh}{Allele peak height threshold
-in RFUs. All peaks under this
+\item{peak_thresh}{Allele peak height threshold in RFUs. All peaks under this
 threshold will be filtered out. If prior filtering was performed, this
-number should be equal to or greater than that number.
-Also used for \code{threshT} argument in \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}}.}
+number should be equal to or greater than that number. Also used for
+\code{threshT} argument in \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}}.}
 
 \item{model_degrad}{A boolean indicating whether or not to model peak
-degradation.
-Used for \code{modelDegrad} argument in \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}}.
-Default: TRUE}
+degradation. Used for \code{modelDegrad} argument in
+\code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}}. Default: TRUE}
 
 \item{model_bw_stutt}{A boolean indicating whether or not to model peak
-backward stutter.
-Used for \code{modelBWstutt} argument in \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}}.
-Default: FALSE}
+backward stutter. Used for \code{modelBWstutt} argument in
+\code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}}. Default: FALSE}
 
-\item{model_fw_stutt}{A boolean indicating whether or
-not to model peak forward stutter.
-Used for \code{modelFWstutt} argument in \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}}.
-Default: FALSE}
+\item{model_fw_stutt}{A boolean indicating whether or not to model peak
+forward stutter. Used for \code{modelFWstutt} argument in
+\code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}}. Default: FALSE}
 
 \item{difftol}{Tolerance for difference in log likelihoods across 2
 iterations. \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}} argument. Default: 1}

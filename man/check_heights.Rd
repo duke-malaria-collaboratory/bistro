@@ -9,11 +9,10 @@ check_heights(heights, peak_thresh)
 \arguments{
 \item{heights}{vector of peak heights}
 
-\item{peak_thresh}{Allele peak height threshold
-in RFUs. All peaks under this
+\item{peak_thresh}{Allele peak height threshold in RFUs. All peaks under this
 threshold will be filtered out. If prior filtering was performed, this
-number should be equal to or greater than that number.
-Also used for \code{threshT} argument in \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}}.}
+number should be equal to or greater than that number. Also used for
+\code{threshT} argument in \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}}.}
 }
 \value{
 Error or nothing

@@ -11,11 +11,10 @@ filter_peaks(bloodmeal_profiles, peak_thresh)
 database including 4 columns: SampleName, Marker, Allele, Height. Height
 must be numeric or coercible to numeric.}
 
-\item{peak_thresh}{Allele peak height threshold
-in RFUs. All peaks under this
+\item{peak_thresh}{Allele peak height threshold in RFUs. All peaks under this
 threshold will be filtered out. If prior filtering was performed, this
-number should be equal to or greater than that number.
-Also used for \code{threshT} argument in \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}}.}
+number should be equal to or greater than that number. Also used for
+\code{threshT} argument in \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}}.}
 }
 \value{
 Filtered dataframe

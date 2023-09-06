@@ -9,11 +9,9 @@ identify_matches(log10_lrs, bloodmeal_ids = NULL)
 \arguments{
 \item{log10_lrs}{Output from \code{\link[=calc_log10_lrs]{calc_log10_lrs()}}}
 
-\item{bloodmeal_ids}{Vector of bloodmeal ids from the
-SampleName column in
-\code{bloodmeal_profiles} for which to compute log10_lrs.
-If NULL, all ids in the
-input dataframe will be used. Default: NULL}
+\item{bloodmeal_ids}{Vector of bloodmeal ids from the SampleName column in
+\code{bloodmeal_profiles} for which to compute log10_lrs. If NULL, all ids in
+the input dataframe will be used. Default: NULL}
 }
 \value{
 A tibble with the same output as for \code{\link[=bistro]{bistro()}}.

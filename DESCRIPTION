@@ -13,18 +13,18 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Suggests: 
-    knitr,
-    readr,
-    rmarkdown,
+    knitr (>= 1.43),
+    readr (>= 2.1.4),
+    rmarkdown (>= 2.24),
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: 
-    codetools,
-    dplyr,
-    R.utils,
-    stringr,
-    tibble,
-    tidyr
+    codetools (>= 0.2.19),
+    dplyr (>= 1.1.3),
+    R.utils (>= 2.12.2),
+    stringr (>= 1.5.0),
+    tibble (>= 3.2.1),
+    tidyr (>= 1.3.0)
 Depends: 
     R (>= 4.0.0),
     euroformix (>= 4.0.7)

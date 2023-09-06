@@ -121,7 +121,9 @@ test_that("check_setdiff_markers works", {
 
 test_that("check_heights works", {
   expect_no_error(check_heights(1:10, 5))
-  expect_error(check_heights(1:10, 15),
-               'All bloodmeal peak heights below threshold of 15.')
+  expect_error(
+    check_heights(1:10, 15),
+    "All bloodmeal peak heights below threshold of 15."
+  )
   expect_error(check_heights(NA, 15))
 })

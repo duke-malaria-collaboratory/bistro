@@ -36,6 +36,7 @@ ignore_unused_imports <- function() {
 #' @param df Dataframe from which to remove duplicate rows
 #'
 #' @return Un-duplicated dataframe
+#' @export
 #' @keywords internal
 rm_dups <- function(df) {
   n_orig <- nrow(df)

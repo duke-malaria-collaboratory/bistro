@@ -162,7 +162,7 @@ The notes column provides more information on why there was or was not a match:
 - \> min NOC matches: there were more matches than expected and they could not be resolved. This can happen when there are closely related people in the human reference dataset. 
 - no shared alleles: no people in the human reference dataset had alleles that overlapped with the alleles in the bloodmeal.
 - all log10LRs < 1.5: none of the log10LRs were high enough to be considered a match. 
-- euroformix error: the `euroformix::contLikSearch()` function did not run successfully. This often happens with very incomplete bloodmeal profiles (i.e. where only a few markers were succesffuly STR-typed).
+- euroformix error: the `euroformix::contLikSearch()` function did not run successfully. This often happens with very incomplete bloodmeal profiles (i.e. where only a few markers were succesfully STR-typed).
 - no peaks above threshold: all bloodmeal STR peaks were below the peak height threshold. 
 - timed out: log-likelihood took too long to calculate. If you want to give it more time, you can modify the `time_limit` argument (see below). 
 

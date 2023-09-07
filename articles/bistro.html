@@ -281,21 +281,17 @@ test it out using the example data included in the package:</p>
 <span><span class="co">#&gt; For 1/4 bloodmeal ids, all peaks are below the threshold</span></span>
 <span><span class="co">#&gt; Formatting human profiles</span></span>
 <span><span class="co">#&gt; Calculating log10LRs</span></span>
-<span><span class="co">#&gt; # bloodmeal ids: 4</span></span>
+<span><span class="co">#&gt; # bloodmeal ids: 3</span></span>
 <span><span class="co">#&gt; # human ids: 3</span></span>
-<span><span class="co">#&gt; Bloodmeal id 1/4</span></span>
+<span><span class="co">#&gt; Bloodmeal id 1/3</span></span>
 <span><span class="co">#&gt; Human id 1/3</span></span>
 <span><span class="co">#&gt; Human id 2/3</span></span>
 <span><span class="co">#&gt; Human id 3/3</span></span>
-<span><span class="co">#&gt; Bloodmeal id 2/4</span></span>
+<span><span class="co">#&gt; Bloodmeal id 2/3</span></span>
 <span><span class="co">#&gt; Human id 1/3</span></span>
 <span><span class="co">#&gt; Human id 2/3</span></span>
 <span><span class="co">#&gt; Human id 3/3</span></span>
-<span><span class="co">#&gt; Bloodmeal id 3/4</span></span>
-<span><span class="co">#&gt; Human id 1/3</span></span>
-<span><span class="co">#&gt; Human id 2/3</span></span>
-<span><span class="co">#&gt; Human id 3/3</span></span>
-<span><span class="co">#&gt; Bloodmeal id 4/4</span></span>
+<span><span class="co">#&gt; Bloodmeal id 3/3</span></span>
 <span><span class="co">#&gt; Human id 1/3</span></span>
 <span><span class="co">#&gt; Human id 2/3</span></span>
 <span><span class="co">#&gt; Human id 3/3</span></span>
@@ -316,14 +312,13 @@ out.</li>
 <p>Let’s take a look at the output:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bistro_output</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 8</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 8</span></span></span>
 <span><span class="co">#&gt;   bloodmeal_id locus_count est_noc match human_id log10_lr notes      thresh_low</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> evid1                 17       2 yes   P1           21.8 passed al…        9.5</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> evid1                 17       2 yes   P2           10.3 passed al…        9.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> evid2                  1       2 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   no shared…       <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> evid3                  8       1 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   all log10…       <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> evid4                  0       0 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   no peaks …       <span style="color: #BB0000;">NA</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> evid2                  1       2 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   all log10…       <span style="color: #BB0000;">NA</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> evid3                  8       1 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   all log10…       <span style="color: #BB0000;">NA</span></span></span></code></pre></div>
 <p>The output contains 8 columns:</p>
 <ul>
 <li>

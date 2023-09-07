@@ -23,7 +23,7 @@ test_that("get_similarities works", {
   )
 
   expect_equal(
-    get_bloodmeal_human_similarities(
+    get_bloodmeal_human_similarity(
       bm_profs,
       hu_profs
     ) |>
@@ -32,7 +32,7 @@ test_that("get_similarities works", {
   )
 
   expect_equal(
-    get_bloodmeal_human_similarities(
+    get_bloodmeal_human_similarity(
       bloodmeal_profiles,
       human_profiles
     ) |>

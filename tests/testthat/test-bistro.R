@@ -31,4 +31,14 @@ test_that("bistro works", {
     ),
     "If `calc_allele_freqs = FALSE`, then `pop_allele_freqs` is required."
   )
+
+  expect_snapshot(bistro(
+    bm_evid1,
+    human_profiles,
+    pop_allele_freqs = pop_allele_freqs,
+    kit = "ESX17",
+    peak_thresh = 200,
+    return_lrs = TRUE
+  ))
+
 })

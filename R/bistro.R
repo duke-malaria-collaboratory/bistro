@@ -53,6 +53,8 @@
 #' @param time_limit Time limit in minutes to run the
 #'   [euroformix::contLikSearch()] function on 1 bloodmeal-human pair. Default:
 #'   3
+#' @param return_lrs A boolean indicating whether or not to return log10LRs for
+#'   all bloodmeal-human pairs. Default: FALSE
 #'
 #' @return Tibble with matches for bloodmeal-human pairs including the columns
 #'   listed below. Note that if multiple matches are found for a bloodmeal,
@@ -66,6 +68,12 @@
 #' * `log10_lr`: If match, log10 likelihood ratio (NA otherwise)
 #' * `notes`: Why the bloodmeal does or doesn't have a match
 #'
+#'   If `return_lrs = TRUE`, then a named list of length 2 is returned:
+#' * matches - the tibble described above
+#' * lrs - log10LRs for each bloodmeal-human pair including some
+#' of the columns described above and an additional column:
+#'  `efm_noc`, which is the number of contributors used as input
+#'   into euroformix, which is `min(est_noc, 3)`.
 #'
 #' @export
 #'
@@ -90,7 +98,8 @@ bistro <-
            difftol = 1,
            threads = 4,
            seed = 1,
-           time_limit = 3) {
+           time_limit = 3,
+           return_lrs = FALSE) {
     check_bistro_inputs(
       bloodmeal_profiles,
       human_profiles,
@@ -151,6 +160,11 @@ bistro <-
     message("Identifying matches")
 
     matches <- identify_matches(log10_lrs, bloodmeal_ids)
+
+    if(return_lrs){
+      matches <- list(matches = matches,
+                      lrs = log10_lrs)
+    }
 
     return(matches)
   }

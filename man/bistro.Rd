@@ -20,7 +20,8 @@ bistro(
   difftol = 1,
   threads = 4,
   seed = 1,
-  time_limit = 3
+  time_limit = 3,
+  return_lrs = FALSE
 )
 }
 \arguments{
@@ -86,6 +87,9 @@ argument. Default: 1}
 \item{time_limit}{Time limit in minutes to run the
 \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}} function on 1 bloodmeal-human pair. Default:
 3}
+
+\item{return_lrs}{A boolean indicating whether or not to return log10LRs for
+all bloodmeal-human pairs. Default: FALSE}
 }
 \value{
 Tibble with matches for bloodmeal-human pairs including the columns
@@ -99,6 +103,13 @@ these are included as separate rows.
 \item \code{human_id}: If match, human id (NA otherwise)
 \item \code{log10_lr}: If match, log10 likelihood ratio (NA otherwise)
 \item \code{notes}: Why the bloodmeal does or doesn't have a match
+
+If \code{return_lrs = TRUE}, then a named list of length 2 is returned:
+\item matches - the tibble described above
+\item lrs - log10LRs for each bloodmeal-human pair including some
+of the columns described above and an additional column:
+\code{efm_noc}, which is the number of contributors used as input
+into euroformix, which is \code{min(est_noc, 3)}.
 }
 }
 \description{

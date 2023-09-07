@@ -28,8 +28,8 @@ Functions to allow for the identification of matches between bloodmeals and the 
 You can install bistro like so:
 
 ``` r
-# install.packages("devtools")
-detools::install_github("duke-malaria-collaboratory/bistro")
+# install.packages("remotes")
+remotes::install_github("duke-malaria-collaboratory/bistro")
 ```
 
 ## Dependencies:

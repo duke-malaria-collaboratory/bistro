@@ -21,8 +21,8 @@ human blood from freshly fed bloodmeals and from people.
 You can install bistro like so:
 
 ``` r
-# install.packages("devtools")
-detools::install_github("duke-malaria-collaboratory/bistro")
+# install.packages("remotes")
+remotes::install_github("duke-malaria-collaboratory/bistro")
 ```
 
 ## Dependencies:

@@ -21,3 +21,4 @@ Dataframe with three columns:
 \description{
 Get pairwise human STR profile similarities
 }
+\keyword{internal}

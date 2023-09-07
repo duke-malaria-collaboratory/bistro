@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# bistro: bloodmeal identification by STR overlap
+# bistro: bloodmeal identification by STR overlap <a href='http://www.schlosslab.org/mikropml/'><img src='man/figures/logo.png' align="right" height="120" /></a>
 
 <!-- badges: start -->
 
@@ -27,9 +27,11 @@ remotes::install_github("duke-malaria-collaboratory/bistro")
 
 ## Dependencies:
 
-- Depends: euroformix
-- Imports: codetools, dplyr, R.utils, stringr, tibble, tidyr
-- Suggests: knitr, rmarkdown, testthat
+- Depends: R (\>= 4.0.0), euroformix (\>= 4.0.7)
+- Imports: codetools (\>= 0.2.19), dplyr (\>= 1.1.3), R.utils (\>=
+  2.12.2), stringr (\>= 1.5.0), tibble (\>= 3.2.1), tidyr (\>= 1.3.0)
+- Suggests: knitr (\>= 1.43), readr (\>= 2.1.4), rmarkdown (\>= 2.24),
+  testthat (\>= 3.0.0)
 
 ## Usage
 

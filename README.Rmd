@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# bistro: bloodmeal identification by STR overlap
+# bistro: bloodmeal identification by STR overlap <a href='http://www.schlosslab.org/mikropml/'><img src='man/figures/logo.png' align="right" height="120" /></a>
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/duke-malaria-collaboratory/bistro/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/duke-malaria-collaboratory/bistro/actions/workflows/R-CMD-check.yaml)
@@ -34,9 +34,26 @@ remotes::install_github("duke-malaria-collaboratory/bistro")
 
 ## Dependencies:
 
-* Depends: euroformix
-* Imports: codetools, dplyr, R.utils, stringr, tibble, tidyr
-* Suggests: knitr, rmarkdown, testthat
+```{r deps, echo = FALSE, message = FALSE, warning = FALSE}
+library(dplyr)
+description <- utils::packageDescription("bistro",
+  fields = c("Depends", "Imports", "Suggests")
+)
+deps <- lapply(
+  names(description),
+  function(x) {
+    paste0(
+      "- ", x, ": ",
+      description[[x]] %>%
+        gsub("\n", " ", .)
+    )
+  }
+) %>%
+  unlist() %>%
+  paste(., collapse = "\n")
+```
+
+`r deps`
 
 ## Usage
 

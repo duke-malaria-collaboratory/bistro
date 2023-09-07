@@ -28,9 +28,13 @@
 #'
 #' @examples
 #' match_similarity(bloodmeal_profiles, human_profiles)
-match_similarity <- function(bloodmeal_profiles, human_profiles,
-                             bloodmeal_ids = NULL, human_ids = NULL,
-                             peak_thresh = NULL, rm_twins = TRUE, rm_markers = NULL,
+match_similarity <- function(bloodmeal_profiles,
+                             human_profiles,
+                             bloodmeal_ids = NULL,
+                             human_ids = NULL,
+                             peak_thresh = NULL,
+                             rm_twins = TRUE,
+                             rm_markers = NULL,
                              return_similarities = FALSE) {
   if (is.null(peak_thresh)) {
     check_colnames(bloodmeal_profiles, c("SampleName", "Marker", "Allele"))

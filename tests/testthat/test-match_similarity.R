@@ -45,8 +45,7 @@ test_that("get_similarities works", {
   expect_snapshot(match_similarity(
     bloodmeal_profiles,
     human_profiles
-  )
-  )
+  ))
 
   expect_snapshot(
     match_similarity(bloodmeal_profiles,

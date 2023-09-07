@@ -25,7 +25,10 @@ threshold will be filtered out. If prior filtering was performed, this
 number should be equal to or greater than that number. Also used for
 \code{threshT} argument in \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}}.}
 
-\item{rm_markers}{A vector indicating what markers should be removed prior to calculating log10LRs. NULL to include all markers. By default, for the bistro function AMEL is removed as it is not standard to include it in LR calculations.}
+\item{rm_markers}{A vector indicating what markers should be removed prior to
+calculating log10LRs. NULL to include all markers. By default, for the
+bistro function AMEL is removed as it is not standard to include it in LR
+calculations.}
 }
 \value{
 Dataframe with preprocessed bloodmeal profiles

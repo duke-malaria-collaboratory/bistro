@@ -64,7 +64,10 @@ input dataframe will be used. Default: NULL}
 (identical STR profiles) from the human database prior to identifying
 matches. Default: TRUE}
 
-\item{rm_markers}{A vector indicating what markers should be removed prior to calculating log10LRs. NULL to include all markers. By default, for the bistro function AMEL is removed as it is not standard to include it in LR calculations.}
+\item{rm_markers}{A vector indicating what markers should be removed prior to
+calculating log10LRs. NULL to include all markers. By default, for the
+bistro function AMEL is removed as it is not standard to include it in LR
+calculations.}
 
 \item{model_degrad}{A boolean indicating whether or not to model peak
 degradation. Used for \code{modelDegrad} argument in
@@ -110,9 +113,9 @@ these are included as separate rows.
 If \code{return_lrs = TRUE}, then a named list of length 2 is returned:
 \item matches - the tibble described above
 \item lrs - log10LRs for each bloodmeal-human pair including some
-of the columns described above and an additional column:
-\code{efm_noc}, which is the number of contributors used as input
-into euroformix, which is \code{min(est_noc, 3)}.
+of the columns described above and an additional column: \code{efm_noc}, which
+is the number of contributors used as input into euroformix, which is
+\code{min(est_noc, 3)}.
 }
 }
 \description{

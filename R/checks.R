@@ -44,7 +44,7 @@ check_bistro_inputs <-
       unique() |>
       toupper()
 
-    if(!is.null(rm_markers)){
+    if (!is.null(rm_markers)) {
       rm_markers <- toupper(rm_markers)
       bm_prof_markers <- bm_prof_markers[!bm_prof_markers %in% rm_markers]
       hu_prof_markers <- hu_prof_markers[!hu_prof_markers %in% rm_markers]

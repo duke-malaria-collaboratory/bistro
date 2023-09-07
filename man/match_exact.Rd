@@ -39,7 +39,10 @@ number should be equal to or greater than that number. Also used for
 (identical STR profiles) from the human database prior to identifying
 matches. Default: TRUE}
 
-\item{rm_markers}{A vector indicating what markers should be removed prior to calculating log10LRs. NULL to include all markers. By default, for the bistro function AMEL is removed as it is not standard to include it in LR calculations.}
+\item{rm_markers}{A vector indicating what markers should be removed prior to
+calculating log10LRs. NULL to include all markers. By default, for the
+bistro function AMEL is removed as it is not standard to include it in LR
+calculations.}
 }
 \value{
 Dataframe with three columns:

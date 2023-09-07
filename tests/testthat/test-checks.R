@@ -3,7 +3,7 @@ test_that("check_bistro_input works", {
     bloodmeal_profiles, human_profiles,
     "ESX17", 1, NULL, TRUE,
     NULL, NULL,
-    TRUE, c('AMEL'),
+    TRUE, c("AMEL"),
     TRUE, FALSE, FALSE,
     1, 4, 1, 3, FALSE
   ))

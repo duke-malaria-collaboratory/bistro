@@ -9,5 +9,4 @@ test_that("calc_allele_freqs works", {
   expect_snapshot(calc_allele_freqs(hu_prof_sub))
 
   expect_snapshot(calc_allele_freqs(hu_prof_sub, rm_markers = c("AMEL")))
-
 })

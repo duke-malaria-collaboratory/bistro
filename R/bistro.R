@@ -35,7 +35,10 @@
 #' @param rm_twins A boolean indicating whether or not to remove likely twins
 #'   (identical STR profiles) from the human database prior to identifying
 #'   matches. Default: TRUE
-#' @param rm_markers A vector indicating what markers should be removed prior to calculating log10LRs. NULL to include all markers. By default, for the bistro function AMEL is removed as it is not standard to include it in LR calculations.
+#' @param rm_markers A vector indicating what markers should be removed prior to
+#'   calculating log10LRs. NULL to include all markers. By default, for the
+#'   bistro function AMEL is removed as it is not standard to include it in LR
+#'   calculations.
 #' @param model_degrad A boolean indicating whether or not to model peak
 #'   degradation. Used for `modelDegrad` argument in
 #'   [euroformix::contLikSearch()]. Default: TRUE
@@ -72,9 +75,9 @@
 #'   If `return_lrs = TRUE`, then a named list of length 2 is returned:
 #' * matches - the tibble described above
 #' * lrs - log10LRs for each bloodmeal-human pair including some
-#' of the columns described above and an additional column:
-#'  `efm_noc`, which is the number of contributors used as input
-#'   into euroformix, which is `min(est_noc, 3)`.
+#'   of the columns described above and an additional column: `efm_noc`, which
+#'   is the number of contributors used as input into euroformix, which is
+#'   `min(est_noc, 3)`.
 #'
 #' @export
 #'
@@ -93,7 +96,7 @@ bistro <-
            bloodmeal_ids = NULL,
            human_ids = NULL,
            rm_twins = TRUE,
-           rm_markers = c('AMEL'),
+           rm_markers = c("AMEL"),
            model_degrad = TRUE,
            model_bw_stutt = FALSE,
            model_fw_stutt = FALSE,
@@ -125,9 +128,9 @@ bistro <-
 
     if (calc_allele_freqs) {
       pop_allele_freqs <- calc_allele_freqs(human_profiles, rm_markers)
-    }else if(!is.null(rm_markers)){
+    } else if (!is.null(rm_markers)) {
       pop_allele_freqs <- pop_allele_freqs |>
-        dplyr::select(-dplyr::matches(paste0('^', toupper(rm_markers), '$')))
+        dplyr::select(-dplyr::matches(paste0("^", toupper(rm_markers), "$")))
     }
 
     message("Formatting bloodmeal profiles")
@@ -146,11 +149,18 @@ bistro <-
       rm_markers
     )
 
-    bm_markers <- unique(bloodmeal_profiles$Marker[!is.na(bloodmeal_profiles$Marker)])
-    hu_markers <- unique(human_profiles$Marker[!is.na(human_profiles$Marker)])
-    message('Markers being used: ',
-            paste(intersect(bm_markers, hu_markers),
-                  collapse = ', '))
+    bm_markers <- bloodmeal_profiles$Marker
+    bm_markers <- bm_markers[!is.na(bm_markers)] |>
+      unique()
+    hu_markers <- human_profiles$Marker
+    hu_markers <- hu_markers[!is.na(hu_markers)] |>
+      unique()
+    message(
+      "Markers being used: ",
+      paste(intersect(bm_markers, hu_markers),
+        collapse = ", "
+      )
+    )
 
     message("Calculating log10LRs")
 

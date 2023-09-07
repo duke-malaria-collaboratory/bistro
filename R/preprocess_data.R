@@ -10,7 +10,7 @@
 prep_bloodmeal_profiles <- function(bloodmeal_profiles,
                                     bloodmeal_ids = NULL,
                                     peak_thresh = NULL,
-                                    rm_markers = c('AMEL')) {
+                                    rm_markers = c("AMEL")) {
   if (is.null(bloodmeal_ids)) {
     bloodmeal_ids <- unique(bloodmeal_profiles$SampleName)
   } else {
@@ -44,7 +44,7 @@ prep_bloodmeal_profiles <- function(bloodmeal_profiles,
 prep_human_profiles <- function(human_profiles,
                                 human_ids = NULL,
                                 rm_twins = TRUE,
-                                rm_markers = c('AMEL')) {
+                                rm_markers = c("AMEL")) {
   if (rm_twins) {
     human_profiles <- rm_twins(human_profiles)
   }
@@ -70,8 +70,8 @@ prep_human_profiles <- function(human_profiles,
 #' @return Dataframe without markers
 #' @export
 #' @keywords internal
-rm_markers <- function(profiles, markers){
-  check_colnames(profiles, 'Marker')
+rm_markers <- function(profiles, markers) {
+  check_colnames(profiles, "Marker")
   profiles <- profiles |>
     dplyr::mutate(Marker = toupper(Marker)) |>
     dplyr::filter(!Marker %in% toupper(markers))

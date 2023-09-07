@@ -82,7 +82,8 @@ present here, see <code><a href="../articles/bistro.html">vignette('bistro')</a>
 <span>  difftol <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  threads <span class="op">=</span> <span class="fl">4</span>,</span>
 <span>  seed <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  time_limit <span class="op">=</span> <span class="fl">3</span></span>
+<span>  time_limit <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  return_lrs <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -182,6 +183,11 @@ argument. Default: 1</p></dd>
 <code><a href="https://rdrr.io/pkg/euroformix/man/contLikSearch.html" class="external-link">euroformix::contLikSearch()</a></code> function on 1 bloodmeal-human pair. Default:
 3</p></dd>
 
+
+<dt>return_lrs</dt>
+<dd><p>A boolean indicating whether or not to return log10LRs for
+all bloodmeal-human pairs. Default: FALSE</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -195,7 +201,13 @@ these are included as separate rows.</p><ul><li><p><code>bloodmeal_id</code>: bl
 <li><p><code>match</code>: whether a match was identified for a given bloodmeal (yes or no)</p></li>
 <li><p><code>human_id</code>: If match, human id (NA otherwise)</p></li>
 <li><p><code>log10_lr</code>: If match, log10 likelihood ratio (NA otherwise)</p></li>
-<li><p><code>notes</code>: Why the bloodmeal does or doesn't have a match</p></li>
+<li><p><code>notes</code>: Why the bloodmeal does or doesn't have a match</p>
+<p>If <code>return_lrs = TRUE</code>, then a named list of length 2 is returned:</p></li>
+<li><p>matches - the tibble described above</p></li>
+<li><p>lrs - log10LRs for each bloodmeal-human pair including some
+of the columns described above and an additional column:
+<code>efm_noc</code>, which is the number of contributors used as input
+into euroformix, which is <code>min(est_noc, 3)</code>.</p></li>
 </ul></div>
 
     <div class="section level2">

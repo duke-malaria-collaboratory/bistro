@@ -21,7 +21,7 @@ match_static_thresh <- function(log10_lrs, thresh) {
     dplyr::select(bloodmeal_id, locus_count, est_noc) |>
     dplyr::distinct()
 
-  matches <- log10_lrs %>%
+  matches <- log10_lrs |>
     dplyr::filter(log10_lr >= thresh) |>
     dplyr::mutate(match = "yes") |>
     dplyr::select(

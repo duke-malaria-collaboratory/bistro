@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# bistro: bloodmeal identification by STR overlap <a href='http://www.schlosslab.org/mikropml/'><img src='man/figures/logo.png' align="right" height="120" /></a>
+# bistro: bloodmeal identification by STR overlap <a href='https://github.com/duke-malaria-collaboratory/bistro'><img src='man/figures/logo.png' align="right" height="120" /></a>
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/duke-malaria-collaboratory/bistro/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/duke-malaria-collaboratory/bistro/actions/workflows/R-CMD-check.yaml)

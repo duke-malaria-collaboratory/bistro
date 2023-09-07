@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# bistro: bloodmeal identification by STR overlap <a href='http://www.schlosslab.org/mikropml/'><img src='man/figures/logo.png' align="right" height="120" /></a>
+# bistro: bloodmeal identification by STR overlap <a href='https://github.com/duke-malaria-collaboratory/bistro'><img src='man/figures/logo.png' align="right" height="120" /></a>
 
 <!-- badges: start -->
 

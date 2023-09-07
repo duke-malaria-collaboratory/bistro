@@ -55,7 +55,8 @@ match_similarity <- function(bloodmeal_profiles,
     bloodmeal_profiles,
     bloodmeal_ids,
     peak_thresh,
-    rm_markers = rm_markers
+    rm_markers = rm_markers,
+    check_heights = FALSE
   )
 
   all_bm_ids <- unique(bloodmeal_profiles$SampleName)

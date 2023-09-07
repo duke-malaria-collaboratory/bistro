@@ -2,6 +2,8 @@
 #'
 #' Removes duplicates and peaks below threshold, subsets ids
 #'
+#' @param check_heights A boolean indicating whether to check if all peak
+#'   heights are below the threshold. Default: TRUE
 #' @inheritParams bistro
 #'
 #' @return Dataframe with preprocessed bloodmeal profiles
@@ -10,7 +12,8 @@
 prep_bloodmeal_profiles <- function(bloodmeal_profiles,
                                     bloodmeal_ids = NULL,
                                     peak_thresh = NULL,
-                                    rm_markers = c("AMEL")) {
+                                    rm_markers = c("AMEL"),
+                                    check_heights = TRUE) {
   if (is.null(bloodmeal_ids)) {
     bloodmeal_ids <- unique(bloodmeal_profiles$SampleName)
   } else {
@@ -24,7 +27,9 @@ prep_bloodmeal_profiles <- function(bloodmeal_profiles,
     rm_dups()
 
   if (!is.null(peak_thresh)) {
-    check_heights(bloodmeal_profiles$Height, peak_thresh)
+    if (check_heights) {
+      check_heights(bloodmeal_profiles$Height, peak_thresh)
+    }
     bloodmeal_profiles <- bloodmeal_profiles |>
       filter_peaks(peak_thresh)
   }

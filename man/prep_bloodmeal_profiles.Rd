@@ -8,7 +8,8 @@ prep_bloodmeal_profiles(
   bloodmeal_profiles,
   bloodmeal_ids = NULL,
   peak_thresh = NULL,
-  rm_markers = c("AMEL")
+  rm_markers = c("AMEL"),
+  check_heights = TRUE
 )
 }
 \arguments{
@@ -29,6 +30,9 @@ number should be equal to or greater than that number. Also used for
 calculating log10LRs. NULL to include all markers. By default, for the
 bistro function AMEL is removed as it is not standard to include it in LR
 calculations.}
+
+\item{check_heights}{A boolean indicating whether to check if all peak
+heights are below the threshold. Default: TRUE}
 }
 \value{
 Dataframe with preprocessed bloodmeal profiles

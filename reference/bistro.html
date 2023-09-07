@@ -147,7 +147,10 @@ matches. Default: TRUE</p></dd>
 
 
 <dt>rm_markers</dt>
-<dd><p>A vector indicating what markers should be removed prior to calculating log10LRs. NULL to include all markers. By default, for the bistro function AMEL is removed as it is not standard to include it in LR calculations.</p></dd>
+<dd><p>A vector indicating what markers should be removed prior to
+calculating log10LRs. NULL to include all markers. By default, for the
+bistro function AMEL is removed as it is not standard to include it in LR
+calculations.</p></dd>
 
 
 <dt>model_degrad</dt>
@@ -210,9 +213,9 @@ these are included as separate rows.</p><ul><li><p><code>bloodmeal_id</code>: bl
 <p>If <code>return_lrs = TRUE</code>, then a named list of length 2 is returned:</p></li>
 <li><p>matches - the tibble described above</p></li>
 <li><p>lrs - log10LRs for each bloodmeal-human pair including some
-of the columns described above and an additional column:
-<code>efm_noc</code>, which is the number of contributors used as input
-into euroformix, which is <code>min(est_noc, 3)</code>.</p></li>
+of the columns described above and an additional column: <code>efm_noc</code>, which
+is the number of contributors used as input into euroformix, which is
+<code>min(est_noc, 3)</code>.</p></li>
 </ul></div>
 
     <div class="section level2">

@@ -3,7 +3,9 @@ template:
   bootstrap: 5
 
 reference:
-- title: Main function
+- title: bistro matching function
+  desc: >
+    Uses the bistro algorithm to identify matches between bloodmeals and people
   contents:
   - bistro
 
@@ -12,6 +14,12 @@ reference:
   - bloodmeal_profiles
   - human_profiles
   - pop_allele_freqs
+
+- title: Other matching functions
+  contents:
+  - match_exact
+  - match_similarity
+  - match_static_thresh
 
 - title: Other functions
   desc: >

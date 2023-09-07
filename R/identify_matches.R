@@ -128,7 +128,8 @@ identify_one_match_set <- function(log10_lrs, bloodmeal_id) {
 
 #' Identify matches for multiple bloodmeal-human pairs
 #'
-#' @param log10_lrs Output from [calc_log10_lrs()]
+#' @param log10_lrs Output from [calc_log10_lrs()] or from `bistro` with
+#'   `return_lrs = TRUE` (`lrs`: the second element in the list)
 #' @inheritParams bistro
 #'
 #' @return A tibble with the same output as for [bistro()].

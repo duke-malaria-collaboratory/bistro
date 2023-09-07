@@ -8,8 +8,8 @@
 #' @export
 #' @keywords internal
 prep_bloodmeal_profiles <- function(bloodmeal_profiles,
-                                    peak_thresh,
-                                    bloodmeal_ids = NULL) {
+                                    bloodmeal_ids = NULL,
+                                    peak_thresh = NULL) {
   if (is.null(bloodmeal_ids)) {
     bloodmeal_ids <- unique(bloodmeal_profiles$SampleName)
   } else {
@@ -18,13 +18,14 @@ prep_bloodmeal_profiles <- function(bloodmeal_profiles,
   }
 
   bloodmeal_profiles <- bloodmeal_profiles |>
-    dplyr::filter(SampleName %in% bloodmeal_ids)
+    dplyr::filter(SampleName %in% bloodmeal_ids) |>
+    rm_dups()
 
-  check_heights(bloodmeal_profiles$Height, peak_thresh)
-
-  bloodmeal_profiles <- bloodmeal_profiles |>
-    rm_dups() |>
-    filter_peaks(peak_thresh)
+  if (!is.null(peak_thresh)) {
+    check_heights(bloodmeal_profiles$Height, peak_thresh)
+    bloodmeal_profiles <- bloodmeal_profiles |>
+      filter_peaks(peak_thresh)
+  }
 
   return(bloodmeal_profiles)
 }

@@ -40,5 +40,4 @@ test_that("bistro works", {
     peak_thresh = 200,
     return_lrs = TRUE
   ))
-
 })

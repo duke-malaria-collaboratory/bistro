@@ -4,21 +4,25 @@
 \alias{prep_bloodmeal_profiles}
 \title{Preprocess bloodmeal profiles}
 \usage{
-prep_bloodmeal_profiles(bloodmeal_profiles, peak_thresh, bloodmeal_ids = NULL)
+prep_bloodmeal_profiles(
+  bloodmeal_profiles,
+  bloodmeal_ids = NULL,
+  peak_thresh = NULL
+)
 }
 \arguments{
 \item{bloodmeal_profiles}{Tibble with alleles for all bloodmeals in reference
 database including 4 columns: SampleName, Marker, Allele, Height. Height
 must be numeric or coercible to numeric.}
 
+\item{bloodmeal_ids}{Vector of bloodmeal ids from the SampleName column in
+\code{bloodmeal_profiles} for which to compute log10_lrs. If NULL, all ids in
+the input dataframe will be used. Default: NULL}
+
 \item{peak_thresh}{Allele peak height threshold in RFUs. All peaks under this
 threshold will be filtered out. If prior filtering was performed, this
 number should be equal to or greater than that number. Also used for
 \code{threshT} argument in \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}}.}
-
-\item{bloodmeal_ids}{Vector of bloodmeal ids from the SampleName column in
-\code{bloodmeal_profiles} for which to compute log10_lrs. If NULL, all ids in
-the input dataframe will be used. Default: NULL}
 }
 \value{
 Dataframe with preprocessed bloodmeal profiles

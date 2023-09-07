@@ -126,8 +126,8 @@ bistro <-
     message("Formatting bloodmeal profiles")
     bloodmeal_profiles <- prep_bloodmeal_profiles(
       bloodmeal_profiles,
-      peak_thresh,
-      bloodmeal_ids
+      bloodmeal_ids,
+      peak_thresh
     )
 
     message("Formatting human profiles")
@@ -161,9 +161,11 @@ bistro <-
 
     matches <- identify_matches(log10_lrs, bloodmeal_ids)
 
-    if(return_lrs){
-      matches <- list(matches = matches,
-                      lrs = log10_lrs)
+    if (return_lrs) {
+      matches <- list(
+        matches = matches,
+        lrs = log10_lrs
+      )
     }
 
     return(matches)

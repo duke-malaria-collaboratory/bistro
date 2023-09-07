@@ -19,7 +19,17 @@ utils::globalVariables(
     "human_id",
     "thresh_low",
     "next_same",
-    "n_samps"
+    "n_samps",
+    "bloodmeal_id",
+    "human1",
+    "human2",
+    "hu1",
+    "hu2",
+    "similarity",
+    "profile",
+    "alleles",
+    "est_noc",
+    "locus_count"
   )
 )
 

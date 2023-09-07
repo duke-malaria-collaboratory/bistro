@@ -7,7 +7,8 @@
 identify_matches(log10_lrs, bloodmeal_ids = NULL)
 }
 \arguments{
-\item{log10_lrs}{Output from \code{\link[=calc_log10_lrs]{calc_log10_lrs()}}}
+\item{log10_lrs}{Output from \code{\link[=calc_log10_lrs]{calc_log10_lrs()}} or from \code{bistro} with
+\code{return_lrs = TRUE} (\code{lrs}: the second element in the list)}
 
 \item{bloodmeal_ids}{Vector of bloodmeal ids from the SampleName column in
 \code{bloodmeal_profiles} for which to compute log10_lrs. If NULL, all ids in

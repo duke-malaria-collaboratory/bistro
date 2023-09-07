@@ -114,39 +114,19 @@ bistro <-
       pop_allele_freqs <- calc_allele_freqs(human_profiles)
     }
 
-    if (rm_twins) {
-      human_profiles <- rm_twins(human_profiles)
-    }
-
     message("Formatting bloodmeal profiles")
-
-    if (is.null(bloodmeal_ids)) {
-      bloodmeal_ids <- unique(bloodmeal_profiles$SampleName)
-    } else {
-      bloodmeal_ids <-
-        subset_ids(bloodmeal_ids, bloodmeal_profiles$SampleName)
-    }
-
-    bloodmeal_profiles <- bloodmeal_profiles |>
-      dplyr::filter(SampleName %in% bloodmeal_ids)
-
-    check_heights(bloodmeal_profiles$Height, peak_thresh)
-
-    bloodmeal_profiles <- bloodmeal_profiles |>
-      rm_dups() |>
-      filter_peaks(peak_thresh)
+    bloodmeal_profiles <- prep_bloodmeal_profiles(
+      bloodmeal_profiles,
+      peak_thresh,
+      bloodmeal_ids
+    )
 
     message("Formatting human profiles")
-
-    if (is.null(human_ids)) {
-      human_ids <- unique(human_profiles$SampleName)
-    } else {
-      human_ids <- subset_ids(human_ids, human_profiles$SampleName)
-    }
-
-    human_profiles <- human_profiles |>
-      dplyr::filter(SampleName %in% human_ids) |>
-      rm_dups()
+    human_profiles <- prep_human_profiles(
+      human_profiles,
+      human_ids,
+      rm_twins
+    )
 
     message("Calculating log10LRs")
 

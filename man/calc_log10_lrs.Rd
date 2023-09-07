@@ -85,6 +85,9 @@ contributors used for \code{\link[euroformix:contLikSearch]{euroformix::contLikS
 value of 3.
 }
 \description{
-Calculate log10_lrs for multiple bloodmeal-human pairs
+Note that this function doesn't preprocess the bloodmeal and human profile
+data. If you would like to preprocess it in the same way as is performed
+internally in the \code{bistro()} function, you must run
+\code{prep_bloodmeal_profiles()} and \code{prep_human_profiles()} first.
 }
 \keyword{internal}

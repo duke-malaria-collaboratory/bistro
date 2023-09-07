@@ -33,7 +33,15 @@ test_that("identify_matches works", {
 
   expect_snapshot(identify_matches(lrs))
 
-  expect_no_error(lrs |>
-    dplyr::mutate(log10_lr = Inf) |>
-    identify_matches())
+  expect_equal(
+    lrs |>
+      dplyr::mutate(log10_lr = Inf) |>
+      identify_matches() |>
+      dplyr::pull(notes),
+    c(
+      "all log10LRs NA or Inf",
+      "all log10LRs NA or Inf;no shared alleles;euroformix error",
+      "all log10LRs NA or Inf"
+    )
+  )
 })

@@ -29,7 +29,11 @@ identify_one_match_set <- function(log10_lrs, bloodmeal_id) {
   )
 
   if (all(is.na(log10_lrs$log10_lr) | is.infinite(log10_lrs$log10_lr))) {
-    matches_thresh <- matches
+    matches_thresh <- matches |>
+      dplyr::mutate(notes = ifelse(is.na(notes),
+        "all log10LRs NA or Inf",
+        paste0("all log10LRs NA or Inf", ";", notes)
+      ))
   } else if (max(log10_lrs$log10_lr[!is.infinite(log10_lrs$log10_lr)]) < 1.5 &&
     is.na(notes)) {
     matches_thresh <- matches |>

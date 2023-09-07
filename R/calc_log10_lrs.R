@@ -116,6 +116,11 @@ calc_one_log10_lr <-
 
 #' Calculate log10_lrs for multiple bloodmeal-human pairs
 #'
+#' Note that this function doesn't preprocess the bloodmeal and human profile
+#' data. If you would like to preprocess it in the same way as is performed
+#' internally in the `bistro()` function, you must run
+#' `prep_bloodmeal_profiles()` and `prep_human_profiles()` first.
+#'
 #' @inheritParams bistro
 #'
 #' @return A tibble with the same output as for [bistro()], except there is no

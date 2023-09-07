@@ -14,18 +14,6 @@ test_that("bistro works", {
     )
   )
 
-  expect_snapshot(
-    bistro(
-      bm_evid1,
-      hu_p1,
-      pop_allele_freqs = pop_allele_freqs,
-      kit = "ESX17",
-      peak_thresh = 200,
-      bloodmeal_ids = "evid1",
-      human_ids = "P1"
-    )
-  )
-
   expect_snapshot(bistro(
     bm_evid1,
     hu_p1,
@@ -43,17 +31,4 @@ test_that("bistro works", {
     ),
     "If `calc_allele_freqs = FALSE`, then `pop_allele_freqs` is required."
   )
-
-  expect_message(expect_message(expect_message(
-    expect_error(
-      bistro(
-        bloodmeal_profiles %>% dplyr::filter(Height < 200),
-        human_profiles,
-        pop_allele_freqs = pop_allele_freqs,
-        kit = "ESX17",
-        peak_thresh = 200
-      ),
-      "All bloodmeal peak heights below threshold of 200."
-    )
-  )))
 })

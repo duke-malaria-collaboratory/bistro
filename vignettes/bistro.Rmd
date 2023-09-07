@@ -217,9 +217,23 @@ Used by `bistro`:
 
 Used by `euroformix::contLikSearch()` when calculating log-likelihoods:
 
+- `rm_markers`: markers to not use for calculating LRs. By default, AMEL is removed because it is not standard to use for calculating LRs as it is a sex-specific marker 
 - `model_degrad`: whether or not to model peak degradation (default: TRUE)
 - `model_bw_stutt` and `model_fw_stutt`: whether or not to model peak backward and forward stutter (default: FALSE)
 - `difftol`: difference tolerance in log-likelihood across 2 iterations  (default: 1)
 - `threads`: number of threads to use when computing log-likelihoods (default: 4)
 - `seed`: seed for reproducible results (default: 1)
+- `return_lr`: whether or not to return all bloodmeal-human log10LRs. This is useful if you want to investigate the matches or perform static threshold matching (see below) (default: FALSE)
+
+## Other matching algorithms
+
+We have also implemented a few other matching algorithms including:
+
+- `match_exact()`: Exact matching of all markers and alleles
+- `match_similarity()`: Similarity matching based on the highest similarity value between humans in a reference database
+- `match_static_threshold()`: Matching based on static log10LR threshold. 
+
+These algorithms take similar inputs to `bistro()`, or in the case of `match_static_threshold()`, a `bistro()` output.
+
+Look out for our upcoming manuscript for a comparison of these methods. 
 

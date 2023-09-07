@@ -139,6 +139,7 @@ match_similarity <- function(bloodmeal_profiles, human_profiles,
 #' - hu1: human ID 1
 #' - hu2: human ID 2
 #' - similarity: similarity value (# exact locus matches / # loci)
+#' @keywords internal
 get_human_similarity <- function(human_profiles) {
   human_profiles <- human_profiles |>
     tidyr::drop_na()
@@ -193,6 +194,7 @@ get_human_similarity <- function(human_profiles) {
 #' @return dataframe with two columns:
 #' - bloodmeal_id: bloodmeal ID
 #' - human_id: human ID of match, or "No match" if no match
+#' @keywords internal
 get_bloodmeal_human_similarity <- function(bloodmeal_profiles,
                                            human_profiles) {
   bloodmeal_profiles <- bloodmeal_profiles |>

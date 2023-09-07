@@ -59,18 +59,20 @@
 <span>  <span class="va">human_profiles</span>,</span>
 <span>  <span class="va">kit</span>,</span>
 <span>  <span class="va">peak_thresh</span>,</span>
-<span>  pop_allele_freqs <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  calc_allele_freqs <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  bloodmeal_ids <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  human_ids <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  rm_twins <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  model_degrad <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  model_bw_stutt <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  model_fw_stutt <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  difftol <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  threads <span class="op">=</span> <span class="fl">4</span>,</span>
-<span>  seed <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  time_limit <span class="op">=</span> <span class="fl">3</span></span>
+<span>  <span class="va">pop_allele_freqs</span>,</span>
+<span>  <span class="va">calc_allele_freqs</span>,</span>
+<span>  <span class="va">bloodmeal_ids</span>,</span>
+<span>  <span class="va">human_ids</span>,</span>
+<span>  <span class="va">rm_twins</span>,</span>
+<span>  <span class="va">rm_markers</span>,</span>
+<span>  <span class="va">model_degrad</span>,</span>
+<span>  <span class="va">model_bw_stutt</span>,</span>
+<span>  <span class="va">model_fw_stutt</span>,</span>
+<span>  <span class="va">difftol</span>,</span>
+<span>  <span class="va">threads</span>,</span>
+<span>  <span class="va">seed</span>,</span>
+<span>  <span class="va">time_limit</span>,</span>
+<span>  <span class="va">return_lrs</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -132,6 +134,10 @@ input dataframe will be used. Default: NULL</p></dd>
 matches. Default: TRUE</p></dd>
 
 
+<dt>rm_markers</dt>
+<dd><p>A vector indicating what markers should be removed prior to calculating log10LRs. NULL to include all markers. By default, for the bistro function AMEL is removed as it is not standard to include it in LR calculations.</p></dd>
+
+
 <dt>model_degrad</dt>
 <dd><p>A boolean indicating whether or not to model peak
 degradation. Used for <code>modelDegrad</code> argument in
@@ -169,6 +175,11 @@ argument. Default: 1</p></dd>
 <dd><p>Time limit in minutes to run the
 <code><a href="https://rdrr.io/pkg/euroformix/man/contLikSearch.html" class="external-link">euroformix::contLikSearch()</a></code> function on 1 bloodmeal-human pair. Default:
 3</p></dd>
+
+
+<dt>return_lrs</dt>
+<dd><p>A boolean indicating whether or not to return log10LRs for
+all bloodmeal-human pairs. Default: FALSE</p></dd>
 
 </dl></div>
     <div class="section level2">

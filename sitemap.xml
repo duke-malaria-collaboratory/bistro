@@ -85,6 +85,12 @@
     <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/format_human_profiles.html</loc>
   </url>
   <url>
+    <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/get_bloodmeal_human_similarity.html</loc>
+  </url>
+  <url>
+    <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/get_human_similarity.html</loc>
+  </url>
+  <url>
     <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/human_profiles.html</loc>
   </url>
   <url>
@@ -97,6 +103,15 @@
     <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/index.html</loc>
   </url>
   <url>
+    <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/match_exact.html</loc>
+  </url>
+  <url>
+    <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/match_similarity.html</loc>
+  </url>
+  <url>
+    <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/match_static_thresh.html</loc>
+  </url>
+  <url>
     <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/pop_allele_freqs.html</loc>
   </url>
   <url>
@@ -107,6 +122,9 @@
   </url>
   <url>
     <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/rm_dups.html</loc>
+  </url>
+  <url>
+    <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/rm_markers.html</loc>
   </url>
   <url>
     <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/rm_twins.html</loc>

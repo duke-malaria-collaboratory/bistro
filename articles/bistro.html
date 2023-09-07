@@ -280,6 +280,7 @@ test it out using the example data included in the package:</p>
 <span><span class="co">#&gt; Removing 6 peaks under the threshold of 200 RFU.</span></span>
 <span><span class="co">#&gt; For 1/4 bloodmeal ids, all peaks are below the threshold</span></span>
 <span><span class="co">#&gt; Formatting human profiles</span></span>
+<span><span class="co">#&gt; Markers being used: D10S1248, D12S391, D16S539, D18S51, D19S433, D1S1656, D21S11, D22S1045, D2S1338, D2S441, D3S1358, D8S1179, FGA, SE33, TH01, VWA</span></span>
 <span><span class="co">#&gt; Calculating log10LRs</span></span>
 <span><span class="co">#&gt; # bloodmeal ids: 3</span></span>
 <span><span class="co">#&gt; # human ids: 3</span></span>
@@ -315,8 +316,8 @@ out.</li>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 8</span></span></span>
 <span><span class="co">#&gt;   bloodmeal_id locus_count est_noc match human_id log10_lr notes      thresh_low</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> evid1                 17       2 yes   P1           21.8 passed al…        9.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> evid1                 17       2 yes   P2           10.3 passed al…        9.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> evid1                 16       2 yes   P1           21.8 passed al…        9.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> evid1                 16       2 yes   P2           10.3 passed al…        9.5</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> evid2                  1       2 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   all log10…       <span style="color: #BB0000;">NA</span>  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> evid3                  8       1 no    <span style="color: #BB0000;">NA</span>           <span style="color: #BB0000;">NA</span>   all log10…       <span style="color: #BB0000;">NA</span></span></span></code></pre></div>
 <p>The output contains 8 columns:</p>
@@ -442,6 +443,10 @@ the log-likelihood for one bloodmeal-human pair, in minutes (default:
 log-likelihoods:</p>
 <ul>
 <li>
+<code>rm_markers</code>: markers to not use for calculating LRs. By
+default, AMEL is removed because it is not standard to use for
+calculating LRs as it is a sex-specific marker</li>
+<li>
 <code>model_degrad</code>: whether or not to model peak degradation
 (default: TRUE)</li>
 <li>
@@ -455,7 +460,33 @@ or not to model peak backward and forward stutter (default: FALSE)</li>
 log-likelihoods (default: 4)</li>
 <li>
 <code>seed</code>: seed for reproducible results (default: 1)</li>
+<li>
+<code>return_lr</code>: whether or not to return all bloodmeal-human
+log10LRs. This is useful if you want to investigate the matches or
+perform static threshold matching (see below) (default: FALSE)</li>
 </ul>
+</div>
+<div class="section level2">
+<h2 id="other-matching-algorithms">Other matching algorithms<a class="anchor" aria-label="anchor" href="#other-matching-algorithms"></a>
+</h2>
+<p>We have also implemented a few other matching algorithms
+including:</p>
+<ul>
+<li>
+<code><a href="../reference/match_exact.html">match_exact()</a></code>: Exact matching of all markers and
+alleles</li>
+<li>
+<code><a href="../reference/match_similarity.html">match_similarity()</a></code>: Similarity matching based on the
+highest similarity value between humans in a reference database</li>
+<li>
+<code>match_static_threshold()</code>: Matching based on static
+log10LR threshold.</li>
+</ul>
+<p>These algorithms take similar inputs to <code><a href="../reference/bistro.html">bistro()</a></code>, or in
+the case of <code>match_static_threshold()</code>, a
+<code><a href="../reference/bistro.html">bistro()</a></code> output.</p>
+<p>Look out for our upcoming manuscript for a comparison of these
+methods.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>

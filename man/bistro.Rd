@@ -14,6 +14,7 @@ bistro(
   bloodmeal_ids = NULL,
   human_ids = NULL,
   rm_twins = TRUE,
+  rm_markers = c("AMEL"),
   model_degrad = TRUE,
   model_bw_stutt = FALSE,
   model_fw_stutt = FALSE,
@@ -62,6 +63,8 @@ input dataframe will be used. Default: NULL}
 \item{rm_twins}{A boolean indicating whether or not to remove likely twins
 (identical STR profiles) from the human database prior to identifying
 matches. Default: TRUE}
+
+\item{rm_markers}{A vector indicating what markers should be removed prior to calculating log10LRs. NULL to include all markers. By default, for the bistro function AMEL is removed as it is not standard to include it in LR calculations.}
 
 \item{model_degrad}{A boolean indicating whether or not to model peak
 degradation. Used for \code{modelDegrad} argument in

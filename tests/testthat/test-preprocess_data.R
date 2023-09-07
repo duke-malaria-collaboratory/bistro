@@ -15,9 +15,22 @@ test_that("prep_bloodmeal_profiles works", {
 })
 
 test_that("prep_human_profiles works", {
-  expect_snapshot(prep_human_profiles(human_profiles))
+  expect_snapshot(prep_human_profiles(human_profiles, rm_markers = 'amel'))
 
   expect_snapshot(prep_human_profiles(human_profiles, human_ids = "P1"))
+})
+
+test_that("rm_markers works", {
+
+  expect_equal(
+    nrow(rm_markers(bloodmeal_profiles, c("amel")) |>
+    dplyr::filter(Marker == 'AMEL')),
+    0)
+
+  expect_equal(
+    nrow(rm_markers(bloodmeal_profiles, NULL)),
+    nrow(bloodmeal_profiles))
+
 })
 
 test_that("rm_dups works", {

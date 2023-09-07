@@ -9,18 +9,20 @@ check_bistro_inputs <-
            human_profiles,
            kit,
            peak_thresh,
-           pop_allele_freqs = NULL,
-           calc_allele_freqs = FALSE,
-           bloodmeal_ids = NULL,
-           human_ids = NULL,
-           rm_twins = TRUE,
-           model_degrad = TRUE,
-           model_bw_stutt = FALSE,
-           model_fw_stutt = FALSE,
-           difftol = 1,
-           threads = 4,
-           seed = 1,
-           time_limit = 3) {
+           pop_allele_freqs,
+           calc_allele_freqs,
+           bloodmeal_ids,
+           human_ids,
+           rm_twins,
+           rm_markers,
+           model_degrad,
+           model_bw_stutt,
+           model_fw_stutt,
+           difftol,
+           threads,
+           seed,
+           time_limit,
+           return_lrs) {
     check_colnames(
       bloodmeal_profiles,
       c("SampleName", "Marker", "Allele", "Height")
@@ -28,12 +30,26 @@ check_bistro_inputs <-
     check_colnames(human_profiles, c("SampleName", "Marker", "Allele"))
     check_ids(bloodmeal_ids, "bloodmeal_ids")
     check_ids(human_ids, "human_ids")
+    check_ids(rm_markers)
 
     kit_df <- check_kit(kit)
 
-    bm_prof_markers <- toupper(unique(bloodmeal_profiles$Marker))
-    hu_prof_markers <- toupper(unique(human_profiles$Marker))
-    kit_markers <- toupper(unique(kit_df$Marker))
+    bm_prof_markers <- bloodmeal_profiles$Marker |>
+      unique() |>
+      toupper()
+    hu_prof_markers <- human_profiles$Marker |>
+      unique() |>
+      toupper()
+    kit_markers <- kit_df$Marker |>
+      unique() |>
+      toupper()
+
+    if(!is.null(rm_markers)){
+      rm_markers <- toupper(rm_markers)
+      bm_prof_markers <- bm_prof_markers[!bm_prof_markers %in% rm_markers]
+      hu_prof_markers <- hu_prof_markers[!hu_prof_markers %in% rm_markers]
+      kit_markers <- kit_markers[!kit_markers %in% rm_markers]
+    }
 
     check_setdiff_markers(
       bm_prof_markers,
@@ -56,6 +72,7 @@ check_bistro_inputs <-
     check_is_bool(model_degrad, "model_degrad")
     check_is_bool(model_bw_stutt, "model_bw_stutt")
     check_is_bool(model_fw_stutt, "model_fw_stutt")
+    check_is_bool(return_lrs, "return_lrs")
     check_is_numeric(difftol, "difftol", pos = TRUE)
     check_is_numeric(threads, "threads", pos = TRUE)
     check_is_numeric(seed, "seed")

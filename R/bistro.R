@@ -35,6 +35,7 @@
 #' @param rm_twins A boolean indicating whether or not to remove likely twins
 #'   (identical STR profiles) from the human database prior to identifying
 #'   matches. Default: TRUE
+#' @param rm_markers A vector indicating what markers should be removed prior to calculating log10LRs. NULL to include all markers. By default, for the bistro function AMEL is removed as it is not standard to include it in LR calculations.
 #' @param model_degrad A boolean indicating whether or not to model peak
 #'   degradation. Used for `modelDegrad` argument in
 #'   [euroformix::contLikSearch()]. Default: TRUE
@@ -92,6 +93,7 @@ bistro <-
            bloodmeal_ids = NULL,
            human_ids = NULL,
            rm_twins = TRUE,
+           rm_markers = c('AMEL'),
            model_degrad = TRUE,
            model_bw_stutt = FALSE,
            model_fw_stutt = FALSE,
@@ -110,32 +112,45 @@ bistro <-
       bloodmeal_ids,
       human_ids,
       rm_twins,
+      rm_markers,
       model_degrad,
       model_bw_stutt,
       model_fw_stutt,
       difftol,
       threads,
       seed,
-      time_limit
+      time_limit,
+      return_lrs
     )
 
     if (calc_allele_freqs) {
-      pop_allele_freqs <- calc_allele_freqs(human_profiles)
+      pop_allele_freqs <- calc_allele_freqs(human_profiles, rm_markers)
+    }else if(!is.null(rm_markers)){
+      pop_allele_freqs <- pop_allele_freqs |>
+        dplyr::select(-dplyr::matches(paste0('^', toupper(rm_markers), '$')))
     }
 
     message("Formatting bloodmeal profiles")
     bloodmeal_profiles <- prep_bloodmeal_profiles(
       bloodmeal_profiles,
       bloodmeal_ids,
-      peak_thresh
+      peak_thresh,
+      rm_markers
     )
 
     message("Formatting human profiles")
     human_profiles <- prep_human_profiles(
       human_profiles,
       human_ids,
-      rm_twins
+      rm_twins,
+      rm_markers
     )
+
+    bm_markers <- unique(bloodmeal_profiles$Marker[!is.na(bloodmeal_profiles$Marker)])
+    hu_markers <- unique(human_profiles$Marker[!is.na(human_profiles$Marker)])
+    message('Markers being used: ',
+            paste(intersect(bm_markers, hu_markers),
+                  collapse = ', '))
 
     message("Calculating log10LRs")
 

@@ -7,4 +7,7 @@ test_that("calc_allele_freqs works", {
   hu_prof_sub <-
     human_profiles |> dplyr::filter(Marker %in% c("AMEL", "D10S1248"))
   expect_snapshot(calc_allele_freqs(hu_prof_sub))
+
+  expect_snapshot(calc_allele_freqs(hu_prof_sub, rm_markers = c("AMEL")))
+
 })

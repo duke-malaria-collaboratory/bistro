@@ -10,7 +10,8 @@ match_exact(
   bloodmeal_ids = NULL,
   human_ids = NULL,
   peak_thresh = NULL,
-  rm_twins = TRUE
+  rm_twins = TRUE,
+  rm_markers = NULL
 )
 }
 \arguments{
@@ -37,6 +38,8 @@ number should be equal to or greater than that number. Also used for
 \item{rm_twins}{A boolean indicating whether or not to remove likely twins
 (identical STR profiles) from the human database prior to identifying
 matches. Default: TRUE}
+
+\item{rm_markers}{A vector indicating what markers should be removed prior to calculating log10LRs. NULL to include all markers. By default, for the bistro function AMEL is removed as it is not standard to include it in LR calculations.}
 }
 \value{
 Dataframe with three columns:

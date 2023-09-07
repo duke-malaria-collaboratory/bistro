@@ -10,9 +10,15 @@
 #'
 #' @export
 #' @keywords internal
-calc_allele_freqs <- function(human_profiles) {
+calc_allele_freqs <- function(human_profiles, rm_markers = NULL) {
   # check if expected columns are present
   check_colnames(human_profiles, c("SampleName", "Marker", "Allele"))
+  check_ids(rm_markers, "rm_markers")
+
+  if(!is.null(rm_markers)){
+    human_profiles <- human_profiles |>
+      dplyr::filter(!Marker %in% rm_markers)
+  }
 
   # remove duplicates if necessary
   human_profiles <- rm_dups(human_profiles)

@@ -4,7 +4,12 @@
 \alias{prep_human_profiles}
 \title{Preprocess human profiles}
 \usage{
-prep_human_profiles(human_profiles, human_ids = NULL, rm_twins = TRUE)
+prep_human_profiles(
+  human_profiles,
+  human_ids = NULL,
+  rm_twins = TRUE,
+  rm_markers = c("AMEL")
+)
 }
 \arguments{
 \item{human_profiles}{Tibble with alleles for all humans in reference
@@ -17,6 +22,8 @@ input dataframe will be used. Default: NULL}
 \item{rm_twins}{A boolean indicating whether or not to remove likely twins
 (identical STR profiles) from the human database prior to identifying
 matches. Default: TRUE}
+
+\item{rm_markers}{A vector indicating what markers should be removed prior to calculating log10LRs. NULL to include all markers. By default, for the bistro function AMEL is removed as it is not standard to include it in LR calculations.}
 }
 \value{
 Dataframe with preprocessed human profiles

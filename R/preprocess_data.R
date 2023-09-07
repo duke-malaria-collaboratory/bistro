@@ -9,7 +9,8 @@
 #' @keywords internal
 prep_bloodmeal_profiles <- function(bloodmeal_profiles,
                                     bloodmeal_ids = NULL,
-                                    peak_thresh = NULL) {
+                                    peak_thresh = NULL,
+                                    rm_markers = c('AMEL')) {
   if (is.null(bloodmeal_ids)) {
     bloodmeal_ids <- unique(bloodmeal_profiles$SampleName)
   } else {
@@ -19,6 +20,7 @@ prep_bloodmeal_profiles <- function(bloodmeal_profiles,
 
   bloodmeal_profiles <- bloodmeal_profiles |>
     dplyr::filter(SampleName %in% bloodmeal_ids) |>
+    rm_markers(rm_markers) |>
     rm_dups()
 
   if (!is.null(peak_thresh)) {
@@ -41,7 +43,8 @@ prep_bloodmeal_profiles <- function(bloodmeal_profiles,
 #' @keywords internal
 prep_human_profiles <- function(human_profiles,
                                 human_ids = NULL,
-                                rm_twins = TRUE) {
+                                rm_twins = TRUE,
+                                rm_markers = c('AMEL')) {
   if (rm_twins) {
     human_profiles <- rm_twins(human_profiles)
   }
@@ -54,9 +57,25 @@ prep_human_profiles <- function(human_profiles,
 
   human_profiles <- human_profiles |>
     dplyr::filter(SampleName %in% human_ids) |>
+    rm_markers(rm_markers) |>
     rm_dups()
 
   return(human_profiles)
+}
+
+#' Remove markers
+#'
+#' @param df Dataframe from which to remove markers
+#'
+#' @return Dataframe without markers
+#' @export
+#' @keywords internal
+rm_markers <- function(profiles, markers){
+  check_colnames(profiles, 'Marker')
+  profiles <- profiles |>
+    dplyr::mutate(Marker = toupper(Marker)) |>
+    dplyr::filter(!Marker %in% toupper(markers))
+  return(profiles)
 }
 
 #' Remove duplicate rows with warning

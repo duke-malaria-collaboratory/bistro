@@ -12,12 +12,12 @@ test_that("get_similarities works", {
   )
 
   expect_equal(
-    get_human_similarities(hu_profs) |> dplyr::pull(similarity),
+    get_human_similarity(hu_profs) |> dplyr::pull(similarity),
     0.5
   )
 
   expect_equal(
-    suppressMessages(get_human_similarities(human_profiles) |>
+    suppressMessages(get_human_similarity(human_profiles) |>
       dplyr::pull(similarity)),
     c(0.117647058823529, 0, 0.0588235294117647)
   )
@@ -45,7 +45,8 @@ test_that("get_similarities works", {
   expect_snapshot(match_similarity(
     bloodmeal_profiles,
     human_profiles
-  ))
+  )
+  )
 
   expect_snapshot(
     match_similarity(bloodmeal_profiles,

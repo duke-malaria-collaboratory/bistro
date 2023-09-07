@@ -30,7 +30,7 @@
 #' match_similarity(bloodmeal_profiles, human_profiles)
 match_similarity <- function(bloodmeal_profiles, human_profiles,
                              bloodmeal_ids = NULL, human_ids = NULL,
-                             peak_thresh = NULL, rm_twins = TRUE,
+                             peak_thresh = NULL, rm_twins = TRUE, rm_markers = NULL,
                              return_similarities = FALSE) {
   if (is.null(peak_thresh)) {
     check_colnames(bloodmeal_profiles, c("SampleName", "Marker", "Allele"))
@@ -44,12 +44,14 @@ match_similarity <- function(bloodmeal_profiles, human_profiles,
   check_ids(bloodmeal_ids, "bloodmeal_ids")
   check_ids(human_ids, "human_ids")
   check_is_bool(rm_twins, "rm_twins")
+  check_ids(rm_markers, "rm_markers")
   check_is_bool(return_similarities, "return_similarities")
 
   bloodmeal_profiles <- prep_bloodmeal_profiles(
     bloodmeal_profiles,
     bloodmeal_ids,
-    peak_thresh
+    peak_thresh,
+    rm_markers = rm_markers
   )
 
   all_bm_ids <- unique(bloodmeal_profiles$SampleName)
@@ -60,12 +62,13 @@ match_similarity <- function(bloodmeal_profiles, human_profiles,
   human_profiles <- prep_human_profiles(
     human_profiles,
     human_ids,
-    rm_twins
+    rm_twins,
+    rm_markers = rm_markers
   ) |>
     tidyr::drop_na()
 
   message("Calculating human-human similarities")
-  hu_similarities <- get_human_similarities(human_profiles)
+  hu_similarities <- get_human_similarity(human_profiles)
 
   max_similarity <- hu_similarities |>
     dplyr::filter(similarity != 1) |> # remove twins
@@ -136,7 +139,7 @@ match_similarity <- function(bloodmeal_profiles, human_profiles,
 #' - hu1: human ID 1
 #' - hu2: human ID 2
 #' - similarity: similarity value (# exact locus matches / # loci)
-get_human_similarities <- function(human_profiles) {
+get_human_similarity <- function(human_profiles) {
   human_profiles <- human_profiles |>
     tidyr::drop_na()
   str_hu1_by_marker <- human_profiles |>

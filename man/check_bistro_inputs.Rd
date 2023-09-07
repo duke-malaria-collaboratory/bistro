@@ -9,18 +9,20 @@ check_bistro_inputs(
   human_profiles,
   kit,
   peak_thresh,
-  pop_allele_freqs = NULL,
-  calc_allele_freqs = FALSE,
-  bloodmeal_ids = NULL,
-  human_ids = NULL,
-  rm_twins = TRUE,
-  model_degrad = TRUE,
-  model_bw_stutt = FALSE,
-  model_fw_stutt = FALSE,
-  difftol = 1,
-  threads = 4,
-  seed = 1,
-  time_limit = 3
+  pop_allele_freqs,
+  calc_allele_freqs,
+  bloodmeal_ids,
+  human_ids,
+  rm_twins,
+  rm_markers,
+  model_degrad,
+  model_bw_stutt,
+  model_fw_stutt,
+  difftol,
+  threads,
+  seed,
+  time_limit,
+  return_lrs
 )
 }
 \arguments{
@@ -62,6 +64,8 @@ input dataframe will be used. Default: NULL}
 (identical STR profiles) from the human database prior to identifying
 matches. Default: TRUE}
 
+\item{rm_markers}{A vector indicating what markers should be removed prior to calculating log10LRs. NULL to include all markers. By default, for the bistro function AMEL is removed as it is not standard to include it in LR calculations.}
+
 \item{model_degrad}{A boolean indicating whether or not to model peak
 degradation. Used for \code{modelDegrad} argument in
 \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}}. Default: TRUE}
@@ -86,6 +90,9 @@ argument. Default: 1}
 \item{time_limit}{Time limit in minutes to run the
 \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}} function on 1 bloodmeal-human pair. Default:
 3}
+
+\item{return_lrs}{A boolean indicating whether or not to return log10LRs for
+all bloodmeal-human pairs. Default: FALSE}
 }
 \value{
 Error or nothing

@@ -21,7 +21,8 @@ match_exact <- function(bloodmeal_profiles,
                         bloodmeal_ids = NULL,
                         human_ids = NULL,
                         peak_thresh = NULL,
-                        rm_twins = TRUE) {
+                        rm_twins = TRUE,
+                        rm_markers = NULL) {
   if (is.null(peak_thresh)) {
     check_colnames(bloodmeal_profiles, c("SampleName", "Marker", "Allele"))
   } else {
@@ -34,17 +35,20 @@ match_exact <- function(bloodmeal_profiles,
   check_ids(bloodmeal_ids, "bloodmeal_ids")
   check_ids(human_ids, "human_ids")
   check_is_bool(rm_twins, "rm_twins")
+  check_ids(rm_markers, "rm_markers")
 
   bloodmeal_profiles <- prep_bloodmeal_profiles(
     bloodmeal_profiles,
     bloodmeal_ids,
-    peak_thresh
+    peak_thresh,
+    rm_markers = NULL
   )
 
   human_profiles <- prep_human_profiles(
     human_profiles,
     human_ids,
-    rm_twins
+    rm_twins,
+    rm_markers = NULL
   )
 
   # human profiles

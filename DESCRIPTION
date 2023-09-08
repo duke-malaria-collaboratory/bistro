@@ -8,7 +8,7 @@ Authors@R: c(
            comment = c(ORCID = "0000-0002-5742-8847"))
            )
 Description: Functions to allow for the identification of matches between bloodmeals and the people they bit using short tandem repeat (STR) profiles of human blood from freshly fed bloodmeals and from people.
-License: LGPL (>= 3) + file LICENSE
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3

@@ -1,3 +1,7 @@
+# bistro 0.1.1
+
+* Add DOI
+
 # bistro 0.1.0
 
 * Initial package development.

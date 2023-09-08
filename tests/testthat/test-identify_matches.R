@@ -15,6 +15,13 @@ test_that("identify_matches works", {
       )
     )
 
+  expect_no_error(identify_one_match_set(
+    lrs |>
+      dplyr::slice_head(n = 3) |>
+      dplyr::mutate(log10_lr = c(1, NA, Inf)),
+    "evid1"
+  ))
+
   expect_snapshot(identify_one_match_set(lrs, "evid1"))
 
   expect_snapshot(identify_one_match_set(lrs, "evid2"))

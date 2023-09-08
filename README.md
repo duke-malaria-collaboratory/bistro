@@ -10,6 +10,8 @@
 coverage](https://codecov.io/gh/duke-malaria-collaboratory/bistro/branch/main/graph/badge.svg)](https://app.codecov.io/gh/duke-malaria-collaboratory/bistro?branch=main)
 [![License: LGPL
 v3](https://img.shields.io/badge/License-LGPL_v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
+[![DOI](https://zenodo.org/badge/687221823.svg)](https://zenodo.org/badge/latestdoi/687221823)
+
 <!-- badges: end -->
 
 Functions to allow for the identification of matches between bloodmeals

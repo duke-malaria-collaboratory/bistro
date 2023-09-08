@@ -12,6 +12,3 @@
   h_size = 1.5,
   h_color = "firebrick4"
 ))
-
-
-

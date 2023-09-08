@@ -10,4 +10,9 @@ test_that("match_static_thresh works", {
   ) |>
     suppressMessages()
   expect_snapshot(match_static_thresh(bistro_output$lrs, 10))
+
+  expect_true(bistro_output$lrs |>
+    dplyr::mutate(log10_lr = Inf) |>
+    match_static_thresh(10) |>
+    dplyr::pull(match) == "no")
 })

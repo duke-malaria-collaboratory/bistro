@@ -22,7 +22,8 @@ match_static_thresh <- function(log10_lrs, thresh) {
     dplyr::distinct()
 
   matches <- log10_lrs |>
-    dplyr::filter(log10_lr >= thresh) |>
+    dplyr::filter(log10_lr >= thresh &
+      !is.infinite(log10_lr)) |>
     dplyr::mutate(match = "yes") |>
     dplyr::select(
       bloodmeal_id,
@@ -35,7 +36,13 @@ match_static_thresh <- function(log10_lrs, thresh) {
 
   # add in bloodmeals that were dropped
   matches <- bm_info |>
-    dplyr::left_join(matches) |>
+    dplyr::left_join(matches,
+      by = dplyr::join_by(
+        bloodmeal_id,
+        locus_count,
+        est_noc
+      )
+    ) |>
     dplyr::mutate(match = ifelse(is.na(match), "no", match))
 
   return(matches)

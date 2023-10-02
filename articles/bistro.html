@@ -162,8 +162,9 @@ bloodmeal STR allele peak height threshold.</p>
 <p>The bloodmeal STR profiles dataset should have one row per allele for
 each bloodmeal and marker, and include the allele peak height.
 Homozygous markers should only be included once (i.e. as one row). It
-must have four columns named SampleName, Marker, Allele, and Height.
-Here is an example included with <code>bistro</code>:</p>
+must have four columns named SampleName, Marker, Allele, and Height. The
+SampleName column should hold character values. Here is an example
+included with <code>bistro</code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">bloodmeal_profiles</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   SampleName   Marker Allele Height</span></span>
@@ -185,8 +186,8 @@ Here is an example included with <code>bistro</code>:</p>
 bloodmeal STR profiles dataset - it should have one row per allele for
 each human and marker, but does not require peak heights. Again,
 homozygous markers should only be included once. The dataset must have
-three columns named SampleName, Marker, and Allele. Here is an
-example:</p>
+three columns named SampleName, Marker, and Allele. The SampleName
+column should hold character values. Here is an example:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">human_profiles</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                         SampleName   Marker Allele</span></span>

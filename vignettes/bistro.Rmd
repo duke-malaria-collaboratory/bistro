@@ -231,9 +231,9 @@ We have also implemented a few other matching algorithms including:
 
 - `match_exact()`: Exact matching of all markers and alleles
 - `match_similarity()`: Similarity matching based on the highest similarity value between humans in a reference database
-- `match_static_threshold()`: Matching based on static log10LR threshold. 
+- `match_static_thresh()`: Matching based on static log10LR threshold. 
 
-These algorithms take similar inputs to `bistro()`, or in the case of `match_static_threshold()`, a `bistro()` output.
+These algorithms take similar inputs to `bistro()`, or in the case of `match_static_thresh()`, a `bistro()` output.
 
 Look out for our upcoming manuscript for a comparison of these methods. 
 

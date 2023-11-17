@@ -3,7 +3,7 @@
     Code
       prep_bloodmeal_profiles(bloodmeal_profiles, bloodmeal_ids = "evid1",
         peak_thresh = 200)
-    Message <simpleMessage>
+    Message
       Removing 4 peaks under the threshold of 200 RFU.
     Output
       # A tibble: 48 x 4
@@ -66,7 +66,7 @@
     Code
       rm_twins(dplyr::bind_rows(human_profiles, dplyr::mutate(dplyr::filter(
         human_profiles, SampleName == "P1"), SampleName = "Pdup")))
-    Message <simpleMessage>
+    Message
       Identified 2 people whose profiles appear more than once (likely identical twins). These are being removed.
     Output
       # A tibble: 63 x 3

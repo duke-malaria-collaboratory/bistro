@@ -62,7 +62,7 @@
     Code
       calc_log10_lrs(bm_profs, hu_profs, pop_allele_freqs = pop_allele_freqs, kit = "ESX17",
         peak_thresh = 200)
-    Message <simpleMessage>
+    Message
       # bloodmeal ids: 2
       # human ids: 1
       Bloodmeal id 1/2

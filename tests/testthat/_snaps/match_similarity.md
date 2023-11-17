@@ -2,7 +2,7 @@
 
     Code
       match_similarity(bm_profs, hu_profs)
-    Message <simpleMessage>
+    Message
       Calculating human-human similarities
       Maximum similarity between people: 0.5
       Calculating bloodmeal-human similarities
@@ -19,7 +19,7 @@
 
     Code
       match_similarity(bloodmeal_profiles, human_profiles)
-    Message <simpleMessage>
+    Message
       Calculating human-human similarities
       Maximum similarity between people: 0.117647058823529
       Calculating bloodmeal-human similarities
@@ -37,7 +37,7 @@
 
     Code
       match_similarity(bloodmeal_profiles, human_profiles, return_similarities = TRUE)
-    Message <simpleMessage>
+    Message
       Calculating human-human similarities
       Maximum similarity between people: 0.117647058823529
       Calculating bloodmeal-human similarities
@@ -75,7 +75,7 @@
 
     Code
       match_similarity(bloodmeal_profiles, human_profiles, peak_thresh = 200)
-    Message <simpleMessage>
+    Message
       Removing 6 peaks under the threshold of 200 RFU.
       For 1/4 bloodmeal ids, all peaks are below the threshold
       Calculating human-human similarities

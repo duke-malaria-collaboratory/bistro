@@ -16,7 +16,7 @@ Suggests:
     knitr (>= 1.43),
     readr (>= 2.1.4),
     rmarkdown (>= 2.24),
-    testthat (>= 3.0.0)
+    testthat (>= 3.2.0)
 Config/testthat/edition: 3
 Imports: 
     codetools (>= 0.2.19),

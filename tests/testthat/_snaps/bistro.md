@@ -1,8 +1,8 @@
 # bistro works
 
     Code
-      bistro(bm_evid1, hu_p1, pop_allele_freqs = pop_allele_freqs, kit = "ESX17",
-        peak_thresh = 200)
+      bistro(data.frame(bm_evid1), data.frame(hu_p1), pop_allele_freqs = pop_allele_freqs,
+      kit = "ESX17", peak_thresh = 200)
     Message <simpleMessage>
       1/17 markers in kit but not in pop_allele_freqs: AMEL
       Formatting bloodmeal profiles

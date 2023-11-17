@@ -79,13 +79,13 @@
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>bloodmeal_profiles</dt>
-<dd><p>Tibble with alleles for all bloodmeals in reference
+<dd><p>Tibble or data frame with alleles for all bloodmeals in reference
 database including 4 columns: SampleName, Marker, Allele, Height. Height
 must be numeric or coercible to numeric.</p></dd>
 
 
 <dt>human_profiles</dt>
-<dd><p>Tibble with alleles for all humans in reference
+<dd><p>Tibble or data frame with alleles for all humans in reference
 database including three columns: SampleName, Marker, Allele.</p></dd>
 
 
@@ -103,7 +103,7 @@ number should be equal to or greater than that number. Also used for
 
 
 <dt>pop_allele_freqs</dt>
-<dd><p>Data frame where the first column is the STR allele
+<dd><p>Tibble or data frame where the first column is the STR allele
 and the following columns are the frequency of that allele for different
 markers. Alleles that do not exist for a given marker are coded as NA. If
 NULL and <code>calc_allele_freqs = TRUE</code>, then population allele frequencies

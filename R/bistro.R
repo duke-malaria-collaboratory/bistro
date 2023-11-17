@@ -105,7 +105,7 @@ bistro <-
            seed = 1,
            time_limit = 3,
            return_lrs = FALSE) {
-    check_pkg_version('tidyr', utils::packageVersion('tidyr'), '1.3.0')
+    check_pkg_version("tidyr", utils::packageVersion("tidyr"), "1.3.0")
     check_bistro_inputs(
       bloodmeal_profiles,
       human_profiles,

@@ -9,7 +9,7 @@
 #' @inheritParams calc_one_log10_lr
 #' @keywords internal
 identify_one_match_set <- function(log10_lrs, bloodmeal_id) {
-  check_pkg_version('tidyr', utils::packageVersion('tidyr'), '1.3.0')
+  check_pkg_version("tidyr", utils::packageVersion("tidyr"), "1.3.0")
   bm_id <- bloodmeal_id
   log10_lrs <- log10_lrs |>
     dplyr::filter(bloodmeal_id == bm_id)

@@ -6,11 +6,11 @@
 #'   identify human contributors to each bloodmeal. For more details than are
 #'   present here, see `vignette('bistro')`.
 #'
-#' @param bloodmeal_profiles Tibble or data frame with alleles for all bloodmeals in reference
-#'   database including 4 columns: SampleName, Marker, Allele, Height. Height
-#'   must be numeric or coercible to numeric.
-#' @param human_profiles Tibble or data frame with alleles for all humans in reference
-#'   database including three columns: SampleName, Marker, Allele.
+#' @param bloodmeal_profiles Tibble or data frame with alleles for all
+#'   bloodmeals in reference database including 4 columns: SampleName, Marker,
+#'   Allele, Height. Height must be numeric or coercible to numeric.
+#' @param human_profiles Tibble or data frame with alleles for all humans in
+#'   reference database including three columns: SampleName, Marker, Allele.
 #' @param kit STR kit name from euroformix. To see a list of all kits embedded
 #'   in euroformix use [euroformix::getKit()]. If your kit is not included, see
 #'   vignette("bistro") for details on how to include your own kit.
@@ -18,11 +18,11 @@
 #'   threshold will be filtered out. If prior filtering was performed, this
 #'   number should be equal to or greater than that number. Also used for
 #'   `threshT` argument in [euroformix::contLikSearch()].
-#' @param pop_allele_freqs Tibble or data frame where the first column is the STR allele
-#'   and the following columns are the frequency of that allele for different
-#'   markers. Alleles that do not exist for a given marker are coded as NA. If
-#'   NULL and `calc_allele_freqs = TRUE`, then population allele frequencies
-#'   will be calculated from `human_profiles`.
+#' @param pop_allele_freqs Tibble or data frame where the first column is the
+#'   STR allele and the following columns are the frequency of that allele for
+#'   different markers. Alleles that do not exist for a given marker are coded
+#'   as NA. If NULL and `calc_allele_freqs = TRUE`, then population allele
+#'   frequencies will be calculated from `human_profiles`.
 #' @param calc_allele_freqs A boolean indicating whether or not to calculate
 #'   allele frequencies from `human_profiles`. If FALSE, a `pop_allele_freqs`
 #'   input is required. Default: FALSE

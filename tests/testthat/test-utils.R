@@ -7,6 +7,6 @@ test_that("check_pkg_version works", {
   expect_no_error(check_pkg_version("tidyr", "1.1.1", "1.1.1"))
   expect_error(
     check_pkg_version("tidyr", "1.1.1", "1.1.2"),
-    "The tidyr package is version 1.1.1 but must be >= 1.1.2. Please update the package to use this function."
+    "The tidyr package is version 1.1.1 but must be >= 1.1.2."
   )
 })

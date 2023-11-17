@@ -51,6 +51,9 @@ ignore_unused_imports <- function() {
 check_pkg_version <- function(pkg, curr_version, version) {
   vers <- utils::compareVersion(as.character(curr_version), version)
   if (vers == -1) {
-    stop("The ", pkg, " package is version ", curr_version, " but must be >= ", version, ". Please update the package to use this function.")
+    stop(
+      "The ", pkg, " package is version ", curr_version, " but must be >= ",
+      version, ". Please update the package to use this function."
+    )
   }
 }

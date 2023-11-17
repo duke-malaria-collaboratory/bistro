@@ -22,20 +22,20 @@ calc_one_log10_lr(
 )
 }
 \arguments{
-\item{bloodmeal_profiles}{Tibble with alleles for all bloodmeals in reference
+\item{bloodmeal_profiles}{Tibble or data frame with alleles for all bloodmeals in reference
 database including 4 columns: SampleName, Marker, Allele, Height. Height
 must be numeric or coercible to numeric.}
 
 \item{bloodmeal_id}{Bloodmeal id from the \code{SampleName} column in
 \code{bloodmeal_profiles} for which to compute the log10_lr}
 
-\item{human_profiles}{Tibble with alleles for all humans in reference
+\item{human_profiles}{Tibble or data frame with alleles for all humans in reference
 database including three columns: SampleName, Marker, Allele.}
 
 \item{human_id}{Human id from the \code{SampleName} column in \code{human_profiles} for
 which to compute the log10_lr}
 
-\item{pop_allele_freqs}{Data frame where the first column is the STR allele
+\item{pop_allele_freqs}{Tibble or data frame where the first column is the STR allele
 and the following columns are the frequency of that allele for different
 markers. Alleles that do not exist for a given marker are coded as NA. If
 NULL and \code{calc_allele_freqs = TRUE}, then population allele frequencies

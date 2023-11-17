@@ -7,7 +7,7 @@
 rm_twins(human_profiles)
 }
 \arguments{
-\item{human_profiles}{Tibble with alleles for all humans in reference
+\item{human_profiles}{Tibble or data frame with alleles for all humans in reference
 database including three columns: SampleName, Marker, Allele.}
 }
 \value{

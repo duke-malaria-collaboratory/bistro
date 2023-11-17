@@ -17,11 +17,11 @@ match_similarity(
 )
 }
 \arguments{
-\item{bloodmeal_profiles}{Tibble with alleles for all bloodmeals in reference
+\item{bloodmeal_profiles}{Tibble or data frame with alleles for all bloodmeals in reference
 database including 4 columns: SampleName, Marker, Allele, Height. Height
 must be numeric or coercible to numeric.}
 
-\item{human_profiles}{Tibble with alleles for all humans in reference
+\item{human_profiles}{Tibble or data frame with alleles for all humans in reference
 database including three columns: SampleName, Marker, Allele.}
 
 \item{bloodmeal_ids}{Vector of bloodmeal ids from the SampleName column in

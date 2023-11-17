@@ -13,7 +13,7 @@ prep_bloodmeal_profiles(
 )
 }
 \arguments{
-\item{bloodmeal_profiles}{Tibble with alleles for all bloodmeals in reference
+\item{bloodmeal_profiles}{Tibble or data frame with alleles for all bloodmeals in reference
 database including 4 columns: SampleName, Marker, Allele, Height. Height
 must be numeric or coercible to numeric.}
 

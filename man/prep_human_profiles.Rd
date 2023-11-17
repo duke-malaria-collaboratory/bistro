@@ -12,7 +12,7 @@ prep_human_profiles(
 )
 }
 \arguments{
-\item{human_profiles}{Tibble with alleles for all humans in reference
+\item{human_profiles}{Tibble or data frame with alleles for all humans in reference
 database including three columns: SampleName, Marker, Allele.}
 
 \item{human_ids}{Vector of human ids from the SampleName column in

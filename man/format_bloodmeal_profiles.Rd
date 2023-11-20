@@ -7,9 +7,9 @@
 format_bloodmeal_profiles(bloodmeal_profiles)
 }
 \arguments{
-\item{bloodmeal_profiles}{Tibble or data frame with alleles for all bloodmeals in reference
-database including 4 columns: SampleName, Marker, Allele, Height. Height
-must be numeric or coercible to numeric.}
+\item{bloodmeal_profiles}{Tibble or data frame with alleles for all
+bloodmeals in reference database including 4 columns: SampleName, Marker,
+Allele, Height. Height must be numeric or coercible to numeric.}
 }
 \value{
 A list of lists including the alleles for each sample in the format

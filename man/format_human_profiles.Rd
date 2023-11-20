@@ -7,8 +7,8 @@
 format_human_profiles(human_profiles)
 }
 \arguments{
-\item{human_profiles}{Tibble or data frame with alleles for all humans in reference
-database including three columns: SampleName, Marker, Allele.}
+\item{human_profiles}{Tibble or data frame with alleles for all humans in
+reference database including three columns: SampleName, Marker, Allele.}
 }
 \value{
 A list of lists including the alleles for each sample in the format

@@ -7,9 +7,9 @@
 filter_peaks(bloodmeal_profiles, peak_thresh)
 }
 \arguments{
-\item{bloodmeal_profiles}{Tibble or data frame with alleles for all bloodmeals in reference
-database including 4 columns: SampleName, Marker, Allele, Height. Height
-must be numeric or coercible to numeric.}
+\item{bloodmeal_profiles}{Tibble or data frame with alleles for all
+bloodmeals in reference database including 4 columns: SampleName, Marker,
+Allele, Height. Height must be numeric or coercible to numeric.}
 
 \item{peak_thresh}{Allele peak height threshold in RFUs. All peaks under this
 threshold will be filtered out. If prior filtering was performed, this

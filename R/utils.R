@@ -29,7 +29,9 @@ utils::globalVariables(
     "profile",
     "alleles",
     "est_noc",
-    "locus_count"
+    "locus_count",
+    "n_markers",
+    "n_alleles"
   )
 )
 

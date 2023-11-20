@@ -291,3 +291,36 @@ check_heights <- function(heights, peak_thresh) {
     stop("All bloodmeal peak heights below threshold of ", peak_thresh, ".")
   }
 }
+
+#' Check input to `create_db_from_bloodmeals()``
+#'
+#' @inheritParams bistro
+#'
+#' @return number of alleles in a complete profile
+check_create_db_input <- function(bloodmeal_profiles, kit, peak_thresh, rm_markers) {
+  check_colnames(
+    bloodmeal_profiles,
+    c("SampleName", "Marker", "Allele")
+  )
+  check_ids(rm_markers)
+  check_peak_thresh(peak_thresh)
+  kit_df <- check_kit(kit)
+  kit_markers <- kit_df$Marker |>
+    unique() |>
+    toupper()
+  bm_prof_markers <- bloodmeal_profiles$Marker |>
+    unique() |>
+    toupper()
+  if (!is.null(rm_markers)) {
+    rm_markers <- toupper(rm_markers)
+    bm_prof_markers <- bm_prof_markers[!bm_prof_markers %in% rm_markers]
+    kit_markers <- kit_markers[!kit_markers %in% rm_markers]
+  }
+  check_setdiff_markers(
+    bm_prof_markers,
+    kit_markers,
+    "bloodmeal_profiles",
+    "kit"
+  )
+  length(kit_markers)
+}

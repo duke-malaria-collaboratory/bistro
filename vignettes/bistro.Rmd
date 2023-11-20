@@ -237,3 +237,29 @@ These algorithms take similar inputs to `bistro()`, or in the case of `match_sta
 
 Look out for our upcoming manuscript for a comparison of these methods. 
 
+## Identifying bloodmeals derived from the same host without a reference human database
+
+If you don't have a reference database of human samples but would still like to identify bloodmeals derived from the same host, you can use the `create_db_from_bloodmeals()` function, and then input that human database into the `bistro()` function. To see how this works, first load example data from the bistro manuscript:
+
+```{r, eval = FALSE}
+samples <- readr::read_csv("https://raw.githubusercontent.com/duke-malaria-collaboratory/bistro_validation/main/data/provedit/provedit_samples_mass200thresh.csv")
+```
+
+To create a human database from these samples, you can run `create_db_from_bloodmeals()`, which creates human profiles from complete single-source bloodmeal profiles:  
+
+```{r, eval = FALSE}
+hu_db <- create_db_from_bloodmeals(samples, "identifiler", 200)
+```
+
+Then you can run `bistro()` as usual:
+
+```{r, eval = FALSE}
+bistro(samples, hu_db, "identifiler", 200,
+  bloodmeal_ids = "A02_RD14-0003-23d3a-0.2IP-Q1.2_001.10sec.fsa",
+  human_ids = paste0("H", 20:24),
+  calc_allele_freqs = TRUE
+)
+```
+
+
+

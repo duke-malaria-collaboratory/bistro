@@ -7,8 +7,8 @@
 calc_allele_freqs(human_profiles, rm_markers = NULL)
 }
 \arguments{
-\item{human_profiles}{Tibble or data frame with alleles for all humans in reference
-database including three columns: SampleName, Marker, Allele.}
+\item{human_profiles}{Tibble or data frame with alleles for all humans in
+reference database including three columns: SampleName, Marker, Allele.}
 
 \item{rm_markers}{A vector indicating what markers should be removed prior to
 calculating log10LRs. NULL to include all markers. By default, for the

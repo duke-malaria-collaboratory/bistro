@@ -131,3 +131,12 @@ test_that("check_heights works", {
   )
   expect_error(check_heights(NA, 15))
 })
+
+test_that("check_create_db_input working", {
+  expect_equal(check_create_db_input(
+    bloodmeal_profiles |>
+      dplyr::group_by(SampleName, Marker) |>
+      dplyr::slice_head(n = 2),
+    "ESX17", 0, c("AMEL")
+  ), 16)
+})

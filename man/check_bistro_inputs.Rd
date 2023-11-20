@@ -26,12 +26,12 @@ check_bistro_inputs(
 )
 }
 \arguments{
-\item{bloodmeal_profiles}{Tibble or data frame with alleles for all bloodmeals in reference
-database including 4 columns: SampleName, Marker, Allele, Height. Height
-must be numeric or coercible to numeric.}
+\item{bloodmeal_profiles}{Tibble or data frame with alleles for all
+bloodmeals in reference database including 4 columns: SampleName, Marker,
+Allele, Height. Height must be numeric or coercible to numeric.}
 
-\item{human_profiles}{Tibble or data frame with alleles for all humans in reference
-database including three columns: SampleName, Marker, Allele.}
+\item{human_profiles}{Tibble or data frame with alleles for all humans in
+reference database including three columns: SampleName, Marker, Allele.}
 
 \item{kit}{STR kit name from euroformix. To see a list of all kits embedded
 in euroformix use \code{\link[euroformix:getKit]{euroformix::getKit()}}. If your kit is not included, see
@@ -42,11 +42,11 @@ threshold will be filtered out. If prior filtering was performed, this
 number should be equal to or greater than that number. Also used for
 \code{threshT} argument in \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}}.}
 
-\item{pop_allele_freqs}{Tibble or data frame where the first column is the STR allele
-and the following columns are the frequency of that allele for different
-markers. Alleles that do not exist for a given marker are coded as NA. If
-NULL and \code{calc_allele_freqs = TRUE}, then population allele frequencies
-will be calculated from \code{human_profiles}.}
+\item{pop_allele_freqs}{Tibble or data frame where the first column is the
+STR allele and the following columns are the frequency of that allele for
+different markers. Alleles that do not exist for a given marker are coded
+as NA. If NULL and \code{calc_allele_freqs = TRUE}, then population allele
+frequencies will be calculated from \code{human_profiles}.}
 
 \item{calc_allele_freqs}{A boolean indicating whether or not to calculate
 allele frequencies from \code{human_profiles}. If FALSE, a \code{pop_allele_freqs}

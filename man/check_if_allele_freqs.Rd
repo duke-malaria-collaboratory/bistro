@@ -7,11 +7,11 @@
 check_if_allele_freqs(pop_allele_freqs, calc_allele_freqs, kit_df)
 }
 \arguments{
-\item{pop_allele_freqs}{Tibble or data frame where the first column is the STR allele
-and the following columns are the frequency of that allele for different
-markers. Alleles that do not exist for a given marker are coded as NA. If
-NULL and \code{calc_allele_freqs = TRUE}, then population allele frequencies
-will be calculated from \code{human_profiles}.}
+\item{pop_allele_freqs}{Tibble or data frame where the first column is the
+STR allele and the following columns are the frequency of that allele for
+different markers. Alleles that do not exist for a given marker are coded
+as NA. If NULL and \code{calc_allele_freqs = TRUE}, then population allele
+frequencies will be calculated from \code{human_profiles}.}
 
 \item{calc_allele_freqs}{A boolean indicating whether or not to calculate
 allele frequencies from \code{human_profiles}. If FALSE, a \code{pop_allele_freqs}

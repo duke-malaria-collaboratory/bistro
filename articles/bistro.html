@@ -48,6 +48,12 @@
 <li class="nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/step-by-step.html">Run bistro step-by-step</a>
+  </div>
+</li>
 <li class="nav-item">
   <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
@@ -107,6 +113,13 @@ source software based on a continuous model to evaluate STR DNA profiles
 from a mixture of contributors with artefacts</a> - <a href="https://github.com/oyvble/euroformix" class="external-link">GitHub</a> - <a href="http://www.euroformix.com/" class="external-link">Website that explains GUI</a></p>
 <p>bistro uses the log10LRs to identify bloodmeal-human matches using a
 per-bloodmeal dynamic threshold approach.</p>
+</div>
+<div class="section level2">
+<h2 id="running-bistro-in-parallel">Running bistro in parallel<a class="anchor" aria-label="anchor" href="#running-bistro-in-parallel"></a>
+</h2>
+<p>First, if you want to run bistro on many samples and would prefer to
+run it in parallel, potentially on a cluster, check out our template <a href="https://github.com/duke-malaria-collaboratory/bistro_pipeline" class="external-link">bistro
+Snakemake pipeline</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="installing-the-bistro-r-package">Installing the <code>bistro</code> R package<a class="anchor" aria-label="anchor" href="#installing-the-bistro-r-package"></a>
@@ -520,6 +533,13 @@ from complete single-source bloodmeal profiles:</p>
 <span>  human_ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"H"</span>, <span class="fl">20</span><span class="op">:</span><span class="fl">24</span><span class="op">)</span>,</span>
 <span>  calc_allele_freqs <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="running-bistro-step-by-step">Running bistro step-by-step<a class="anchor" aria-label="anchor" href="#running-bistro-step-by-step"></a>
+</h2>
+<p>If you’re interested in learning how to run sub-functions of
+<code><a href="../reference/bistro.html">bistro()</a></code> individually, head over to
+<code><a href="../articles/step-by-step.html">vignette("step-by-step")</a></code>.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>

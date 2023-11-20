@@ -8,7 +8,8 @@ prep_human_profiles(
   human_profiles,
   human_ids = NULL,
   rm_twins = TRUE,
-  rm_markers = c("AMEL")
+  rm_markers = c("AMEL"),
+  check_inputs = TRUE
 )
 }
 \arguments{
@@ -27,6 +28,9 @@ matches. Default: TRUE}
 calculating log10LRs. NULL to include all markers. By default, for the
 bistro function AMEL is removed as it is not standard to include it in LR
 calculations.}
+
+\item{check_inputs}{A boolean indicating whether or not to check the
+inputs to the function. Default: TRUE}
 }
 \value{
 Dataframe with preprocessed human profiles
@@ -34,4 +38,6 @@ Dataframe with preprocessed human profiles
 \description{
 Removes duplicates and optionally twins, subsets ids
 }
-\keyword{internal}
+\examples{
+prep_human_profiles(human_profiles)
+}

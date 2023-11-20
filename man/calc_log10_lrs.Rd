@@ -18,7 +18,8 @@ calc_log10_lrs(
   difftol = 1,
   threads = 4,
   seed = 1,
-  time_limit = 3
+  time_limit = 3,
+  check_inputs = TRUE
 )
 }
 \arguments{
@@ -76,6 +77,9 @@ argument. Default: 1}
 \item{time_limit}{Time limit in minutes to run the
 \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}} function on 1 bloodmeal-human pair. Default:
 3}
+
+\item{check_inputs}{A boolean indicating whether or not to check the
+inputs to the function. Default: TRUE}
 }
 \value{
 A tibble with the same output as for \code{\link[=bistro]{bistro()}}, except there is no
@@ -90,4 +94,14 @@ data. If you would like to preprocess it in the same way as is performed
 internally in the \code{bistro()} function, you must run
 \code{prep_bloodmeal_profiles()} and \code{prep_human_profiles()} first.
 }
-\keyword{internal}
+\examples{
+bm_profs <- prep_bloodmeal_profiles(bloodmeal_profiles, peak_thresh = 200)
+hu_profs <- prep_human_profiles(human_profiles)
+log10_lrs <- calc_log10_lrs(bm_profs,
+  hu_profs,
+  bloodmeal_ids = "evid1",
+  pop_allele_freqs = pop_allele_freqs,
+  kit = "ESX17",
+  peak_thresh = 200
+)
+}

@@ -5,15 +5,28 @@
 #' @param check_heights A boolean indicating whether to check if all peak
 #'   heights are below the threshold. Default: TRUE
 #' @inheritParams bistro
+#' @inheritParams calc_allele_freqs
 #'
 #' @return Dataframe with preprocessed bloodmeal profiles
 #' @export
-#' @keywords internal
+#' @examples
+#' prep_bloodmeal_profiles(bloodmeal_profiles, peak_thresh = 200)
 prep_bloodmeal_profiles <- function(bloodmeal_profiles,
                                     bloodmeal_ids = NULL,
                                     peak_thresh = NULL,
                                     rm_markers = c("AMEL"),
-                                    check_heights = TRUE) {
+                                    check_heights = TRUE,
+                                    check_inputs = TRUE) {
+  if (check_inputs) {
+    check_colnames(
+      bloodmeal_profiles,
+      c("SampleName", "Marker", "Allele", "Height")
+    )
+    check_ids(bloodmeal_ids, "bloodmeal_ids")
+    check_peak_thresh(peak_thresh)
+    check_is_bool(check_heights, "check_heights")
+  }
+
   if (is.null(bloodmeal_ids)) {
     bloodmeal_ids <- unique(bloodmeal_profiles$SampleName)
   } else {
@@ -41,15 +54,24 @@ prep_bloodmeal_profiles <- function(bloodmeal_profiles,
 #'
 #' Removes duplicates and optionally twins, subsets ids
 #'
+#' @inheritParams calc_allele_freqs
 #' @inheritParams bistro
 #'
 #' @return Dataframe with preprocessed human profiles
 #' @export
-#' @keywords internal
+#' @examples
+#' prep_human_profiles(human_profiles)
 prep_human_profiles <- function(human_profiles,
                                 human_ids = NULL,
                                 rm_twins = TRUE,
-                                rm_markers = c("AMEL")) {
+                                rm_markers = c("AMEL"),
+                                check_inputs = TRUE) {
+  if (check_inputs) {
+    check_colnames(human_profiles, c("SampleName", "Marker", "Allele"))
+    check_ids(human_ids, "bloodmeal_ids")
+    check_is_bool(rm_twins, "rm_twins")
+  }
+
   if (rm_twins) {
     human_profiles <- rm_twins(human_profiles)
   }

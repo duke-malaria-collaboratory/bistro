@@ -299,7 +299,10 @@ check_heights <- function(heights, peak_thresh) {
 #' @return number of alleles in a complete profile
 #'
 #' @keywords internal
-check_create_db_input <- function(bloodmeal_profiles, kit, peak_thresh, rm_markers) {
+check_create_db_input <- function(bloodmeal_profiles,
+                                  kit,
+                                  peak_thresh,
+                                  rm_markers) {
   check_colnames(
     bloodmeal_profiles,
     c("SampleName", "Marker", "Allele")

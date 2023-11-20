@@ -25,6 +25,10 @@ A core part of the algorithm is the [`contLikSearch()`](https://github.com/oyvbl
 
 bistro uses the log10LRs to identify bloodmeal-human matches using a per-bloodmeal dynamic threshold approach. 
 
+## Running bistro in parallel
+
+First, if you want to run bistro on many samples and would prefer to run it in parallel, potentially on a cluster, check out our template [bistro Snakemake pipeline](https://github.com/duke-malaria-collaboratory/bistro_pipeline). 
+
 ## Installing the `bistro` R package
 
 To install `bistro`, run the following commands:
@@ -262,4 +266,6 @@ bistro(samples, hu_db, "identifiler", 200,
 ```
 
 
+## Running bistro step-by-step
 
+If you're interested in learning how to run sub-functions of `bistro()` individually, head over to `vignette("step-by-step")`. 

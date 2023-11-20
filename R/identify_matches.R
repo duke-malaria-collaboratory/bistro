@@ -133,12 +133,37 @@ identify_one_match_set <- function(log10_lrs, bloodmeal_id) {
 #' @param log10_lrs Output from [calc_log10_lrs()] or from `bistro` with
 #'   `return_lrs = TRUE` (`lrs`: the second element in the list)
 #' @inheritParams bistro
+#' @inheritParams calc_allele_freqs
 #'
 #' @return A tibble with the same output as for [bistro()].
 #'
 #' @export
-#' @keywords internal
-identify_matches <- function(log10_lrs, bloodmeal_ids = NULL) {
+#' @examples
+#' bm_profs <- prep_bloodmeal_profiles(bloodmeal_profiles, peak_thresh = 200)
+#' hu_profs <- prep_human_profiles(human_profiles)
+#' log10_lrs <- calc_log10_lrs(bm_profs,
+#'   hu_profs,
+#'   bloodmeal_ids = "evid1",
+#'   pop_allele_freqs = pop_allele_freqs,
+#'   kit = "ESX17",
+#'   peak_thresh = 200
+#' )
+#' matches <- identify_matches(log10_lrs)
+identify_matches <- function(log10_lrs,
+                             bloodmeal_ids = NULL,
+                             check_inputs = TRUE) {
+  if (check_inputs) {
+    check_colnames(
+      log10_lrs,
+      c(
+        "bloodmeal_id", "human_id",
+        "locus_count", "est_noc", "efm_noc",
+        "log10_lr", "notes"
+      )
+    )
+    check_ids(bloodmeal_ids, "bloodmeal_ids")
+  }
+
   if (is.null(bloodmeal_ids)) {
     bloodmeal_ids <- unique(log10_lrs$bloodmeal_id)
   }

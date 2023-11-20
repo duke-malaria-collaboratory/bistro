@@ -4,7 +4,7 @@
 \alias{identify_matches}
 \title{Identify matches for multiple bloodmeal-human pairs}
 \usage{
-identify_matches(log10_lrs, bloodmeal_ids = NULL)
+identify_matches(log10_lrs, bloodmeal_ids = NULL, check_inputs = TRUE)
 }
 \arguments{
 \item{log10_lrs}{Output from \code{\link[=calc_log10_lrs]{calc_log10_lrs()}} or from \code{bistro} with
@@ -13,6 +13,9 @@ identify_matches(log10_lrs, bloodmeal_ids = NULL)
 \item{bloodmeal_ids}{Vector of bloodmeal ids from the SampleName column in
 \code{bloodmeal_profiles} for which to compute log10_lrs. If NULL, all ids in
 the input dataframe will be used. Default: NULL}
+
+\item{check_inputs}{A boolean indicating whether or not to check the
+inputs to the function. Default: TRUE}
 }
 \value{
 A tibble with the same output as for \code{\link[=bistro]{bistro()}}.
@@ -20,4 +23,15 @@ A tibble with the same output as for \code{\link[=bistro]{bistro()}}.
 \description{
 Identify matches for multiple bloodmeal-human pairs
 }
-\keyword{internal}
+\examples{
+bm_profs <- prep_bloodmeal_profiles(bloodmeal_profiles, peak_thresh = 200)
+hu_profs <- prep_human_profiles(human_profiles)
+log10_lrs <- calc_log10_lrs(bm_profs,
+  hu_profs,
+  bloodmeal_ids = "evid1",
+  pop_allele_freqs = pop_allele_freqs,
+  kit = "ESX17",
+  peak_thresh = 200
+)
+matches <- identify_matches(log10_lrs)
+}

@@ -128,7 +128,10 @@ bistro <-
     )
 
     if (calc_allele_freqs) {
-      pop_allele_freqs <- calc_allele_freqs(human_profiles, rm_markers)
+      pop_allele_freqs <- calc_allele_freqs(human_profiles,
+        rm_markers,
+        check_inputs = FALSE
+      )
     } else if (!is.null(rm_markers)) {
       pop_allele_freqs <- pop_allele_freqs |>
         dplyr::select(-dplyr::matches(paste0("^", toupper(rm_markers), "$")))
@@ -139,7 +142,8 @@ bistro <-
       bloodmeal_profiles,
       bloodmeal_ids,
       peak_thresh,
-      rm_markers
+      rm_markers,
+      check_inputs = FALSE
     )
 
     message("Formatting human profiles")
@@ -147,7 +151,8 @@ bistro <-
       human_profiles,
       human_ids,
       rm_twins,
-      rm_markers
+      rm_markers,
+      check_inputs = FALSE
     )
 
     bm_markers <- bloodmeal_profiles$Marker
@@ -180,12 +185,13 @@ bistro <-
         difftol,
         threads,
         seed,
-        time_limit
+        time_limit,
+        check_inputs = FALSE
       )
 
     message("Identifying matches")
 
-    matches <- identify_matches(log10_lrs, bloodmeal_ids)
+    matches <- identify_matches(log10_lrs, bloodmeal_ids, check_inputs = FALSE)
 
     if (return_lrs) {
       matches <- list(

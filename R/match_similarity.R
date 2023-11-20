@@ -56,7 +56,8 @@ match_similarity <- function(bloodmeal_profiles,
     bloodmeal_ids,
     peak_thresh,
     rm_markers = rm_markers,
-    check_heights = FALSE
+    check_heights = FALSE,
+    check_inputs = FALSE
   )
 
   all_bm_ids <- unique(bloodmeal_profiles$SampleName)
@@ -68,7 +69,8 @@ match_similarity <- function(bloodmeal_profiles,
     human_profiles,
     human_ids,
     rm_twins,
-    rm_markers = rm_markers
+    rm_markers = rm_markers,
+    check_inputs = FALSE
   ) |>
     tidyr::drop_na()
 

@@ -32,7 +32,8 @@ calculations.}
 }
 \value{
 Human database created from complete single-source bloodmeals.
-Complete is defined as the number of markers in the kit minus the number of markers in \code{rm_markers}.
+Complete is defined as the number of markers in the kit minus the
+number of markers in \code{rm_markers}.
 }
 \description{
 Create human profile database from bloodmeal profiles
@@ -40,8 +41,10 @@ Create human profile database from bloodmeal profiles
 \examples{
 \dontrun{
 # load example data
-path_to_data <- paste0("https://raw.githubusercontent.com/duke-malaria-collaboratory/",
-"bistro_validation/main/data/provedit/provedit_samples_mass200thresh.csv")
+path_to_data <- paste0(
+  "https://raw.githubusercontent.com/duke-malaria-collaboratory/",
+  "bistro_validation/main/data/provedit/provedit_samples_mass200thresh.csv"
+)
 samples <- readr::read_csv(path_to_data)
 create_db_from_bloodmeals(samples, kit = "identifiler", peak_thresh = 200)
 }

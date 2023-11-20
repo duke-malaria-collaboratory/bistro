@@ -9,7 +9,8 @@ prep_bloodmeal_profiles(
   bloodmeal_ids = NULL,
   peak_thresh = NULL,
   rm_markers = c("AMEL"),
-  check_heights = TRUE
+  check_heights = TRUE,
+  check_inputs = TRUE
 )
 }
 \arguments{
@@ -33,6 +34,9 @@ calculations.}
 
 \item{check_heights}{A boolean indicating whether to check if all peak
 heights are below the threshold. Default: TRUE}
+
+\item{check_inputs}{A boolean indicating whether or not to check the
+inputs to the function. Default: TRUE}
 }
 \value{
 Dataframe with preprocessed bloodmeal profiles
@@ -40,4 +44,6 @@ Dataframe with preprocessed bloodmeal profiles
 \description{
 Removes duplicates and peaks below threshold, subsets ids
 }
-\keyword{internal}
+\examples{
+prep_bloodmeal_profiles(bloodmeal_profiles, peak_thresh = 200)
+}

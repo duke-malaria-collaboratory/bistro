@@ -122,6 +122,7 @@ calc_one_log10_lr <-
 #' `prep_bloodmeal_profiles()` and `prep_human_profiles()` first.
 #'
 #' @inheritParams bistro
+#' @inheritParams calc_allele_freqs
 #'
 #' @return A tibble with the same output as for [bistro()], except there is no
 #'   match column and every bloodmeal-human pair with the calculated log10_lr is
@@ -130,7 +131,16 @@ calc_one_log10_lr <-
 #'   value of 3.
 #'
 #' @export
-#' @keywords internal
+#' @examples
+#' bm_profs <- prep_bloodmeal_profiles(bloodmeal_profiles, peak_thresh = 200)
+#' hu_profs <- prep_human_profiles(human_profiles)
+#' log10_lrs <- calc_log10_lrs(bm_profs,
+#'   hu_profs,
+#'   bloodmeal_ids = "evid1",
+#'   pop_allele_freqs = pop_allele_freqs,
+#'   kit = "ESX17",
+#'   peak_thresh = 200
+#' )
 calc_log10_lrs <-
   function(bloodmeal_profiles,
            human_profiles,
@@ -145,7 +155,52 @@ calc_log10_lrs <-
            difftol = 1,
            threads = 4,
            seed = 1,
-           time_limit = 3) {
+           time_limit = 3,
+           check_inputs = TRUE) {
+    if (check_inputs) {
+      check_colnames(
+        bloodmeal_profiles,
+        c("SampleName", "Marker", "Allele", "Height")
+      )
+      check_colnames(human_profiles, c("SampleName", "Marker", "Allele"))
+      check_ids(bloodmeal_ids, "bloodmeal_ids")
+      check_ids(human_ids, "human_ids")
+
+      kit_df <- check_kit(kit)
+
+      bm_prof_markers <- bloodmeal_profiles$Marker |>
+        unique() |>
+        toupper()
+      hu_prof_markers <- human_profiles$Marker |>
+        unique() |>
+        toupper()
+      kit_markers <- kit_df$Marker |>
+        unique() |>
+        toupper()
+
+      check_setdiff_markers(
+        bm_prof_markers,
+        kit_markers,
+        "bloodmeal_profiles",
+        "kit"
+      )
+      check_setdiff_markers(
+        hu_prof_markers,
+        kit_markers,
+        "human_profiles",
+        "kit"
+      )
+
+      check_peak_thresh(peak_thresh)
+      check_is_bool(model_degrad, "model_degrad")
+      check_is_bool(model_bw_stutt, "model_bw_stutt")
+      check_is_bool(model_fw_stutt, "model_fw_stutt")
+      check_is_numeric(difftol, "difftol", pos = TRUE)
+      check_is_numeric(threads, "threads", pos = TRUE)
+      check_is_numeric(seed, "seed")
+      check_is_numeric(time_limit, "time_limit", pos = TRUE)
+    }
+
     if (is.null(bloodmeal_ids)) {
       bloodmeal_ids <- unique(bloodmeal_profiles$SampleName)
     }

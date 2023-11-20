@@ -41,14 +41,17 @@ match_exact <- function(bloodmeal_profiles,
     bloodmeal_profiles,
     bloodmeal_ids,
     peak_thresh,
-    rm_markers = NULL
+    rm_markers = NULL,
+    check_heights = FALSE,
+    check_inputs = FALSE
   )
 
   human_profiles <- prep_human_profiles(
     human_profiles,
     human_ids,
     rm_twins,
-    rm_markers = NULL
+    rm_markers = NULL,
+    check_inputs = FALSE
   )
 
   # human profiles

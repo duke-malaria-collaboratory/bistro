@@ -1,0 +1,83 @@
+---
+title: "Run bistro step-by-step"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Run bistro step-by-step}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(bistro)
+```
+
+If you haven't yet, please check out `vignette("bistro")` before reading this vignette. It will provide you with more background and context, and take you through the outputs in more detail than we do here. Then if you want to learn how to run sub-functions of bistro individually, or run bistro step-by-step, you're in the right place.
+
+We will go through the following steps to run bistro step-by-step using the example data provided in the `bistro` package:
+
+- `calc_allele_freqs()`
+- `prep_bloodmeal_profiles()`
+- `prep_human_profiles()`
+- `calc_log10_lrs()`
+- `identify_matches()`
+
+## Calculate human population allele frequencies
+
+If needed, you can first calculate population allele frequencies from your human profile database:
+
+```{r}
+pop_freqs_computed <- calc_allele_freqs(human_profiles)
+```
+
+We will use the built-in population allele frequencies here since they are more accurate than computing allele frequencies for only the three example profiles in `human_profiles`. 
+
+## Prepare input STR profiles
+
+Before calculating log10LRs, you must ensure that the bloodmeal and human profiles are prepared correctly. You can do this using `prep_bloodmeal_profiles()` and `prep_human_profiles()`, respectively.
+
+Both functions:
+
+- Removes markers the user does not want to use
+- Removes duplicate rows to ensure that homozygous alleles are only included once
+
+`prep_bloodmeal_profiles()` also optionally filters peakes below a user-defined threshold 
+
+`prep_human_profiles()` also optionally removes identical twins (which cannot be resolved)
+
+```{r}
+bm_profs <- prep_bloodmeal_profiles(bloodmeal_profiles, peak_thresh = 200)
+hu_profs <- prep_human_profiles(human_profiles)
+```
+
+
+## Calculate log10LRs for bloodmeal-human pairs
+
+Next, you can use the prepared profiles to compute log10LRs for each bloodmeal-human pair (or a subset of pairs). Note that to identify matches, you will have to have the log10LRs between each bloodmeal and all human profiles in the reference database. 
+
+Here is an example of how to compute the log10LRs for one bloodmeal and all humans in the database:
+
+```{r}
+log10_lrs <- calc_log10_lrs(bm_profs,
+  hu_profs,
+  bloodmeal_ids = "evid1",
+  pop_allele_freqs = pop_allele_freqs,
+  kit = "ESX17",
+  peak_thresh = 200
+)
+```
+
+## Identify bloodmeal-human matches
+
+Next, we can identify matches to the bloodmeal:
+
+```{r}
+matches <- identify_matches(log10_lrs)
+```
+

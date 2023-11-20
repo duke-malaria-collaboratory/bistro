@@ -32,6 +32,8 @@ reference:
     Sub-functions used by `bistro()`
   contents:
   - calc_allele_freqs
+  - prep_bloodmeal_profiles
+  - prep_human_profiles
   - rm_dups
   - rm_twins
   - filter_peaks

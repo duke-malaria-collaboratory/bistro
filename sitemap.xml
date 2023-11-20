@@ -49,6 +49,9 @@
     <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/check_colnames.html</loc>
   </url>
   <url>
+    <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/check_create_db_input.html</loc>
+  </url>
+  <url>
     <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/check_heights.html</loc>
   </url>
   <url>
@@ -70,7 +73,13 @@
     <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/check_peak_thresh.html</loc>
   </url>
   <url>
+    <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/check_pkg_version.html</loc>
+  </url>
+  <url>
     <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/check_setdiff_markers.html</loc>
+  </url>
+  <url>
+    <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/create_db_from_bloodmeals.html</loc>
   </url>
   <url>
     <loc>https://duke-malaria-collaboratory.github.io/bistro/reference/filter_peaks.html</loc>

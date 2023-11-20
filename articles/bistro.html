@@ -496,6 +496,31 @@ output.</p>
 <p>Look out for our upcoming manuscript for a comparison of these
 methods.</p>
 </div>
+<div class="section level2">
+<h2 id="identifying-bloodmeals-derived-from-the-same-host-without-a-reference-human-database">Identifying bloodmeals derived from the same host without a
+reference human database<a class="anchor" aria-label="anchor" href="#identifying-bloodmeals-derived-from-the-same-host-without-a-reference-human-database"></a>
+</h2>
+<p>If you don’t have a reference database of human samples but would
+still like to identify bloodmeals derived from the same host, you can
+use the <code><a href="../reference/create_db_from_bloodmeals.html">create_db_from_bloodmeals()</a></code> function, and then
+input that human database into the <code><a href="../reference/bistro.html">bistro()</a></code> function. To
+see how this works, first load example data from the bistro
+manuscript:</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">samples</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/duke-malaria-collaboratory/bistro_validation/main/data/provedit/provedit_samples_mass200thresh.csv"</span><span class="op">)</span></span></code></pre></div>
+<p>To create a human database from these samples, you can run
+<code><a href="../reference/create_db_from_bloodmeals.html">create_db_from_bloodmeals()</a></code>, which creates human profiles
+from complete single-source bloodmeal profiles:</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">hu_db</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_db_from_bloodmeals.html">create_db_from_bloodmeals</a></span><span class="op">(</span><span class="va">samples</span>, <span class="st">"identifiler"</span>, <span class="fl">200</span><span class="op">)</span></span></code></pre></div>
+<p>Then you can run <code><a href="../reference/bistro.html">bistro()</a></code> as usual:</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/bistro.html">bistro</a></span><span class="op">(</span><span class="va">samples</span>, <span class="va">hu_db</span>, <span class="st">"identifiler"</span>, <span class="fl">200</span>,</span>
+<span>  bloodmeal_ids <span class="op">=</span> <span class="st">"A02_RD14-0003-23d3a-0.2IP-Q1.2_001.10sec.fsa"</span>,</span>
+<span>  human_ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"H"</span>, <span class="fl">20</span><span class="op">:</span><span class="fl">24</span><span class="op">)</span>,</span>
+<span>  calc_allele_freqs <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+</div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
 </div>

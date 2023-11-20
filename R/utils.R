@@ -50,6 +50,8 @@ ignore_unused_imports <- function() {
 #' @param version required package version
 #'
 #' @return nothing or error if package version too old
+#'
+#' @keywords internal
 check_pkg_version <- function(pkg, curr_version, version) {
   vers <- utils::compareVersion(as.character(curr_version), version)
   if (vers == -1) {

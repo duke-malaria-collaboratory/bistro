@@ -19,3 +19,4 @@ nothing or error if package version too old
 \description{
 Check package version
 }
+\keyword{internal}

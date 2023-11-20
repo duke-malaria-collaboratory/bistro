@@ -21,6 +21,12 @@ reference:
   - match_similarity
   - match_static_thresh
 
+- title: Create a human database from bloodmeal profiles
+  desc: >
+    Create a human database from single-source bloodmeals with complete STR profiles
+  contents:
+  - create_db_from_bloodmeals
+
 - title: Other functions
   desc: >
     Sub-functions used by `bistro()`

@@ -31,3 +31,4 @@ number of alleles in a complete profile
 \description{
 Check input to `create_db_from_bloodmeals()``
 }
+\keyword{internal}

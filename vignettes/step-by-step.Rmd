@@ -14,10 +14,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(bistro)
-```
-
 If you haven't yet, please check out `vignette("bistro")` before reading this vignette. It will provide you with more background and context, and take you through the outputs in more detail than we do here. Then if you want to learn how to run sub-functions of bistro individually, or run bistro step-by-step, you're in the right place.
 
 We will go through the following steps to run bistro step-by-step using the example data provided in the `bistro` package:
@@ -27,6 +23,12 @@ We will go through the following steps to run bistro step-by-step using the exam
 - `prep_human_profiles()`
 - `calc_log10_lrs()`
 - `identify_matches()`
+
+First, you'll have to load the `bistro` library:
+
+```{r setup}
+library(bistro)
+```
 
 ## Calculate human population allele frequencies
 

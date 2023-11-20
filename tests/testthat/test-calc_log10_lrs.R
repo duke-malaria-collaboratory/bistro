@@ -17,7 +17,8 @@ test_that("calc_log10_lrs works", {
       "00-JP0001-14_20142342311_NO-3241",
       pop_allele_freqs = pop_allele_freqs,
       kit = "ESX17",
-      peak_thresh = 200
+      peak_thresh = 200,
+      seed = 1
     )
   )
 
@@ -29,7 +30,8 @@ test_that("calc_log10_lrs works", {
       "00-JP0001-14_20142342311_NO-3241",
       pop_allele_freqs = pop_allele_freqs,
       kit = "ESX17",
-      peak_thresh = 200
+      peak_thresh = 200,
+      seed = 1
     )
   )
 
@@ -41,7 +43,8 @@ test_that("calc_log10_lrs works", {
       "00-JP0001-14_20142342311_NO-3241",
       pop_allele_freqs = pop_allele_freqs,
       kit = "ESX17",
-      peak_thresh = 200
+      peak_thresh = 200,
+      seed = 1
     )
   )
 
@@ -53,7 +56,8 @@ test_that("calc_log10_lrs works", {
       "P1",
       pop_allele_freqs = pop_allele_freqs,
       kit = "ESX17",
-      peak_thresh = 200
+      peak_thresh = 200,
+      seed = 1
     )
   )
 
@@ -77,7 +81,20 @@ test_that("calc_log10_lrs works", {
       pop_allele_freqs = pop_allele_freqs,
       kit = "ESX17",
       peak_thresh = 200,
+      seed = 1,
       check_inputs = FALSE
     )
   )
+
+  suppressMessages(expect_no_error(calc_log10_lrs(
+    bm_profs,
+    hu_profs,
+    pop_allele_freqs = pop_allele_freqs,
+    kit = "ESX17",
+    peak_thresh = 200,
+    # seed = 1,
+    check_inputs = TRUE
+  )))
+
+
 })

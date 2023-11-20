@@ -17,7 +17,7 @@ calc_log10_lrs(
   model_fw_stutt = FALSE,
   difftol = 1,
   threads = 4,
-  seed = 1,
+  seed = NULL,
   time_limit = 3,
   check_inputs = TRUE
 )
@@ -72,7 +72,7 @@ iterations. \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}} 
 \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}} argument. Default: 4}
 
 \item{seed}{Seed when calculating log10_lrs. \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}}
-argument. Default: 1}
+argument. Default: NULL (no seed)}
 
 \item{time_limit}{Time limit in minutes to run the
 \code{\link[euroformix:contLikSearch]{euroformix::contLikSearch()}} function on 1 bloodmeal-human pair. Default:

@@ -3,7 +3,7 @@
     Code
       calc_one_log10_lr(bloodmeal_profiles_sub, "evid1", human_profiles,
         "00-JP0001-14_20142342311_NO-3241", pop_allele_freqs = pop_allele_freqs, kit = "ESX17",
-        peak_thresh = 200)
+        peak_thresh = 200, seed = 1)
     Output
       # A tibble: 1 x 7
         bloodmeal_id human_id               locus_count est_noc efm_noc log10_lr notes
@@ -15,7 +15,7 @@
     Code
       calc_one_log10_lr(bloodmeal_profiles_sub, "evid2", human_profiles,
         "00-JP0001-14_20142342311_NO-3241", pop_allele_freqs = pop_allele_freqs, kit = "ESX17",
-        peak_thresh = 200)
+        peak_thresh = 200, seed = 1)
     Output
       # A tibble: 1 x 7
         bloodmeal_id human_id               locus_count est_noc efm_noc log10_lr notes
@@ -27,7 +27,7 @@
     Code
       calc_one_log10_lr(bloodmeal_profiles_sub, "evid4", human_profiles,
         "00-JP0001-14_20142342311_NO-3241", pop_allele_freqs = pop_allele_freqs, kit = "ESX17",
-        peak_thresh = 200)
+        peak_thresh = 200, seed = 1)
     Output
       # A tibble: 1 x 7
         bloodmeal_id human_id               locus_count est_noc efm_noc log10_lr notes
@@ -38,7 +38,7 @@
 
     Code
       calc_one_log10_lr(bloodmeal_profiles_sub, "evid2", human_profiles, "P1",
-        pop_allele_freqs = pop_allele_freqs, kit = "ESX17", peak_thresh = 200)
+        pop_allele_freqs = pop_allele_freqs, kit = "ESX17", peak_thresh = 200, seed = 1)
     Output
       # A tibble: 1 x 7
         bloodmeal_id human_id locus_count est_noc efm_noc log10_lr notes           
@@ -61,7 +61,7 @@
 
     Code
       calc_log10_lrs(bm_profs, hu_profs, pop_allele_freqs = pop_allele_freqs, kit = "ESX17",
-        peak_thresh = 200, check_inputs = FALSE)
+        peak_thresh = 200, seed = 1, check_inputs = FALSE)
     Message
       # bloodmeal ids: 2
       # human ids: 1

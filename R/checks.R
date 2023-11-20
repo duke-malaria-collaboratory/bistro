@@ -75,7 +75,9 @@ check_bistro_inputs <-
     check_is_bool(return_lrs, "return_lrs")
     check_is_numeric(difftol, "difftol", pos = TRUE)
     check_is_numeric(threads, "threads", pos = TRUE)
-    check_is_numeric(seed, "seed")
+    if(!is.null(seed)){
+      check_is_numeric(seed, "seed")
+    }
     check_is_numeric(time_limit, "time_limit", pos = TRUE)
   }
 

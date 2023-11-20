@@ -25,7 +25,7 @@ calc_one_log10_lr <-
            model_fw_stutt = FALSE,
            difftol = 1,
            threads = 4,
-           seed = 1,
+           seed = NULL,
            time_limit = 3) {
     bloodmeal_profile <- bloodmeal_profiles |>
       dplyr::filter(SampleName == bloodmeal_id)
@@ -154,7 +154,7 @@ calc_log10_lrs <-
            model_fw_stutt = FALSE,
            difftol = 1,
            threads = 4,
-           seed = 1,
+           seed = NULL,
            time_limit = 3,
            check_inputs = TRUE) {
     if (check_inputs) {
@@ -197,7 +197,9 @@ calc_log10_lrs <-
       check_is_bool(model_fw_stutt, "model_fw_stutt")
       check_is_numeric(difftol, "difftol", pos = TRUE)
       check_is_numeric(threads, "threads", pos = TRUE)
-      check_is_numeric(seed, "seed")
+      if(!is.null(seed)){
+        check_is_numeric(seed, "seed")
+      }
       check_is_numeric(time_limit, "time_limit", pos = TRUE)
     }
 

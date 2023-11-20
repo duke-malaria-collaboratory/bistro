@@ -53,7 +53,7 @@
 #' @param threads Number of threads to use when calculating log10_lrs.
 #'   [euroformix::contLikSearch()] argument. Default: 4
 #' @param seed Seed when calculating log10_lrs. [euroformix::contLikSearch()]
-#'   argument. Default: 1
+#'   argument. Default: NULL (no seed)
 #' @param time_limit Time limit in minutes to run the
 #'   [euroformix::contLikSearch()] function on 1 bloodmeal-human pair. Default:
 #'   3
@@ -102,7 +102,7 @@ bistro <-
            model_fw_stutt = FALSE,
            difftol = 1,
            threads = 4,
-           seed = 1,
+           seed = NULL,
            time_limit = 3,
            return_lrs = FALSE) {
     check_pkg_version("tidyr", utils::packageVersion("tidyr"), "1.3.0")

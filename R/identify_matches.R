@@ -161,7 +161,7 @@ identify_matches <- function(log10_lrs,
         "log10_lr", "notes"
       )
     )
-    check_ids(bloodmeal_ids, "bloodmeal_ids")
+    check_present(bloodmeal_ids, log10_lrs, "bloodmeal_id")
   }
 
   if (is.null(bloodmeal_ids)) {

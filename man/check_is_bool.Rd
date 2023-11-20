@@ -4,7 +4,7 @@
 \alias{check_is_bool}
 \title{Check is boolean}
 \usage{
-check_is_bool(vec, vec_name)
+check_is_bool(vec)
 }
 \arguments{
 \item{vec}{vector to check}

@@ -15,6 +15,14 @@
 #' )
 #' match_static_thresh(bistro_output$lrs, 10)
 match_static_thresh <- function(log10_lrs, thresh) {
+  check_colnames(
+    log10_lrs,
+    c(
+      "bloodmeal_id", "human_id",
+      "locus_count", "est_noc", "efm_noc",
+      "log10_lr", "notes"
+    )
+  )
   check_is_numeric(thresh, pos = TRUE)
 
   bm_info <- log10_lrs |>

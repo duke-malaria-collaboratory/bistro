@@ -1,7 +1,7 @@
 test_that("calc_allele_freqs works", {
   expect_error(
     calc_allele_freqs(data.frame(name = 1)),
-    "Not all expected column names are present. Missing:"
+    "Not all expected column names are present in human_profiles. Missing:"
   )
 
   hu_prof_sub <-

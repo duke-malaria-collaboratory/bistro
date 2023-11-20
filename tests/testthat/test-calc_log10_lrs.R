@@ -92,9 +92,6 @@ test_that("calc_log10_lrs works", {
     pop_allele_freqs = pop_allele_freqs,
     kit = "ESX17",
     peak_thresh = 200,
-    # seed = 1,
     check_inputs = TRUE
   )))
-
-
 })

@@ -33,10 +33,18 @@ remotes::install_github("duke-malaria-collaboratory/bistro")
 - Imports: codetools (\>= 0.2.19), dplyr (\>= 1.1.3), R.utils (\>=
   2.12.2), stringr (\>= 1.5.0), tibble (\>= 3.2.1), tidyr (\>= 1.3.0)
 - Suggests: knitr (\>= 1.43), readr (\>= 2.1.4), rmarkdown (\>= 2.24),
-  testthat (\>= 3.0.0)
+  testthat (\>= 3.2.0)
 
 ## Usage
 
 Check out the
 [vignette](https://duke-malaria-collaboratory.github.io/bistro/articles/bistro.html)
 for more information.
+
+## Have questions or need help troubleshooting?
+
+Open up an
+[issue](https://github.com/duke-malaria-collaboratory/bistro/issues) on
+our GitHub page or contact us (Christine:
+<christine.markwalter@duke.edu>, Zena: <zenalapp@gmail.com>) and we can
+help out.

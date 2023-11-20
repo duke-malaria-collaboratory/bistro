@@ -16,10 +16,10 @@
 calc_allele_freqs <- function(human_profiles,
                               rm_markers = NULL,
                               check_inputs = TRUE) {
+  check_is_bool(check_inputs)
   if (check_inputs) {
-    # check if expected columns are present
     check_colnames(human_profiles, c("SampleName", "Marker", "Allele"))
-    check_ids(rm_markers, "rm_markers")
+    check_present(rm_markers, human_profiles, "Marker")
   }
 
   if (!is.null(rm_markers)) {

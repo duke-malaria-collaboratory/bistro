@@ -17,14 +17,16 @@ prep_bloodmeal_profiles <- function(bloodmeal_profiles,
                                     rm_markers = c("AMEL"),
                                     check_heights = TRUE,
                                     check_inputs = TRUE) {
+  check_is_bool(check_inputs)
   if (check_inputs) {
     check_colnames(
       bloodmeal_profiles,
       c("SampleName", "Marker", "Allele", "Height")
     )
-    check_ids(bloodmeal_ids, "bloodmeal_ids")
+    check_present(bloodmeal_ids, bloodmeal_profiles, "SampleName")
     check_peak_thresh(peak_thresh)
-    check_is_bool(check_heights, "check_heights")
+    check_present(rm_markers, bloodmeal_profiles, "Marker")
+    check_is_bool(check_heights)
   }
 
   if (is.null(bloodmeal_ids)) {
@@ -66,10 +68,12 @@ prep_human_profiles <- function(human_profiles,
                                 rm_twins = TRUE,
                                 rm_markers = c("AMEL"),
                                 check_inputs = TRUE) {
+  check_is_bool(check_inputs)
   if (check_inputs) {
     check_colnames(human_profiles, c("SampleName", "Marker", "Allele"))
-    check_ids(human_ids, "bloodmeal_ids")
-    check_is_bool(rm_twins, "rm_twins")
+    check_present(human_ids, human_profiles, "SampleName")
+    check_is_bool(rm_twins)
+    check_present(rm_markers, human_profiles)
   }
 
   if (rm_twins) {

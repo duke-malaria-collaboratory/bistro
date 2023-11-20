@@ -10,24 +10,29 @@ test_that("check_bistro_input works", {
 })
 
 test_that("check_is_bool works", {
-  expect_no_error(check_is_bool(TRUE, "v1"))
+  expect_no_error(check_is_bool(TRUE))
   expect_error(
-    check_is_bool(1, "v1"),
-    "v1 must be a logical"
+    check_is_bool(1),
+    "1 must be a logical"
   )
 })
 
 test_that("check_is_numeric works", {
-  expect_no_error(check_is_numeric(1, "v1"))
-  expect_no_error(check_is_numeric(-1, "v1"))
-  expect_no_error(check_is_numeric(1, "v1", pos = TRUE))
+  expect_no_error(check_is_numeric(1))
+  expect_no_error(check_is_numeric(-1))
+  expect_no_error(check_is_numeric(1, pos = TRUE))
   expect_error(
-    check_is_numeric(0, "v1", pos = TRUE),
-    "v1 must be greater than zero, but is 0."
+    check_is_numeric(0, pos = TRUE),
+    "0 must be greater than zero, but is 0."
   )
   expect_error(
-    check_is_numeric("a", "v1"),
-    "v1 must be numeric, but is character."
+    check_is_numeric("a"),
+    "must be numeric, but is character."
+  )
+  var <- "a"
+  expect_error(
+    check_is_numeric(var),
+    "var must be numeric, but is character."
   )
 })
 
@@ -80,13 +85,14 @@ test_that("check_if_allele_freqs works", {
 })
 
 test_that("check_ids works", {
-  expect_no_error(check_ids(NULL, "v1"))
-  expect_no_error(check_ids(1, "v1"))
-  expect_no_error(check_ids(1:2, "v1"))
-  expect_no_error(check_ids("a", "v1"))
+  expect_no_error(check_ids(NULL))
+  expect_no_error(check_ids(1))
+  expect_no_error(check_ids(1:2))
+  expect_no_error(check_ids("a"))
+  tib <- tibble::tibble(test = numeric())
   expect_error(
-    check_ids(tibble::tibble(test = numeric()), "v1"),
-    "v1 must be NULL or a vector but is: tbl_dftbldata.frame"
+    check_ids(tib),
+    "tib must be NULL or a vector but is: tbl_dftbldata.frame"
   )
 })
 
@@ -95,7 +101,7 @@ test_that("check_colnames works", {
 
   expect_error(
     check_colnames(tibble::tibble(test = 1), "test1"),
-    "Not all expected column names are present. Missing: test1"
+    "Not all expected column names are present in"
   )
 })
 
@@ -139,4 +145,12 @@ test_that("check_create_db_input working", {
       dplyr::slice_head(n = 2),
     "ESX17", 0, c("AMEL")
   ), 16)
+})
+
+test_that("check_present working", {
+  expect_no_error(check_present(c("amel"), human_profiles, "Marker"))
+  expect_warning(
+    check_present(c("a"), human_profiles, "Marker"),
+    "These are not present in human_profiles"
+  )
 })

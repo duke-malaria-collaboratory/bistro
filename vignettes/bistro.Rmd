@@ -269,3 +269,8 @@ bistro(samples, hu_db, "identifiler", 200,
 ## Running bistro step-by-step
 
 If you're interested in learning how to run sub-functions of `bistro()` individually, head over to `vignette("step-by-step")`. 
+
+
+## Have questions or need help troubleshooting?
+
+Open up an [issue](https://github.com/duke-malaria-collaboratory/bistro/issues) on our GitHub page or contact us (Christine: christine.markwalter@duke.edu, Zena: zenalapp@gmail.com) and we can help out.

@@ -32,10 +32,11 @@ match_exact <- function(bloodmeal_profiles,
     )
   }
   check_colnames(human_profiles, c("SampleName", "Marker", "Allele"))
-  check_ids(bloodmeal_ids, "bloodmeal_ids")
-  check_ids(human_ids, "human_ids")
-  check_is_bool(rm_twins, "rm_twins")
-  check_ids(rm_markers, "rm_markers")
+  check_present(bloodmeal_ids, bloodmeal_profiles, "SampleName")
+  check_present(human_ids, human_profiles, "SampleName")
+  check_is_bool(rm_twins)
+  check_present(rm_markers, bloodmeal_profiles, "SampleName")
+  check_present(rm_markers, human_profiles, "SampleName")
 
   bloodmeal_profiles <- prep_bloodmeal_profiles(
     bloodmeal_profiles,

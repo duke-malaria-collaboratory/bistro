@@ -4,14 +4,14 @@
 \alias{check_is_numeric}
 \title{Check is numeric}
 \usage{
-check_is_numeric(vec, vec_name, pos = FALSE)
+check_is_numeric(vec, pos = FALSE)
 }
 \arguments{
 \item{vec}{vector to check}
 
-\item{vec_name}{vector name}
-
 \item{pos}{whether the number must be positive}
+
+\item{vec_name}{vector name}
 }
 \value{
 Error or nothing

@@ -1,11 +1,11 @@
 test_that("prep_bloodmeal_profiles works", {
-  expect_error(
+  expect_warning(expect_error(
     prep_bloodmeal_profiles(
       bloodmeal_profiles %>% dplyr::filter(Height < 200),
       peak_thresh = 200
     ),
     "All bloodmeal peak heights below threshold of 200."
-  )
+  ))
 
   expect_snapshot(prep_bloodmeal_profiles(
     bloodmeal_profiles,

@@ -4,7 +4,7 @@
 \alias{check_ids}
 \title{Check input ids}
 \usage{
-check_ids(vec, vec_name)
+check_ids(vec)
 }
 \arguments{
 \item{vec}{vector to check}

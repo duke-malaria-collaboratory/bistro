@@ -28,9 +28,10 @@ check_bistro_inputs <-
       c("SampleName", "Marker", "Allele", "Height")
     )
     check_colnames(human_profiles, c("SampleName", "Marker", "Allele"))
-    check_ids(bloodmeal_ids, "bloodmeal_ids")
-    check_ids(human_ids, "human_ids")
-    check_ids(rm_markers)
+    check_present(bloodmeal_ids, bloodmeal_profiles, "SampleName")
+    check_present(human_ids, human_profiles, "SampleName")
+    check_present(rm_markers, human_profiles, "Marker")
+    check_present(rm_markers, bloodmeal_profiles, "Marker")
 
     kit_df <- check_kit(kit)
 
@@ -68,17 +69,17 @@ check_bistro_inputs <-
     check_if_allele_freqs(pop_allele_freqs, calc_allele_freqs, kit_df)
 
     check_peak_thresh(peak_thresh)
-    check_is_bool(rm_twins, "rm_twins")
-    check_is_bool(model_degrad, "model_degrad")
-    check_is_bool(model_bw_stutt, "model_bw_stutt")
-    check_is_bool(model_fw_stutt, "model_fw_stutt")
-    check_is_bool(return_lrs, "return_lrs")
-    check_is_numeric(difftol, "difftol", pos = TRUE)
-    check_is_numeric(threads, "threads", pos = TRUE)
-    if(!is.null(seed)){
-      check_is_numeric(seed, "seed")
+    check_is_bool(rm_twins)
+    check_is_bool(model_degrad)
+    check_is_bool(model_bw_stutt)
+    check_is_bool(model_fw_stutt)
+    check_is_bool(return_lrs)
+    check_is_numeric(difftol, pos = TRUE)
+    check_is_numeric(threads, pos = TRUE)
+    if (!is.null(seed)) {
+      check_is_numeric(seed)
     }
-    check_is_numeric(time_limit, "time_limit", pos = TRUE)
+    check_is_numeric(time_limit, pos = TRUE)
   }
 
 #' Check is boolean
@@ -88,10 +89,10 @@ check_bistro_inputs <-
 #'
 #' @return Error or nothing
 #' @keywords internal
-check_is_bool <- function(vec, vec_name) {
+check_is_bool <- function(vec) {
   if (!is.logical(vec)) {
     stop(
-      vec_name,
+      deparse(substitute(vec)),
       " must be a logical (TRUE or FALSE), but is ",
       class(vec),
       "."
@@ -107,11 +108,11 @@ check_is_bool <- function(vec, vec_name) {
 #'
 #' @return Error or nothing
 #' @keywords internal
-check_is_numeric <- function(vec, vec_name, pos = FALSE) {
+check_is_numeric <- function(vec, pos = FALSE) {
   if (!is.numeric(vec)) {
-    stop(vec_name, " must be numeric, but is ", class(vec), ".")
+    stop(deparse(substitute(vec)), " must be numeric, but is ", class(vec), ".")
   } else if (vec <= 0 && pos == TRUE) {
-    stop(vec_name, " must be greater than zero, but is ", vec, ".")
+    stop(deparse(substitute(vec)), " must be greater than zero, but is ", vec, ".")
   }
 }
 
@@ -240,9 +241,9 @@ check_setdiff_markers <-
 #'
 #' @return Error or nothing
 #' @keywords internal
-check_ids <- function(vec, vec_name) {
+check_ids <- function(vec) {
   if (!is.null(vec) && !is.vector(vec)) {
-    stop(vec_name, " must be NULL or a vector but is: ", class(vec))
+    stop(deparse(substitute(vec)), " must be NULL or a vector but is: ", class(vec))
   }
 }
 
@@ -260,7 +261,7 @@ check_colnames <- function(df, expected_colnames) {
     expected_colnames[!expected_colnames %in% names(df)]
   if (length(missing_colnames) > 0) {
     stop(paste0(
-      "Not all expected column names are present. Missing: ",
+      "Not all expected column names are present in ", deparse(substitute(df)), ". Missing: ",
       paste0(missing_colnames, collapse = ", ")
     ))
   }
@@ -309,7 +310,7 @@ check_create_db_input <- function(bloodmeal_profiles,
     bloodmeal_profiles,
     c("SampleName", "Marker", "Allele")
   )
-  check_ids(rm_markers)
+  check_present(rm_markers, bloodmeal_profiles, "Marker")
   check_peak_thresh(peak_thresh)
   kit_df <- check_kit(kit)
   kit_markers <- kit_df$Marker |>
@@ -330,4 +331,22 @@ check_create_db_input <- function(bloodmeal_profiles,
     "kit"
   )
   length(kit_markers)
+}
+
+#' Check if input markers to remove are present in the dataset
+#'
+#' @param df Data frame to check against
+#' @inheritParams bistro
+#'
+#' @return Warning or nothing
+#' @keywords internal
+check_present <- function(to_rm, df, col) {
+  check_ids(to_rm)
+  not_present <- setdiff(toupper(to_rm), toupper(unlist(df[, col])))
+  if (length(not_present) > 0) {
+    warning(
+      "These are not present in ", deparse(substitute(df)), "[,", deparse(substitute(col)), "]: ",
+      not_present
+    )
+  }
 }

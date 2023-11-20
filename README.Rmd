@@ -61,3 +61,8 @@ deps <- lapply(
 ## Usage
 
 Check out the [vignette](https://duke-malaria-collaboratory.github.io/bistro/articles/bistro.html) for more information. 
+
+## Have questions or need help troubleshooting?
+
+Open up an [issue](https://github.com/duke-malaria-collaboratory/bistro/issues) on our GitHub page or contact us (Christine: christine.markwalter@duke.edu, Zena: zenalapp@gmail.com) and we can help out.
+

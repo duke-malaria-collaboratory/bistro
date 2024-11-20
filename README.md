@@ -18,6 +18,14 @@ Functions to allow for the identification of matches between bloodmeals
 and the people they bit using short tandem repeat (STR) profiles of
 human blood from freshly fed bloodmeals and from people.
 
+## Manuscript
+
+bistro: An R package for vector bloodmeal identification by short tandem repeat overlap.\
+Lapp Z, Abel L, Mangeni J, Obala AA, O'Meara WP, Taylor SM, Markwalter CF.\
+Methods in Ecology and Evolution. 2024 Feb;15(2):308-16.\
+https://doi.org/10.1111/2041-210X.14277
+
+
 ## Installation
 
 You can install bistro like so:
